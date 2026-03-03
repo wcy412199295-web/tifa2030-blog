@@ -102,25 +102,66 @@ h1, h2, h3, h4, h5, h6,
   color: var(--tifa-primary) !important;
 }
 
+/* 导航栏在封面上的样式 */
+.nav-transparent .nav-wrapper {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-transparent .nav-wrapper a,
+.nav-transparent .brand-logo {
+  color: white !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.nav-transparent .nav-wrapper a:hover {
+  color: var(--tifa-secondary-light) !important;
+}
+
 /* ========================================
    5. 首页封面优化
    ======================================== */
-.bg-cover {
+.bg-cover,
+.about-cover,
+.pd-header {
   background: linear-gradient(135deg, 
-    rgba(139, 127, 212, 0.15) 0%, 
-    rgba(244, 166, 195, 0.1) 50%,
-    rgba(255, 215, 0, 0.05) 100%) !important;
+    rgba(139, 127, 212, 0.85) 0%, 
+    rgba(107, 95, 184, 0.9) 50%,
+    rgba(244, 166, 195, 0.85) 100%) !important;
+  position: relative;
+}
+
+.bg-cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(139, 127, 212, 0.9) 0%, 
+    rgba(107, 95, 184, 0.95) 50%,
+    rgba(244, 166, 195, 0.9) 100%);
+  z-index: 1;
+}
+
+.bg-cover .container {
+  position: relative;
+  z-index: 2;
 }
 
 .cover-title {
   font-family: 'Noto Serif SC', serif;
   font-size: 3.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--tifa-primary) 0%, var(--tifa-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
+  color: white !important;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cover-title span,
+.header-subtitle {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 400;
 }
 
 /* ========================================
