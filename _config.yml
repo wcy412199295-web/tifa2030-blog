@@ -12,7 +12,8 @@ language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
-url: https://tifa2030.me
+url: https://wcy412199295-web.github.io/tifa2030-blog
+root: /tifa2030-blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
