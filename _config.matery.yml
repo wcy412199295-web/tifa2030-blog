@@ -68,10 +68,7 @@ post:
   readTime: true
   busuanzi: true
   reward:
-    enable: true
-    title: 你的赏识是我前进的动力
-    wechat: /medias/reward/wechat.png
-    alipay: /medias/reward/alipay.jpg
+    enable: false
 
 # Whether to display the title in the post list on the home page.
 index:
