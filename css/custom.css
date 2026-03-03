@@ -1,0 +1,561 @@
+/* ========================================
+   Tifa2030 博客自定义样式
+   Design System: Soft Tech Fusion
+   Version: 1.0
+   ======================================== */
+
+/* ========================================
+   1. 字体引入
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+/* ========================================
+   2. CSS 变量定义
+   ======================================== */
+:root {
+  /* 主色调 - 温暖赛博 */
+  --tifa-primary: #8B7FD4;
+  --tifa-primary-light: #A69FE0;
+  --tifa-primary-dark: #6B5FB8;
+  
+  /* 次要色 - 蒂法粉 */
+  --tifa-secondary: #F4A6C3;
+  --tifa-secondary-light: #F8C4D8;
+  
+  /* 强调色 */
+  --tifa-accent: #FFD700;
+  --tifa-accent-soft: #FFE44D;
+  
+  /* 背景色 */
+  --tifa-bg-primary: #FAFAFC;
+  --tifa-bg-secondary: #F0F0F5;
+  --tifa-bg-card: #FFFFFF;
+  --tifa-bg-code: #F5F5F8;
+  
+  /* 文字色 */
+  --tifa-text-primary: #2D2D3A;
+  --tifa-text-secondary: #6B6B7B;
+  --tifa-text-muted: #9B9BAB;
+  
+  /* 分类色 */
+  --cat-oasis: #8B7FD4;
+  --cat-ai: #42B883;
+  --cat-soul: #F4A6C3;
+  --cat-levi: #FFD700;
+  --cat-iq: #5B8DEF;
+  
+  /* 阴影 */
+  --shadow-sm: 0 2px 8px rgba(139, 127, 212, 0.06);
+  --shadow-md: 0 4px 20px rgba(139, 127, 212, 0.08);
+  --shadow-lg: 0 8px 40px rgba(139, 127, 212, 0.12);
+  
+  /* 圆角 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  
+  /* 过渡 */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
+/* ========================================
+   3. 全局样式重置
+   ======================================== */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, var(--tifa-bg-primary) 0%, var(--tifa-bg-secondary) 100%);
+  background-attachment: fixed;
+  color: var(--tifa-text-primary);
+  line-height: 1.8;
+}
+
+/* 标题使用衬线体增加人文感 */
+h1, h2, h3, h4, h5, h6,
+.dream-title,
+.post-title,
+.card-title {
+  font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* ========================================
+   4. 导航栏优化
+   ======================================== */
+.nav-wrapper {
+  background: rgba(250, 250, 252, 0.85) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(139, 127, 212, 0.08);
+  box-shadow: none !important;
+}
+
+.nav-wrapper a {
+  color: var(--tifa-text-primary) !important;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.nav-wrapper a:hover {
+  color: var(--tifa-primary) !important;
+}
+
+/* ========================================
+   5. 首页封面优化
+   ======================================== */
+.bg-cover {
+  background: linear-gradient(135deg, 
+    rgba(139, 127, 212, 0.15) 0%, 
+    rgba(244, 166, 195, 0.1) 50%,
+    rgba(255, 215, 0, 0.05) 100%) !important;
+}
+
+.cover-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--tifa-primary) 0%, var(--tifa-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+/* ========================================
+   6. 梦想文本区域
+   ======================================== */
+.dream {
+  background: linear-gradient(135deg, 
+    rgba(139, 127, 212, 0.05) 0%, 
+    rgba(244, 166, 195, 0.03) 100%);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  margin: 2rem 0;
+}
+
+.dream-title {
+  color: var(--tifa-primary);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.dream-text {
+  color: var(--tifa-text-secondary);
+  font-size: 1.1rem;
+  line-height: 2;
+  max-width: 800px;
+}
+
+/* ========================================
+   7. 文章卡片优化
+   ======================================== */
+.card {
+  background: var(--tifa-bg-card) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-sm) !important;
+  border: 1px solid rgba(139, 127, 212, 0.06);
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md) !important;
+}
+
+.card .card-image img {
+  transition: transform var(--transition-slow);
+}
+
+.card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.card .card-content {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  color: var(--tifa-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+/* ========================================
+   8. 分类标签优化
+   ======================================== */
+.chip {
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+/* O计划 - 紫 */
+.chip[href*="oasis"],
+.chip:contains("O计划") {
+  background: rgba(139, 127, 212, 0.12);
+  color: var(--cat-oasis);
+}
+
+/* AI本地秘书 - 绿 */
+.chip[href*="ai-assistant"] {
+  background: rgba(66, 184, 131, 0.12);
+  color: var(--cat-ai);
+}
+
+/* 心灵咖啡馆 - 粉 */
+.chip[href*="soul-cafe"] {
+  background: rgba(244, 166, 195, 0.2);
+  color: #D4849C;
+}
+
+/* levi的博客 - 金 */
+.chip[href*="levi-blog"] {
+  background: rgba(255, 215, 0, 0.15);
+  color: #C9A000;
+}
+
+/* IQ博士 - 蓝 */
+.chip[href*="iq-doctor"] {
+  background: rgba(91, 141, 239, 0.12);
+  color: var(--cat-iq);
+}
+
+.chip:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   9. 文章页面优化
+   ======================================== */
+.post-card {
+  background: var(--tifa-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(139, 127, 212, 0.06);
+}
+
+.post-content {
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-content p {
+  margin-bottom: 1.5rem;
+}
+
+.post-content h2 {
+  color: var(--tifa-primary);
+  border-bottom: 2px solid rgba(139, 127, 212, 0.1);
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.post-content h3 {
+  color: var(--tifa-text-primary);
+  margin-top: 2rem;
+}
+
+.post-content blockquote {
+  background: linear-gradient(135deg, 
+    rgba(139, 127, 212, 0.05) 0%, 
+    rgba(244, 166, 195, 0.05) 100%);
+  border-left: 4px solid var(--tifa-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--tifa-text-secondary);
+}
+
+.post-content code {
+  background: var(--tifa-bg-code);
+  color: var(--tifa-primary-dark);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.9em;
+}
+
+.post-content pre {
+  background: var(--tifa-text-primary);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.post-content pre code {
+  background: transparent;
+  color: #E8E8F0;
+  padding: 0;
+}
+
+/* ========================================
+   10. 代码块优化
+   ======================================== */
+.hljs {
+  background: var(--tifa-text-primary) !important;
+  border-radius: var(--radius-md);
+  padding: 1.25rem !important;
+}
+
+/* ========================================
+   11. 表格优化
+   ======================================== */
+.post-content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin: 2rem 0;
+}
+
+.post-content th {
+  background: linear-gradient(135deg, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%);
+  color: white;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+}
+
+.post-content td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(139, 127, 212, 0.1);
+}
+
+.post-content tr:last-child td {
+  border-bottom: none;
+}
+
+.post-content tr:nth-child(even) {
+  background: rgba(139, 127, 212, 0.03);
+}
+
+/* ========================================
+   12. 目录导航优化
+   ======================================== */
+.toc-widget {
+  background: var(--tifa-bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(139, 127, 212, 0.06);
+  padding: 1.5rem;
+}
+
+.toc-widget .toc-title {
+  color: var(--tifa-primary);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(139, 127, 212, 0.1);
+}
+
+.toc-link {
+  color: var(--tifa-text-secondary);
+  transition: color var(--transition-fast);
+  padding: 0.4rem 0;
+}
+
+.toc-link:hover,
+.toc-link.active {
+  color: var(--tifa-primary);
+}
+
+/* ========================================
+   13. 关于卡片优化
+   ======================================== */
+.about-card {
+  background: linear-gradient(135deg, 
+    rgba(139, 127, 212, 0.08) 0%, 
+    rgba(244, 166, 195, 0.05) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(139, 127, 212, 0.1);
+}
+
+.about-avatar {
+  border: 4px solid white;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal);
+}
+
+.about-avatar:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* ========================================
+   14. 页脚优化
+   ======================================== */
+.footer {
+  background: linear-gradient(135deg, 
+    rgba(139, 127, 212, 0.05) 0%, 
+    rgba(244, 166, 195, 0.03) 100%);
+  border-top: 1px solid rgba(139, 127, 212, 0.08);
+  padding: 3rem 0;
+  margin-top: 4rem;
+}
+
+/* ========================================
+   15. 返回顶部按钮
+   ======================================== */
+#backTop {
+  background: linear-gradient(135deg, var(--tifa-primary) 0%, var(--tifa-secondary) 100%);
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+#backTop:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ========================================
+   16. 搜索框优化
+   ======================================== */
+.search-input {
+  background: var(--tifa-bg-card);
+  border: 2px solid rgba(139, 127, 212, 0.1);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  border-color: var(--tifa-primary);
+  box-shadow: 0 0 0 4px rgba(139, 127, 212, 0.1);
+  outline: none;
+}
+
+/* ========================================
+   17. 分页优化
+   ======================================== */
+.pagination {
+  margin: 3rem 0;
+}
+
+.pagination li a {
+  border-radius: var(--radius-sm);
+  margin: 0 0.25rem;
+  color: var(--tifa-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.pagination li.active a {
+  background: var(--tifa-primary);
+  color: white;
+}
+
+.pagination li a:hover {
+  background: rgba(139, 127, 212, 0.1);
+  color: var(--tifa-primary);
+}
+
+/* ========================================
+   18. 动画效果
+   ======================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card,
+.post-card,
+.dream {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* ========================================
+   19. 响应式优化
+   ======================================== */
+@media (max-width: 768px) {
+  .cover-title {
+    font-size: 2.5rem;
+  }
+  
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-content {
+    font-size: 1rem;
+  }
+  
+  .toc-widget {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .cover-title {
+    font-size: 2rem;
+  }
+  
+  .dream {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* ========================================
+   20. 特殊效果
+   ======================================== */
+
+/* 选中文字颜色 */
+::selection {
+  background: rgba(139, 127, 212, 0.3);
+  color: var(--tifa-text-primary);
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--tifa-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tifa-primary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tifa-primary);
+}
+
+/* 链接下划线动画 */
+.post-content a {
+  color: var(--tifa-primary);
+  text-decoration: none;
+  position: relative;
+}
+
+.post-content a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--tifa-primary) 0%, var(--tifa-secondary) 100%);
+  transition: width var(--transition-normal);
+}
+
+.post-content a:hover::after {
+  width: 100%;
+}
