@@ -24,7 +24,7 @@
    - 在域名服务商添加 CNAME 记录：
      - 主机记录: `@`
      - 记录值: `wcy412199295-web.github.io`
-   - 在 GitHub Pages 设置中添加域名 `tifa2030.me`
+   - 在 GitHub Pages 设置中添加域名 `tifa2030.cn`
    - 勾选 "Enforce HTTPS"
 
 ### 后续更新
