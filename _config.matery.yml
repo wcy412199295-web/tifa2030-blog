@@ -105,7 +105,13 @@ share:
 
 # Whether to display the comment system.
 comments:
-  enable: false
+  enable: true
+  type: giscus
+  giscus:
+    repo: wcy412199295-web/tifa2030-blog
+    repoId: ''  # 需要到 giscus.app 配置后获取
+    category: Announcements
+    categoryId: ''  # 需要到 giscus.app 配置后获取
 
 # Whether to display the leancloud statistics.
 leancloud:

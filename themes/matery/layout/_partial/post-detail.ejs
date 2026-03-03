@@ -194,6 +194,10 @@
         <%- partial('_partial/twikoo') %>
     <% } %>
 
+    <% if (theme.comments && theme.comments.enable) { %>
+        <%- partial('_partial/giscus') %>
+    <% } %>
+
     <%- partial('_partial/prev-next') %>
 </div>
 
