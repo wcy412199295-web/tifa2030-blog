@@ -93,5 +93,5 @@ theme: matery
 # Deployment
 deploy:
   type: git
-  repo: https://github.com/levi1943/tifa2030.github.io.git
+  repo: https://github.com/wcy412199295-web/tifa2030.github.io.git
   branch: main

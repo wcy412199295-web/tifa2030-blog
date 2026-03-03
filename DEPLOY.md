@@ -5,25 +5,25 @@
 ### 步骤
 
 1. **在 GitHub 创建两个仓库**
-   - `levi1943/tifa2030-blog` - 存放博客源代码
-   - `levi1943/tifa2030.github.io` - GitHub Pages 部署仓库
+   - `wcy412199295-web/tifa2030-blog` - 存放博客源代码
+   - `wcy412199295-web/tifa2030.github.io` - GitHub Pages 部署仓库
 
 2. **推送源代码**
    ```bash
    cd /Users/levi/.openclaw/workspace/tifa2030-blog
-   git remote add origin https://github.com/levi1943/tifa2030-blog.git
+   git remote add origin https://github.com/wcy412199295-web/tifa2030-blog.git
    git push -u origin main
    ```
 
 3. **启用 GitHub Pages**
-   - 进入 `levi1943/tifa2030.github.io` 仓库
+   - 进入 `wcy412199295-web/tifa2030.github.io` 仓库
    - Settings → Pages → Source 选择 "Deploy from a branch"
    - Branch 选择 "gh-pages" (由 GitHub Actions 自动创建)
 
 4. **配置自定义域名**
    - 在域名服务商添加 CNAME 记录：
      - 主机记录: `@`
-     - 记录值: `levi1943.github.io`
+     - 记录值: `wcy412199295-web.github.io`
    - 在 GitHub Pages 设置中添加域名 `tifa2030.me`
    - 勾选 "Enforce HTTPS"
 
@@ -38,7 +38,7 @@
 ### 步骤
 
 1. **创建 GitHub Pages 仓库**
-   - 在 GitHub 创建 `levi1943/tifa2030.github.io` 仓库
+   - 在 GitHub 创建 `wcy412199295-web/tifa2030.github.io` 仓库
 
 2. **配置 Git 凭据**
    ```bash
@@ -80,14 +80,14 @@
 
 ```bash
 # 等待 2-3 分钟后检查
-curl -I https://levi1943.github.io/tifa2030.github.io
+curl -I https://wcy412199295-web.github.io/tifa2030.github.io
 ```
 
 ### 常见问题
 
 **Q: 网站显示 404？**
 - 检查 GitHub Pages 是否已启用
-- 确认仓库名正确：`levi1943.github.io`（不是 tifa2030.github.io）
+- 确认仓库名正确：`wcy412199295-web.github.io`（不是 tifa2030.github.io）
 
 **Q: 样式没有加载？**
 - 检查 `_config.yml` 中的 `url` 配置是否正确
@@ -104,8 +104,8 @@ curl -I https://levi1943.github.io/tifa2030.github.io
 
 | 类型 | 主机记录 | 记录值 |
 |------|---------|--------|
-| CNAME | @ | levi1943.github.io |
-| CNAME | www | levi1943.github.io |
+| CNAME | @ | wcy412199295-web.github.io |
+| CNAME | www | wcy412199295-web.github.io |
 
 ---
 
