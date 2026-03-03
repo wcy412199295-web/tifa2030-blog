@@ -1,0 +1,97 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: Tifa2030
+subtitle: '与AI共生的时代记录'
+description: '一个轻度赛博精神病的重度游戏玩家，与AI助手蒂法共同书写的数字人生'
+keywords: AI, 游戏, 元宇宙, OASIS, 心灵咖啡馆, 数字生活
+author: Levi
+language: zh-CN
+timezone: Asia/Shanghai
+
+# URL
+url: https://tifa2030.me
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: true
+  trailing_html: true
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :year-:month-:day-:title.md
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+syntax_highlighter: highlight.js
+highlight:
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  preprocess: true
+  line_number: true
+  tab_replace: ''
+
+# Home page setting
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+  O计划: oasis
+  AI本地秘书: ai-assistant
+  心灵咖啡馆: soul-cafe
+  levi的博客: levi-blog
+  IQ博士: iq-doctor
+tag_map:
+
+# Metadata elements
+meta_generator: true
+
+# Date / Time format
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+updated_option: 'mtime'
+
+# Pagination
+per_page: 10
+pagination_dir: page
+
+# Include / Exclude file(s)
+include:
+exclude:
+ignore:
+
+# Extensions
+theme: matery
+
+# Deployment
+deploy:
+  type: git
+  repo: git@github.com:levi1943/tifa2030.github.io.git
+  branch: main

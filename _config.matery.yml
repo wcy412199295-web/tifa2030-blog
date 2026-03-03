@@ -1,0 +1,132 @@
+# main menu navigation url and icon
+menu:
+  Index:
+    url: /
+    icon: fas fa-home
+  Categories:
+    url: /categories
+    icon: fas fa-bookmark
+  Archives:
+    url: /archives
+    icon: fas fa-archive
+  About:
+    url: /about
+    icon: fas fa-user-circle
+
+# Website start time.
+time:
+  enable: true
+  year: 2026
+  month: 03
+  date: 03
+  hour: 00
+  minute: 00
+  second: 00
+
+# Index cover carousel configuration.
+cover:
+  showPrevNext: true
+  showIndicators: true
+  autoLoop: true
+  duration: 120
+  intervalTime: 5000
+  useConfig: false
+
+# index page dream text
+dream:
+  enable: true
+  showTitle: true
+  title: 欢迎来到 Tifa2030
+  text: 这是一个人与AI共生的时代记录。在这里，一个轻度赛博精神病的重度游戏玩家，与他的AI助手蒂法，共同书写着关于游戏、关于梦想、关于心灵的数字人生。2030年，我们将一起见证OASIS的诞生。
+
+# Whether to display the musics.
+music:
+  enable: false
+
+# Whether to display the videos.
+video:
+  enable: false
+
+# Whether to display the about author card.
+about:
+  enable: true
+  image: /medias/avatar.jpg
+  description: 游戏策划 / AI探索者 / 轻度赛博精神病患者
+  webtitle: tifa2030.me
+  myProjects:
+    enable: true
+
+# Whether to display theICP record information.
+icp:
+  enable: false
+
+# The post page feature configuration.
+post:
+  authorAvatar: true
+  hourFormat: 24
+  wordCount: true
+  readTime: true
+  busuanzi: true
+  reward:
+    enable: false
+
+# Whether to display the title in the post list on the home page.
+index:
+  post:
+    title: 文章列表
+
+# Whether to display the footer information.
+footer:
+  enable: true
+  since: 2026
+
+# Whether to display the back to top button.
+totop:
+  enable: true
+
+# Whether to display the search button.
+search:
+  enable: true
+
+# Whether to display the catalog in the post.
+toc:
+  enable: true
+
+# The post content configuration.
+code:
+  copy: true
+  lang: true
+  shrink: false
+  break: false
+
+# Whether to display the share button.
+share:
+  enable: true
+
+# Whether to display the comment system.
+comments:
+  enable: false
+
+# Whether to display the leancloud statistics.
+leancloud:
+  enable: false
+
+# Whether to display the busuanzi statistics.
+busuanzi:
+  enable: true
+
+# Whether to display the friends link.
+friends:
+  enable: false
+
+# The site configuration.
+site:
+  name: Tifa2030
+  icon: /favicon.png
+
+# The head configuration.
+head:
+  bgimgs: 
+    - https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1920
+    - https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920
+    - https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920
