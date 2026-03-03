@@ -1,6 +1,6 @@
 #!/bin/bash
 # Tifa2030 每日博客更新脚本
-# 运行时间: 每天 19:00
+# 运行时间: 每天 18:35
 
 cd /Users/levi/.openclaw/workspace/tifa2030-blog
 
@@ -14,7 +14,7 @@ POST_FILE="source/_posts/${TODAY}-daily-summary.md"
 cat > "$POST_FILE" << 'EOF'
 ---
 title: 每日随记 - {{DATE}}
-date: {{DATE}} 19:00:00
+date: {{DATE}} 18:35:00
 categories:
   - levi的博客
 tags:
@@ -53,7 +53,7 @@ _暂无更新_
 
 ---
 
-*本内容由 OpenClaw 自动生成于 {{DATE}} 19:00*
+*本内容由 OpenClaw 自动生成于 {{DATE}} 18:35*
 EOF
 
 # 替换日期占位符
