@@ -109,9 +109,9 @@ comments:
   type: giscus
   giscus:
     repo: wcy412199295-web/tifa2030-blog
-    repoId: ''  # 需要到 giscus.app 配置后获取
+    repoId: 'R_kgDORdHwIg'
     category: Announcements
-    categoryId: ''  # 需要到 giscus.app 配置后获取
+    categoryId: 'DIC_kwDORdHwIs4C3tyi'
 
 # Whether to display the leancloud statistics.
 leancloud:
