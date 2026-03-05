@@ -161,6 +161,10 @@
                 <%- partial('_partial/changyan') %>
             <% } %>
 
+            <% if (theme.comments && theme.comments.enable && theme.comments.type === 'giscus') { %>
+                <%- partial('_partial/giscus') %>
+            <% } %>
+
         </div>
     </div>
 </main>
