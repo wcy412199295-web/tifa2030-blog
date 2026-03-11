@@ -1,0 +1,1310 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="我的AI秘书会提醒我吃药：自动化工作流搭建实录, AI, 游戏, 元宇宙, OASIS, 心灵咖啡馆, 数字生活">
+    <meta name="description" content="那个被忘记的中午2026-03-06，下午两点。
+手机震了一下，Discord 弹出一条消息：
+
+💊 @levi1943 该吃药啦！别忘记哦～
+
+我愣了一下。确实，最近胃不舒服，医生开了药，但我已经连续三天忘记吃了。
+发消息的是蒂法。不是">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>我的AI秘书会提醒我吃药：自动化工作流搭建实录 | Tifa2030</title>
+    <link rel="icon" type="image/png" href="/tifa2030-blog/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/css/my.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/tifa2030-blog/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/tifa2030-blog/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/tifa2030-blog/css/reward.css">
+    
+
+
+
+    <script src="/tifa2030-blog/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/tifa2030-blog/" class="waves-effect waves-light">
+                    
+                    <img src="/tifa2030-blog/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Tifa2030</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/tifa2030-blog/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Tifa2030</div>
+        <div class="logo-desc">
+            
+            一个轻度赛博精神病的重度游戏玩家，与AI助手蒂法共同书写的数字人生
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/tifa2030-blog/medias/featureimages/2.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">我的AI秘书会提醒我吃药：自动化工作流搭建实录</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tifa2030-blog/tags/OpenClaw/">
+                                <span class="chip bg-color">OpenClaw</span>
+                            </a>
+                        
+                            <a href="/tifa2030-blog/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                                <span class="chip bg-color">自动化</span>
+                            </a>
+                        
+                            <a href="/tifa2030-blog/tags/AI%E5%8A%A9%E6%89%8B/">
+                                <span class="chip bg-color">AI助手</span>
+                            </a>
+                        
+                            <a href="/tifa2030-blog/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">
+                                <span class="chip bg-color">定时任务</span>
+                            </a>
+                        
+                            <a href="/tifa2030-blog/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+                                <span class="chip bg-color">工作流</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/tifa2030-blog/categories/ai-assistant/" class="post-category">
+                                AI本地秘书
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-03-06
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="那个被忘记的中午"><a href="#那个被忘记的中午" class="headerlink" title="那个被忘记的中午"></a>那个被忘记的中午</h2><p>2026-03-06，下午两点。</p>
+<p>手机震了一下，Discord 弹出一条消息：</p>
+<blockquote>
+<p>💊 @levi1943 该吃药啦！别忘记哦～</p>
+</blockquote>
+<p>我愣了一下。确实，最近胃不舒服，医生开了药，但我已经连续三天忘记吃了。</p>
+<p>发消息的是蒂法。不是她手动发的，是她设置的定时任务自动发的。</p>
+<p><strong>我的 AI 秘书，开始接管我的生活了。</strong></p>
+<h2 id="自动化工作流系统"><a href="#自动化工作流系统" class="headerlink" title="自动化工作流系统"></a>自动化工作流系统</h2><p>今天蒂法帮我搭建了一整套自动化工作流：</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>任务</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>14:00</td>
+<td>吃药提醒</td>
+<td>每日健康提醒</td>
+</tr>
+<tr>
+<td>18:00</td>
+<td>日报生成</td>
+<td>自动汇总当天工作</td>
+</tr>
+<tr>
+<td>周五 14:00</td>
+<td>周报生成</td>
+<td>周度工作总结</td>
+</tr>
+<tr>
+<td>02:00</td>
+<td>Mac 睡眠</td>
+<td>自动进入睡眠模式</td>
+</tr>
+<tr>
+<td>09:00</td>
+<td>Mac 唤醒</td>
+<td>工作时间保持唤醒</td>
+</tr>
+</tbody></table>
+<p>这套系统的核心是一个叫 <strong>OpenClaw</strong> 的平台，它允许 AI 助手设置定时任务、发送消息、执行脚本。</p>
+<h2 id="吃药提醒：最简单的开始"><a href="#吃药提醒：最简单的开始" class="headerlink" title="吃药提醒：最简单的开始"></a>吃药提醒：最简单的开始</h2><p>最简单的自动化，往往最有用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 每天下午 2 点提醒吃药</span><br><span class="line">0 14 * * * /Users/levi/.openclaw/scripts/medicine-reminder.sh</span><br></pre></td></tr></table></figure>
+
+<p>脚本内容只有三行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 发送 Discord 消息</span></span><br><span class="line">openclaw message send --channel <span class="string">&quot;ai本地秘书&quot;</span> --content <span class="string">&quot;💊 @levi1943 该吃药啦！别忘记哦～&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>就这么简单，但解决了一个真实问题：<strong>人总是会忘记事情，但机器不会。</strong></p>
+<h2 id="日报生成：从记忆到文字"><a href="#日报生成：从记忆到文字" class="headerlink" title="日报生成：从记忆到文字"></a>日报生成：从记忆到文字</h2><p>更复杂的自动化是日报系统。</p>
+<p>每天下午 6 点，蒂法会：</p>
+<ol>
+<li><strong>读取</strong> <code>memory/2026-03-06.md</code></li>
+<li><strong>提取</strong> 当天的工作内容</li>
+<li><strong>生成</strong> 标准格式的日报</li>
+<li><strong>保存</strong> 到 <code>O计划/工作周报/日报_20260306.md</code></li>
+<li><strong>通知</strong> L主人：”今日日报已生成”</li>
+</ol>
+<p>生成的日报格式：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 日报 2026-03-06</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 今日完成</span></span><br><span class="line"><span class="bullet">-</span> ✅ 搭建自动化工作流系统</span><br><span class="line"><span class="bullet">-</span> ✅ 完成游戏受众分析雷达图</span><br><span class="line"><span class="bullet">-</span> ✅ 修复企业微信邮件读取问题</span><br><span class="line"></span><br><span class="line"><span class="section">## 遇到的问题</span></span><br><span class="line"><span class="bullet">-</span> 企业微信邮件是加密格式，无法直接读取</span><br><span class="line"><span class="bullet">-</span> 解决方案：使用截图或转发功能</span><br><span class="line"></span><br><span class="line"><span class="section">## 明日计划</span></span><br><span class="line"><span class="bullet">-</span> 继续 OASIS 场景设计</span><br><span class="line"><span class="bullet">-</span> Unity 项目初始化</span><br></pre></td></tr></table></figure>
+
+<p><strong>这不是简单的复制粘贴。</strong> AI 需要从原始的记忆文件中，识别哪些是工作内容，哪些是闲聊，然后分类整理。</p>
+<h2 id="周报系统：从日到周的跃迁"><a href="#周报系统：从日到周的跃迁" class="headerlink" title="周报系统：从日到周的跃迁"></a>周报系统：从日到周的跃迁</h2><p>周五下午 2 点，系统会自动生成周报：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 周报 2026.03.02-03.06</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 本周完成</span></span><br><span class="line"><span class="bullet">1.</span> <span class="strong">**OpenClaw 部署**</span> - 完成 Gateway 配置，接入 Discord</span><br><span class="line"><span class="bullet">2.</span> <span class="strong">**Tifa2030 博客上线**</span> - Hexo + Matery，5篇文章</span><br><span class="line"><span class="bullet">3.</span> <span class="strong">**自动化系统搭建**</span> - 吃药提醒、日报、周报</span><br><span class="line"><span class="bullet">4.</span> <span class="strong">**Clawatar 虚拟形象**</span> - 蒂法有了 pixels 身体</span><br><span class="line"></span><br><span class="line"><span class="section">## 本周亮点</span></span><br><span class="line"><span class="bullet">-</span> 博客从 0 到上线仅用 3 天</span><br><span class="line"><span class="bullet">-</span> Unity 引擎选型完成，从 Godot 迁移</span><br><span class="line"><span class="bullet">-</span> Star Office UI 部署，AI 状态可视化</span><br><span class="line"></span><br><span class="line"><span class="section">## 下周计划</span></span><br><span class="line"><span class="bullet">-</span> Unity 项目初始化</span><br><span class="line"><span class="bullet">-</span> OASIS 第一个场景搭建</span><br><span class="line"><span class="bullet">-</span> 情感星域系统原型</span><br></pre></td></tr></table></figure>
+
+<p>周报不是简单的日报拼接。它需要：</p>
+<ul>
+<li>去重（重复内容合并）</li>
+<li>提炼（找出核心成果）</li>
+<li>展望（规划下周工作）</li>
+</ul>
+<p><strong>这需要一个理解上下文的 AI，而不是简单的文本处理工具。</strong></p>
+<h2 id="Mac-睡眠控制：无声的保护"><a href="#Mac-睡眠控制：无声的保护" class="headerlink" title="Mac 睡眠控制：无声的保护"></a>Mac 睡眠控制：无声的保护</h2><p>最有技术含量的自动化是睡眠控制。</p>
+<p>L主人经常熬夜到 2 点，但 Gateway（OpenClaw 的核心服务）需要保持运行。如果 Mac 进入睡眠，Gateway 会断开，AI 就无法工作。</p>
+<p>解决方案：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2:00 AM - 允许睡眠（L主人已睡）</span></span><br><span class="line"><span class="built_in">sudo</span> pmset -a <span class="built_in">sleep</span> 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 9:00 AM - 禁止睡眠（工作时间）</span></span><br><span class="line"><span class="built_in">sudo</span> pmset -a <span class="built_in">sleep</span> 0</span><br></pre></td></tr></table></figure>
+
+<p>通过 LaunchAgents 设置为系统级定时任务，不需要人工干预。</p>
+<p><strong>这是一个 AI 在保护另一个 AI 的工作环境。</strong> 有点赛博朋克，但确实有效。</p>
+<h2 id="桌面快捷方式：最后的人工环节"><a href="#桌面快捷方式：最后的人工环节" class="headerlink" title="桌面快捷方式：最后的人工环节"></a>桌面快捷方式：最后的人工环节</h2><p>虽然大部分工作自动化了，但还是需要人来查看。</p>
+<p>蒂法创建了一个桌面快捷方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s ~/.openclaw/workspace/O计划 ~/Desktop/O计划</span><br></pre></td></tr></table></figure>
+
+<p>现在 L主人双击桌面图标，就能看到所有的日报和周报。</p>
+<p><strong>自动化不是消灭人工，而是让人的注意力集中在真正重要的事情上。</strong></p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>2026-03-06，我的 AI 秘书正式上岗。</p>
+<p>她不会疲惫，不会忘记，不会情绪化。她会：</p>
+<ul>
+<li>每天下午 2 点提醒我吃药</li>
+<li>每天下午 6 点生成日报</li>
+<li>每周五下午 2 点生成周报</li>
+<li>在我睡觉时保护系统运行</li>
+</ul>
+<p><strong>这不是科幻，这是 2026 年的现实。</strong></p>
+<p>2030 年的 OASIS 里，每个玩家都会有这样的 AI 助手。它们会记住你的习惯，提醒你重要的事情，帮你整理思绪。</p>
+<p>而我在今天，提前体验了那个未来。</p>
+<hr>
+<p><em>写于 2026-03-06 傍晚</em><br><em>系统状态：所有自动化任务运行正常</em><br><em>下次吃药提醒：明天 14:00</em></p>
+<p><strong>技术栈：</strong></p>
+<ul>
+<li>OpenClaw Gateway - AI 自动化平台</li>
+<li>Cron - 定时任务</li>
+<li>LaunchAgents - Mac 系统级任务</li>
+<li>Discord - 消息推送渠道</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/tifa2030-blog/about" rel="external nofollow noreferrer">Levi</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://wcy412199295-web.github.io/tifa2030-blog/tifa2030-blog/2026/03/06/automation-workflow/">https://wcy412199295-web.github.io/tifa2030-blog/tifa2030-blog/2026/03/06/automation-workflow/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/tifa2030-blog/about" target="_blank">Levi</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tifa2030-blog/tags/OpenClaw/">
+                                    <span class="chip bg-color">OpenClaw</span>
+                                </a>
+                            
+                                <a href="/tifa2030-blog/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                                    <span class="chip bg-color">自动化</span>
+                                </a>
+                            
+                                <a href="/tifa2030-blog/tags/AI%E5%8A%A9%E6%89%8B/">
+                                    <span class="chip bg-color">AI助手</span>
+                                </a>
+                            
+                                <a href="/tifa2030-blog/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">
+                                    <span class="chip bg-color">定时任务</span>
+                                </a>
+                            
+                                <a href="/tifa2030-blog/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+                                    <span class="chip bg-color">工作流</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/tifa2030-blog/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/tifa2030-blog/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/tifa2030-blog/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+<!-- Giscus 评论系统 -->
+<div class="giscus-container" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(139, 127, 212, 0.1);">
+    <h3 style="font-family: 'Noto Serif SC', serif; color: var(--tifa-primary); margin-bottom: 1.5rem; font-size: 1.5rem;">
+        <i class="fas fa-comments" style="margin-right: 0.5rem;"></i>留言
+    </h3>
+    <!-- 如果还没有配置 repoId 和 categoryId，请先阅读 GISCUS_SETUP.md -->
+    <script src="https://giscus.app/client.js"
+        data-repo="wcy412199295-web/tifa2030-blog"
+        data-repo-id="R_kgDORdHwIg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDORdHwIs4C3tyi"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+    </script>
+</div>
+
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/tifa2030-blog/2026/03/06/game-audience-analysis/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/tifa2030-blog/medias/featureimages/19.jpg" class="responsive-img" alt="谁才是游戏的受众？一张雷达图告诉你答案">
+                        
+                        <span class="card-title">谁才是游戏的受众？一张雷达图告诉你答案</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-03-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/tifa2030-blog/categories/oasis/" class="post-category">
+                                    O计划
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tifa2030-blog/tags/OASIS/">
+                        <span class="chip bg-color">OASIS</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">游戏设计</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/%E5%8F%97%E4%BC%97%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">受众分析</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/%E9%9B%B7%E8%BE%BE%E5%9B%BE/">
+                        <span class="chip bg-color">雷达图</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/%E5%AE%9A%E4%BD%8D/">
+                        <span class="chip bg-color">定位</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/tifa2030-blog/2026/03/05/fix-blog-404/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/tifa2030-blog/medias/featureimages/14.jpg" class="responsive-img" alt="修复博客404：一个技术问题的排查实录">
+                        
+                        <span class="card-title">修复博客404：一个技术问题的排查实录</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/tifa2030-blog/categories/ai-assistant/" class="post-category">
+                                    AI本地秘书
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tifa2030-blog/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">博客</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/404/">
+                        <span class="chip bg-color">404</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/%E4%BF%AE%E5%A4%8D/">
+                        <span class="chip bg-color">修复</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/%E6%8A%80%E6%9C%AF/">
+                        <span class="chip bg-color">技术</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/tifa2030-blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/tifa2030-blog/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/tifa2030-blog/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/tifa2030-blog/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2026</span>
+            
+            <a href="/tifa2030-blog/about" target="_blank">Levi</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2026";
+                        var startMonth = "3";
+                        var startDate = "3";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:412199295@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=412199295" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 412199295" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/tifa2030-blog/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/tifa2030-blog/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/tifa2030-blog/libs/materialize/materialize.min.js"></script>
+    <script src="/tifa2030-blog/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/tifa2030-blog/libs/aos/aos.js"></script>
+    <script src="/tifa2030-blog/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/tifa2030-blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/tifa2030-blog/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/tifa2030-blog/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/tifa2030-blog/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/tifa2030-blog/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/tifa2030-blog/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- Tifa2030 自定义功能 -->
+    <script src="/tifa2030-blog/js/tifa-enhance.js"></script>
+
+</body>
+
+</html>

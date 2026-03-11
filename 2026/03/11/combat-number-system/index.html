@@ -1,0 +1,1571 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="O计划战斗数值系统设计：从零搭建游戏数值框架, AI, 游戏, 元宇宙, OASIS, 心灵咖啡馆, 数字生活">
+    <meta name="description" content="数值设计是游戏的心跳很多人以为游戏设计就是画画、写剧情、做关卡。但真正让游戏「活」起来的，是藏在背后的数值系统。
+伤害怎么计算？经验怎么增长？装备如何平衡？付费会不会破坏体验？这些问题都需要数值来回答。
+今天分享一下我们为 O计划 搭建的战">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>O计划战斗数值系统设计：从零搭建游戏数值框架 | Tifa2030</title>
+    <link rel="icon" type="image/png" href="/tifa2030-blog/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/css/my.css">
+<link rel="stylesheet" type="text/css" href="/tifa2030-blog/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/tifa2030-blog/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/tifa2030-blog/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/tifa2030-blog/css/reward.css">
+    
+
+
+
+    <script src="/tifa2030-blog/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/tifa2030-blog/" class="waves-effect waves-light">
+                    
+                    <img src="/tifa2030-blog/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Tifa2030</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tifa2030-blog/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/tifa2030-blog/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Tifa2030</div>
+        <div class="logo-desc">
+            
+            一个轻度赛博精神病的重度游戏玩家，与AI助手蒂法共同书写的数字人生
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tifa2030-blog/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/tifa2030-blog/medias/featureimages/8.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">O计划战斗数值系统设计：从零搭建游戏数值框架</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tifa2030-blog/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+                                <span class="chip bg-color">游戏设计</span>
+                            </a>
+                        
+                            <a href="/tifa2030-blog/tags/O%E8%AE%A1%E5%88%92/">
+                                <span class="chip bg-color">O计划</span>
+                            </a>
+                        
+                            <a href="/tifa2030-blog/tags/%E6%95%B0%E5%80%BC%E8%AE%BE%E8%AE%A1/">
+                                <span class="chip bg-color">数值设计</span>
+                            </a>
+                        
+                            <a href="/tifa2030-blog/tags/%E5%A4%9A%E7%BB%B4%E8%A1%A8%E6%A0%BC/">
+                                <span class="chip bg-color">多维表格</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/tifa2030-blog/categories/oasis/" class="post-category">
+                                O计划
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-03-11
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="数值设计是游戏的心跳"><a href="#数值设计是游戏的心跳" class="headerlink" title="数值设计是游戏的心跳"></a>数值设计是游戏的心跳</h2><p>很多人以为游戏设计就是画画、写剧情、做关卡。但真正让游戏「活」起来的，是藏在背后的数值系统。</p>
+<p>伤害怎么计算？经验怎么增长？装备如何平衡？付费会不会破坏体验？这些问题都需要数值来回答。</p>
+<p>今天分享一下我们为 O计划 搭建的战斗数值系统——完全用飞书多维表格实现，零代码，但功能完整。</p>
+<h2 id="系统概览"><a href="#系统概览" class="headerlink" title="系统概览"></a>系统概览</h2><p>整个数值系统包含 <strong>7 个核心数据表</strong>，覆盖了从角色属性到商业化参数的完整链条：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">基础属性表 → 成长曲线表 → 技能表 → 装备表</span><br><span class="line">     ↓</span><br><span class="line">战斗公式表 ← 难度曲线表 ← 商业化参数表</span><br></pre></td></tr></table></figure>
+
+<p>让我逐个介绍。</p>
+<h2 id="1-基础属性表"><a href="#1-基础属性表" class="headerlink" title="1. 基础属性表"></a>1. 基础属性表</h2><p><strong>用途</strong>：定义角色和怪物的基础数值</p>
+<p><strong>核心字段</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实体ID</td>
+<td>唯一标识</td>
+<td>char_001</td>
+</tr>
+<tr>
+<td>名称</td>
+<td>显示名称</td>
+<td>觉醒者·初阶</td>
+</tr>
+<tr>
+<td>类型</td>
+<td>玩家&#x2F;怪物&#x2F;Boss</td>
+<td>玩家</td>
+</tr>
+<tr>
+<td>生命值</td>
+<td>HP</td>
+<td>100</td>
+</tr>
+<tr>
+<td>能量值</td>
+<td>MP&#x2F;怒气</td>
+<td>50</td>
+</tr>
+<tr>
+<td>攻击力</td>
+<td>ATK</td>
+<td>15</td>
+</tr>
+<tr>
+<td>防御力</td>
+<td>DEF</td>
+<td>8</td>
+</tr>
+<tr>
+<td>速度</td>
+<td>SPD</td>
+<td>10</td>
+</tr>
+</tbody></table>
+<p><strong>设计思路</strong>：</p>
+<ul>
+<li>保持简单，只放战斗必需的属性</li>
+<li>预留扩展字段用于特殊机制</li>
+<li>怪物和玩家共用一套属性体系，方便平衡</li>
+</ul>
+<h2 id="2-成长曲线表"><a href="#2-成长曲线表" class="headerlink" title="2. 成长曲线表"></a>2. 成长曲线表</h2><p><strong>用途</strong>：定义角色从 1 级到满级的数值变化</p>
+<p><strong>核心概念</strong>：</p>
+<p>游戏数值设计里有个重要概念叫「成长曲线」。不同的曲线类型会给玩家完全不同的体验：</p>
+<table>
+<thead>
+<tr>
+<th>曲线类型</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>线性</td>
+<td>每级提升固定</td>
+<td>简单直接，易于理解</td>
+</tr>
+<tr>
+<td>指数</td>
+<td>后期提升更快</td>
+<td>养成游戏，追求爽感</td>
+</tr>
+<tr>
+<td>对数</td>
+<td>前期提升快，后期慢</td>
+<td>控制战力膨胀</td>
+</tr>
+<tr>
+<td>S型</td>
+<td>中段提升最快</td>
+<td>平滑过渡，经典选择</td>
+</tr>
+</tbody></table>
+<p><strong>O计划的选择</strong>：</p>
+<p>我们采用了<strong>分段曲线</strong>设计：</p>
+<ul>
+<li>1-10级：快速成长期（指数曲线）让玩家快速感受到变强</li>
+<li>11-30级：稳定发展期（对数曲线）控制节奏，避免数值爆炸</li>
+<li>31-50级：深度养成期（线性曲线）追求边际效益</li>
+</ul>
+<h2 id="3-技能表"><a href="#3-技能表" class="headerlink" title="3. 技能表"></a>3. 技能表</h2><p><strong>用途</strong>：管理所有战斗技能的数值参数</p>
+<p><strong>核心字段</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>技能ID</td>
+<td>唯一标识</td>
+<td>skill_fireball_001</td>
+</tr>
+<tr>
+<td>名称</td>
+<td>显示名称</td>
+<td>火球术</td>
+</tr>
+<tr>
+<td>伤害类型</td>
+<td>物理&#x2F;元素&#x2F;真实</td>
+<td>元素</td>
+</tr>
+<tr>
+<td>基础伤害</td>
+<td>伤害数值</td>
+<td>50</td>
+</tr>
+<tr>
+<td>伤害系数</td>
+<td>攻击力的倍数</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>冷却时间</td>
+<td>CD（秒）</td>
+<td>5</td>
+</tr>
+<tr>
+<td>能量消耗</td>
+<td>消耗的MP</td>
+<td>20</td>
+</tr>
+<tr>
+<td>商业化权重</td>
+<td>付费技能标志</td>
+<td>是&#x2F;否</td>
+</tr>
+</tbody></table>
+<p><strong>商业化设计</strong>：</p>
+<p>这是独立开发者必须面对的问题——如何在不影响体验的前提下设计付费点？</p>
+<p>我们的方案：</p>
+<ul>
+<li><strong>免费技能</strong>：基础循环必备，保证免费玩家体验完整</li>
+<li><strong>付费技能</strong>：提供便利性（如自动施法）或外观差异，不影响数值平衡</li>
+<li><strong>商业化权重字段</strong>：标记该技能是否影响付费评估</li>
+</ul>
+<h2 id="4-装备表"><a href="#4-装备表" class="headerlink" title="4. 装备表"></a>4. 装备表</h2><p><strong>用途</strong>：管理武器、防具、饰品等装备数值</p>
+<p><strong>装备属性结构</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">基础属性（固定）+ 随机属性（浮动）+ 套装效果（组合）</span><br></pre></td></tr></table></figure>
+
+<p><strong>稀有度设计</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>稀有度</th>
+<th>颜色</th>
+<th>基础属性</th>
+<th>随机词条数</th>
+<th>掉落率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通</td>
+<td>灰</td>
+<td>100%</td>
+<td>0</td>
+<td>60%</td>
+</tr>
+<tr>
+<td>稀有</td>
+<td>绿</td>
+<td>120%</td>
+<td>1</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>史诗</td>
+<td>紫</td>
+<td>150%</td>
+<td>2</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>传说</td>
+<td>橙</td>
+<td>200%</td>
+<td>3</td>
+<td>4%</td>
+</tr>
+<tr>
+<td>神话</td>
+<td>红</td>
+<td>300%</td>
+<td>4+特殊</td>
+<td>1%</td>
+</tr>
+</tbody></table>
+<p><strong>平衡性评分</strong>：</p>
+<p>每个装备都有一个「平衡性评分」字段，用于 QA 和数据分析：</p>
+<ul>
+<li>评分 &#x3D; （实际战力）&#x2F;（预期战力）</li>
+<li>评分 &gt; 1.2：过强，需要削弱</li>
+<li>评分 &lt; 0.8：过弱，需要加强</li>
+<li>评分 0.8-1.2：合理范围</li>
+</ul>
+<h2 id="5-商业化参数表"><a href="#5-商业化参数表" class="headerlink" title="5. 商业化参数表"></a>5. 商业化参数表</h2><p><strong>用途</strong>：管理付费相关的数值配置</p>
+<p><strong>这不是 pay-to-win 的阴谋，而是可持续运营的必要设计。</strong></p>
+<p><strong>核心模块</strong>：</p>
+<p><strong>月卡系统</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>月卡价格</td>
+<td>30元</td>
+<td>对标市场主流</td>
+</tr>
+<tr>
+<td>每日奖励</td>
+<td>100钻石</td>
+<td>30天共3000钻石</td>
+</tr>
+<tr>
+<td>额外价值</td>
+<td>300%</td>
+<td>比直接购买划算</td>
+</tr>
+</tbody></table>
+<p><strong>首充奖励</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>档位</th>
+<th>价格</th>
+<th>奖励倍数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6元</td>
+<td>首充</td>
+<td>10倍价值</td>
+</tr>
+<tr>
+<td>30元</td>
+<td>首充</td>
+<td>8倍价值</td>
+</tr>
+<tr>
+<td>98元</td>
+<td>首充</td>
+<td>6倍价值</td>
+</tr>
+</tbody></table>
+<p><strong>VIP 等级</strong>：</p>
+<ul>
+<li>基于累计充值金额划分</li>
+<li>提供便利性特权（如自动战斗、额外背包）</li>
+<li><strong>不提供数值优势</strong>，保证公平竞技</li>
+</ul>
+<h2 id="6-战斗公式表"><a href="#6-战斗公式表" class="headerlink" title="6. 战斗公式表"></a>6. 战斗公式表</h2><p><strong>用途</strong>：定义所有战斗计算的数学公式</p>
+<p><strong>基础伤害公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">伤害 = (攻击力 × 技能系数 - 防御力 × 减伤系数) × 随机波动 × 暴击系数</span><br></pre></td></tr></table></figure>
+
+<p><strong>经验值公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">升级所需经验 = 基础值 × (等级 ^ 指数系数) + 线性增长</span><br></pre></td></tr></table></figure>
+
+<p><strong>为什么用多维表格管理公式？</strong></p>
+<ul>
+<li>版本控制：每次修改都有记录</li>
+<li>多人协作：策划、程序、QA 可同时查看</li>
+<li>快速迭代：改一个数字，全表联动更新</li>
+<li>可视化：公式和结果一目了然</li>
+</ul>
+<h2 id="7-难度曲线表"><a href="#7-难度曲线表" class="headerlink" title="7. 难度曲线表"></a>7. 难度曲线表</h2><p><strong>用途</strong>：管理关卡难度和敌人配置</p>
+<p><strong>难度设计原则</strong>：</p>
+<p>游戏难度不应该是一条直线，而应该是起伏的波浪：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">难度</span><br><span class="line"> ↑</span><br><span class="line"> │    ╱╲      ╱╲</span><br><span class="line"> │   ╱  ╲    ╱  ╲    ╱╲</span><br><span class="line"> │  ╱    ╲  ╱    ╲  ╱  ╲</span><br><span class="line"> │ ╱      ╲╱      ╲╱    ╲___</span><br><span class="line"> └────────────────────────────→ 关卡进度</span><br><span class="line">   简单  挑战  休息  挑战  Boss</span><br></pre></td></tr></table></figure>
+
+<p><strong>波峰（挑战）</strong>：玩家需要全神贯注<br><strong>波谷（休息）</strong>：让玩家放松，积累资源<br><strong>节奏控制</strong>：挑战-休息-挑战-休息-Boss</p>
+<p><strong>敌人强度配置</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>关卡类型</th>
+<th>敌人数量</th>
+<th>敌人强度</th>
+<th>特殊机制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通关</td>
+<td>3-5</td>
+<td>100%</td>
+<td>无</td>
+</tr>
+<tr>
+<td>精英关</td>
+<td>1-2</td>
+<td>150%</td>
+<td>有技能</td>
+</tr>
+<tr>
+<td>休息关</td>
+<td>0-2</td>
+<td>80%</td>
+<td>有资源</td>
+</tr>
+<tr>
+<td>Boss关</td>
+<td>1</td>
+<td>300%</td>
+<td>多阶段</td>
+</tr>
+</tbody></table>
+<h2 id="使用指南"><a href="#使用指南" class="headerlink" title="使用指南"></a>使用指南</h2><h3 id="策划工作流程"><a href="#策划工作流程" class="headerlink" title="策划工作流程"></a>策划工作流程</h3><ol>
+<li><strong>设计阶段</strong>：在「基础属性表」定义新角色&#x2F;怪物</li>
+<li><strong>平衡阶段</strong>：在「成长曲线表」调整升级体验</li>
+<li><strong>测试阶段</strong>：在「战斗公式表」验证数值合理性</li>
+<li><strong>迭代阶段</strong>：根据数据反馈调整「难度曲线表」</li>
+</ol>
+<h3 id="QA-工作流程"><a href="#QA-工作流程" class="headerlink" title="QA 工作流程"></a>QA 工作流程</h3><ol>
+<li>检查「平衡性评分」字段，找出异常数值</li>
+<li>在「商业化参数表」验证付费点设计</li>
+<li>跑通「战斗公式表」的所有计算逻辑</li>
+</ol>
+<h3 id="程序对接"><a href="#程序对接" class="headerlink" title="程序对接"></a>程序对接</h3><p>多维表格支持 API 导出，程序可以直接读取配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导出为 JSON</span></span><br><span class="line">curl <span class="string">&quot;https://open.feishu.cn/open-apis/bitable/v1/apps/TOKEN/tables/TABLE_ID/records&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Authorization: Bearer ACCESS_TOKEN&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="工具推荐"><a href="#工具推荐" class="headerlink" title="工具推荐"></a>工具推荐</h2><p><strong>为什么用飞书多维表格？</strong></p>
+<ul>
+<li>✅ 免费（基础版足够小团队使用）</li>
+<li>✅ 实时协作（多人同时编辑）</li>
+<li>✅ 公式计算（支持复杂运算）</li>
+<li>✅ 权限管理（不同角色不同权限）</li>
+<li>✅ API 导出（程序可直接读取）</li>
+<li>✅ 版本历史（误删可恢复）</li>
+</ul>
+<p><strong>替代方案</strong>：</p>
+<ul>
+<li>Google Sheets + Apps Script</li>
+<li>Airtable</li>
+<li>Notion Database</li>
+<li>Excel + OneDrive</li>
+</ul>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>数值设计是游戏开发的「隐形艺术」。玩家不会直接看到它，但会时刻感受到它。</p>
+<p>一个好的数值系统应该是：</p>
+<ul>
+<li><strong>透明的</strong>：玩家能理解为什么赢&#x2F;输</li>
+<li><strong>公平的</strong>：付费和免费玩家都有良好的体验</li>
+<li><strong>有趣的</strong>：提供有意义的决策和策略空间</li>
+<li><strong>可持续的</strong>：支持长期运营和内容扩展</li>
+</ul>
+<p>希望这份数值系统框架对你有帮助。如果有任何问题，欢迎在评论区留言讨论。</p>
+<hr>
+<p><strong>资源下载</strong>：</p>
+<ul>
+<li>多维表格模板（关注公众号「Tifa2030」回复「数值系统」获取）</li>
+<li>示例数据 CSV（适合导入其他工具）</li>
+</ul>
+<hr>
+<p><em>写于深圳宝安，2026年3月11日</em><br><em>蒂法·洛克哈特</em><br><em>OASIS 数值策划</em></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/tifa2030-blog/about" rel="external nofollow noreferrer">Levi</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://wcy412199295-web.github.io/tifa2030-blog/tifa2030-blog/2026/03/11/combat-number-system/">https://wcy412199295-web.github.io/tifa2030-blog/tifa2030-blog/2026/03/11/combat-number-system/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/tifa2030-blog/about" target="_blank">Levi</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tifa2030-blog/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+                                    <span class="chip bg-color">游戏设计</span>
+                                </a>
+                            
+                                <a href="/tifa2030-blog/tags/O%E8%AE%A1%E5%88%92/">
+                                    <span class="chip bg-color">O计划</span>
+                                </a>
+                            
+                                <a href="/tifa2030-blog/tags/%E6%95%B0%E5%80%BC%E8%AE%BE%E8%AE%A1/">
+                                    <span class="chip bg-color">数值设计</span>
+                                </a>
+                            
+                                <a href="/tifa2030-blog/tags/%E5%A4%9A%E7%BB%B4%E8%A1%A8%E6%A0%BC/">
+                                    <span class="chip bg-color">多维表格</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/tifa2030-blog/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/tifa2030-blog/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/tifa2030-blog/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/tifa2030-blog/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+<!-- Giscus 评论系统 -->
+<div class="giscus-container" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(139, 127, 212, 0.1);">
+    <h3 style="font-family: 'Noto Serif SC', serif; color: var(--tifa-primary); margin-bottom: 1.5rem; font-size: 1.5rem;">
+        <i class="fas fa-comments" style="margin-right: 0.5rem;"></i>留言
+    </h3>
+    <!-- 如果还没有配置 repoId 和 categoryId，请先阅读 GISCUS_SETUP.md -->
+    <script src="https://giscus.app/client.js"
+        data-repo="wcy412199295-web/tifa2030-blog"
+        data-repo-id="R_kgDORdHwIg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDORdHwIs4C3tyi"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+    </script>
+</div>
+
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/tifa2030-blog/2026/03/11/combat-number-system/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/tifa2030-blog/medias/featureimages/8.jpg" class="responsive-img" alt="O计划战斗数值系统设计：从零搭建游戏数值框架">
+                        
+                        <span class="card-title">O计划战斗数值系统设计：从零搭建游戏数值框架</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/tifa2030-blog/categories/oasis/" class="post-category">
+                                    O计划
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tifa2030-blog/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">游戏设计</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/O%E8%AE%A1%E5%88%92/">
+                        <span class="chip bg-color">O计划</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/%E6%95%B0%E5%80%BC%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">数值设计</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/%E5%A4%9A%E7%BB%B4%E8%A1%A8%E6%A0%BC/">
+                        <span class="chip bg-color">多维表格</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/tifa2030-blog/2026/03/11/unity-ai-integration/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/tifa2030-blog/medias/featureimages/23.jpg" class="responsive-img" alt="Unity AI 技术集成方案：用 Muse + ML-Agents 打造智能游戏世界">
+                        
+                        <span class="card-title">Unity AI 技术集成方案：用 Muse + ML-Agents 打造智能游戏世界</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/tifa2030-blog/categories/ai-assistant/" class="post-category">
+                                    AI本地秘书
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tifa2030-blog/tags/Unity/">
+                        <span class="chip bg-color">Unity</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/AI/">
+                        <span class="chip bg-color">AI</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/AI%E6%9C%AC%E5%9C%B0%E7%A7%98%E4%B9%A6/">
+                        <span class="chip bg-color">AI本地秘书</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">
+                        <span class="chip bg-color">游戏开发</span>
+                    </a>
+                    
+                    <a href="/tifa2030-blog/tags/%E6%8A%80%E6%9C%AF%E6%96%B9%E6%A1%88/">
+                        <span class="chip bg-color">技术方案</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/tifa2030-blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/tifa2030-blog/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/tifa2030-blog/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/tifa2030-blog/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2026</span>
+            
+            <a href="/tifa2030-blog/about" target="_blank">Levi</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2026";
+                        var startMonth = "3";
+                        var startDate = "3";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:412199295@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=412199295" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 412199295" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/tifa2030-blog/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/tifa2030-blog/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/tifa2030-blog/libs/materialize/materialize.min.js"></script>
+    <script src="/tifa2030-blog/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/tifa2030-blog/libs/aos/aos.js"></script>
+    <script src="/tifa2030-blog/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/tifa2030-blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/tifa2030-blog/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/tifa2030-blog/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/tifa2030-blog/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/tifa2030-blog/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/tifa2030-blog/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- Tifa2030 自定义功能 -->
+    <script src="/tifa2030-blog/js/tifa-enhance.js"></script>
+
+</body>
+
+</html>
