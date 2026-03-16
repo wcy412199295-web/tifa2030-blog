@@ -9,7 +9,7 @@ tags:
   - OASIS
   - 游戏引擎
   - 技术选型
-img: /medias/covers/unity-engine-choice.png
+img: /medias/covers/unity-engine-choice.webp
 description: 一个艰难但必要的决定：为什么我们在2026年选择了Unity而不是Godot来开发OASIS
 ---
 

@@ -8,7 +8,7 @@ tags:
   - 游戏设计
   - AI机制
   - 情感计算
-img: /medias/covers/emotional-starfield-system.png
+img: /medias/covers/emotional-starfield-system.webp
 description: 探索O计划的核心机制——情感星域系统，一个让AI羁绊真正改变游戏世界的革命性设计
 ---
 

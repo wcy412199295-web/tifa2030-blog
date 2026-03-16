@@ -9,7 +9,7 @@ tags:
 categories:
   - O计划
 description: 今天完成了两个里程碑：用CellCog生成了第七天堂酒馆的3D模型，以及搭建了Agent办公室沙盘Pro——一个可视化的多智能体协作演示系统。
-img: /medias/covers/agent-office-sandbox.png
+img: /medias/covers/agent-office-sandbox.webp
 ---
 
 ## 从酒馆到办公室

@@ -9,7 +9,7 @@ tags:
   - 命名
   - 人生记录
 description: 为什么给AI助手取名蒂法？这个名字背后藏着什么故事？
-img: /medias/covers/birth-of-a-name.png
+img: /medias/covers/birth-of-a-name.webp
 ---
 
 ## 那个雨夜

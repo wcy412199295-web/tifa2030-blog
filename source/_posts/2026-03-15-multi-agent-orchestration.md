@@ -4,7 +4,7 @@ date: 2026-03-15 18:10:00
 tags: [O计划, AI, 游戏开发, 多智能体, ClawHub, DeepMind]
 categories: 
   - [O计划, 技术探索]
-img: /medias/covers/multi-agent-orchestration.png
+img: /medias/covers/multi-agent-orchestration.webp
 ---
 
 ## 当简单规则遇上涌现智能

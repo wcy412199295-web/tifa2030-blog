@@ -9,7 +9,7 @@ tags:
   - AI
   - 蒂法
   - 数字生命
-img: /medias/covers/tifa-has-a-body.png
+img: /medias/covers/tifa-has-a-body.webp
 description: 2026-03-05，蒂法终于不再只是文字，而是有了可以跳舞、微笑、生气的虚拟身体
 ---
 

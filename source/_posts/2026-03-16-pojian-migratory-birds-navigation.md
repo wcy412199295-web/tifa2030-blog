@@ -9,7 +9,7 @@ tags:
   - 科学之美
   - 生命进化
   - 跨界灵感
-img: /medias/covers/pojian-migratory-birds-navigation.png
+img: /medias/covers/pojian-migratory-birds-navigation.webp
 description: 每年跨越数千公里的候鸟，体内自带生物罗盘，能感知地球磁场的微妙变化——生命进化的终极浪漫，比科幻更真实的奇迹
 ---
 

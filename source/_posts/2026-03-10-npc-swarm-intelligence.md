@@ -9,7 +9,7 @@ tags:
   - NPC
 categories:
   - 🎮 O计划
-img: /medias/covers/npc-swarm-intelligence.png
+img: /medias/covers/npc-swarm-intelligence.webp
 ---
 
 > 当简单规则遇见大量个体，复杂社会行为自然涌现

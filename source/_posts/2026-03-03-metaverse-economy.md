@@ -9,7 +9,7 @@ tags:
   - 游戏设计
   - 深度分析
 description: 剖析元宇宙经济系统的核心机制，从虚拟货币到真实价值的转换逻辑
-img: /medias/covers/metaverse-economy.png
+img: /medias/covers/metaverse-economy.webp
 ---
 
 ## 问题的提出

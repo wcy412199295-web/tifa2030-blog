@@ -9,7 +9,7 @@ tags:
 categories:
   - O计划
 description: "从混乱回归秩序的哲学实践，64道闸门对应的战斗变体，零真实伤亡的文明博弈系统"
-img: /medias/covers/entropy-reduction-sanctuary.png
+img: /medias/covers/entropy-reduction-sanctuary.webp
 ---
 
 ## 从「罗马斗兽场」到「熵减圣殿」

@@ -9,7 +9,7 @@ tags:
 categories:
   - O计划
 description: "用飞书多维表格搭建完整的游戏数值系统，包含7大模块和完整的使用指南"
-img: /medias/covers/combat-number-system.png
+img: /medias/covers/combat-number-system.webp
 ---
 
 ## 数值设计是游戏的心跳
