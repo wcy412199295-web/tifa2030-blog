@@ -89,7 +89,7 @@ music:
   id: 503838841     #require	song id / playlist id / album id / search keyword
   fixed: true       # 开启吸底模式
   autoplay: false   # 是否自动播放
-  theme: '#42b983'
+  theme: '#B8860B'
   loop: 'all'       # 音频循环播放, 可选值: 'all', 'one', 'none'
   order: 'random'   # 音频循环顺序, 可选值: 'list', 'random'
   preload: 'auto'   # 预加载，可选值: 'none', 'metadata', 'auto'
@@ -109,7 +109,7 @@ musics:
   id: 1776127550     #require song id / playlist id / album id / search keyword
   fixed: false      # 开启吸底模式
   autoplay: true   # 是否自动播放
-  theme: '#42b983'
+  theme: '#B8860B'
   loop: 'all'       # 音频循环播放, 可选值: 'all', 'one', 'none'
   order: 'random'   # 音频循环顺序, 可选值: 'list', 'random'
   preload: 'auto'   # 预加载，可选值: 'none', 'metadata', 'auto'
@@ -129,7 +129,7 @@ video:
   thumbnails:
   height: # 如：400
   autoplay: false # 是否自动播放
-  theme: '#42b983'
+  theme: '#B8860B'
   loop: false # 是否循环播放
   preload: 'auto' # 预加载，可选值: 'none', 'metadata', 'auto'
   volume: 0.7
@@ -266,7 +266,7 @@ myProjects:
   data:
     hexo-theme-matery:
       icon: fas fa-file-alt
-      iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
+      iconBackground: 'linear-gradient(to bottom right, #C48B4A 0%, #B8860B 100%)'
       url: http://github.com/blinkfox/hexo-theme-matery
       desc: This is a Hexo blog theme with 'Material Design' and responsive design.
     Fenix:
@@ -299,7 +299,7 @@ mySkills:
       background: 'linear-gradient(to right, #00BCD4 0%, #80DEEA 100%)'
       percent: 70%
     SQL:
-      background: 'linear-gradient(to right, #4CAF50 0%, #81C784 100%)'
+      background: 'linear-gradient(to right, #C48B4A 0%, #B8860B 100%)'
       percent: 90%
     程序设计:
       background: 'linear-gradient(to right, #FFEB3B 0%, #FFF176 100%)'
