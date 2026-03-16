@@ -9,7 +9,7 @@ tags:
   - 工作流
 categories:
   - 🤖 AI本地秘书
-cover: /medias/covers/feishu-group-consolidation.png
+img: /medias/covers/feishu-group-consolidation.png
 ---
 
 > 从6个群到4个群，不是简单的合并，而是对注意力的重新设计

@@ -9,7 +9,7 @@ tags:
   - Grok
 categories:
   - 🤖 AI本地秘书
-cover: /medias/covers/ai-persona-switching.png
+img: /medias/covers/ai-persona-switching.png
 ---
 
 > 当AI助手不再只有一种声音，而是根据场景自然切换

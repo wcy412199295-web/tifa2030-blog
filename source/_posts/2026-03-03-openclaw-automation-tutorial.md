@@ -9,7 +9,7 @@ tags:
   - 自动化
   - 教程
 description: 手把手教你搭建AI自动化工作流，让AI助手真正成为你的本地秘书
-cover: /medias/covers/openclaw-automation-tutorial.png
+img: /medias/covers/openclaw-automation-tutorial.png
 ---
 
 ## 为什么需要本地AI秘书？

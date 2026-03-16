@@ -9,7 +9,7 @@ tags:
   - 叙事
 categories:
   - 🎮 O计划
-cover: /medias/covers/adrian-villain-design.png
+img: /medias/covers/adrian-villain-design.png
 ---
 
 > 当温柔导师变成终极BOSS，当"艾老师"变成"艾爹"

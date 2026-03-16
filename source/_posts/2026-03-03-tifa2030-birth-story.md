@@ -9,7 +9,7 @@ tags:
   - Hexo
   - OASIS
   - AI协作
-cover: /medias/covers/tifa2030-birth-story.png
+img: /medias/covers/tifa2030-birth-story.png
 description: 从想法到上线，12小时，五个人，一段关于人机协作的数字创作记录
 ---
 

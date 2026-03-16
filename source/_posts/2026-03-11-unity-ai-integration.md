@@ -10,7 +10,7 @@ tags:
 categories:
   - AI本地秘书
 description: "从 Muse 自然语言生成到 ML-Agents 强化学习，一份完整的 Unity AI 工具链集成路线图"
-cover: /medias/covers/unity-ai-integration.png
+img: /medias/covers/unity-ai-integration.png
 ---
 
 ## 为什么游戏需要 AI？
