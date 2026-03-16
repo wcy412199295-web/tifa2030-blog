@@ -9,7 +9,7 @@ tags:
   - 定时任务
   - AI助手
   - 工作流
-cover: https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?w=1200
+cover: /medias/covers/automation-workflow.png
 description: 从吃药提醒到日报生成，我的AI秘书如何接管了我的日常事务
 ---
 

@@ -9,7 +9,7 @@ tags:
   - 家庭
   - 监控
   - 思念
-cover: https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200
+cover: /medias/covers/daughter-miss-us.png
 description: 那个瞬间，我突然意识到，科技不仅能连接设备，还能连接心灵
 ---
 

@@ -9,7 +9,7 @@ tags:
   - 受众分析
   - 雷达图
   - 定位
-cover: https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200
+cover: /medias/covers/game-audience-analysis.png
 description: 用16维度的雷达图分析游戏美术风格和玩法类型，找到OASIS的甜点定位
 ---
 

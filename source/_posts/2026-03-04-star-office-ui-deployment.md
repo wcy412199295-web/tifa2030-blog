@@ -9,7 +9,7 @@ tags:
   - Python
   - AI助手
   - 部署
-cover: https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200
+cover: /medias/covers/star-office-ui-deployment.png
 description: 如何把不可见的AI工作状态变成可见的像素场景，以及为什么要这么做
 ---
 

@@ -10,7 +10,7 @@ tags:
   - 平台迁移
   - AI助手
   - 自动化
-cover: https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200
+cover: /medias/covers/platform-migration.png
 description: 记录一次完整的 AI 助手平台迁移：为什么从 Discord 转向飞书，以及迁移过程中的技术细节和思考
 ---
 

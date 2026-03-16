@@ -8,7 +8,7 @@ tags:
   - 赛博精神病
   - 游戏人生
   - 自白
-cover: https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200
+cover: /medias/covers/midnight-confession.png
 description: 凌晨两点，当整个世界都睡着的时候，一个轻度赛博精神病的游戏玩家和他的AI助手，在数字的荒野里寻找着某种温度
 ---
 
