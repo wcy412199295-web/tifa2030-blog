@@ -672,3 +672,197 @@ h1, h2, h3, h4, h5, h6,
 .post-content a:hover::after {
   width: 100%;
 }
+
+/* ========================================
+   21. 覆盖 Matery 主题默认绿色
+   将所有 #42b983 / #0f9d58 / #4cbf30 替换为蒂法紫粉
+   ======================================== */
+
+/* --- 渐变背景（导航栏滚动后、页脚、按钮等） --- */
+.bg-color {
+  background-image: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%) !important;
+}
+
+/* 标签云、chip */
+.chip-default {
+  background-image: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%) !important;
+}
+
+.tag-cloud a,
+.tag-cloud a:hover {
+  color: var(--tifa-primary) !important;
+}
+
+/* TOC 高亮 & 侧边栏链接 */
+.toc-widget .active,
+.toc-widget a:hover,
+.post-toc .active {
+  color: var(--tifa-primary) !important;
+}
+
+/* blockquote 左边框 */
+blockquote {
+  border-left-color: var(--tifa-primary) !important;
+}
+
+/* 归档、标签页的链接色 */
+.archive-article-date,
+.archive-article-title:hover,
+.category-title:hover,
+.tag-title:hover {
+  color: var(--tifa-primary) !important;
+}
+
+/* 文章元信息中的链接 */
+.post-meta a,
+.post-meta a:hover,
+.article-meta a,
+.post-info a {
+  color: var(--tifa-primary) !important;
+}
+
+/* 分页按钮 */
+.pagination .active a {
+  background: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%) !important;
+  border-color: var(--tifa-primary) !important;
+}
+
+.pagination a:hover {
+  border-color: var(--tifa-primary) !important;
+  color: var(--tifa-primary) !important;
+}
+
+/* 搜索、返回顶部按钮 */
+#backTop,
+.search-btn {
+  background: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%) !important;
+}
+
+/* 文章标题悬停 */
+.article .article-title:hover,
+.post-title-link:hover {
+  color: var(--tifa-primary) !important;
+}
+
+/* 页脚 */
+footer.page-footer {
+  background: linear-gradient(to right, var(--tifa-primary-dark) 0%, var(--tifa-primary) 100%) !important;
+}
+
+/* 标签页标签 */
+.chip {
+  background: var(--tifa-primary) !important;
+}
+
+/* 独立页面标题 banner */
+.bg-cover {
+  background-image: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%) !important;
+}
+
+/* 社交链接悬停 */
+.social-link:hover .social-icon,
+.fab:hover {
+  color: var(--tifa-primary) !important;
+}
+
+/* 代码高亮关键字 */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+  color: var(--tifa-primary) !important;
+}
+
+/* 时间轴圆点 */
+.timeline-dot,
+.cd-timeline-img {
+  background: var(--tifa-primary) !important;
+  border-color: var(--tifa-primary) !important;
+}
+
+/* 进度条 */
+.progress .determinate {
+  background: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-secondary) 100%) !important;
+}
+
+/* 所有 matery 中使用绿色的通用选择器覆盖 */
+a:not(.btn):not(.chip):not(.pagination a):not(.nav-wrapper a) {
+  color: var(--tifa-primary);
+}
+
+a:not(.btn):not(.chip):hover {
+  color: var(--tifa-primary-dark);
+}
+
+/* 按钮悬停 */
+.btn:hover,
+.btn-floating:hover {
+  background: var(--tifa-primary-dark) !important;
+}
+
+/* 输入框聚焦 */
+input:focus,
+textarea:focus {
+  border-bottom-color: var(--tifa-primary) !important;
+  box-shadow: 0 1px 0 0 var(--tifa-primary) !important;
+}
+
+input:focus + label,
+textarea:focus + label {
+  color: var(--tifa-primary) !important;
+}
+
+/* Valine / 评论区强调色 */
+.v .vbtn {
+  background: var(--tifa-primary) !important;
+  border-color: var(--tifa-primary) !important;
+}
+
+/* 文章卡片标签 */
+.card .tag a,
+.article-tags a {
+  background: var(--tifa-primary) !important;
+  color: #fff !important;
+}
+
+.card .tag a:hover,
+.article-tags a:hover {
+  background: var(--tifa-primary-dark) !important;
+}
+
+/* 移动端汉堡菜单 */
+.side-nav {
+  background: var(--tifa-bg-card) !important;
+}
+
+.side-nav a {
+  color: var(--tifa-text-primary) !important;
+}
+
+.side-nav a:hover {
+  background: rgba(139, 127, 212, 0.08) !important;
+  color: var(--tifa-primary) !important;
+}
+
+/* 确保导航滚动后也是紫色 */
+nav {
+  background-color: var(--tifa-primary) !important;
+}
+
+nav.transparent {
+  background-color: transparent !important;
+}
+
+/* 搜索框内文字 */
+.search-input::placeholder {
+  color: var(--tifa-text-muted);
+}
+
+/* 文章内代码块边框 */
+.post-content code:not([class*="hljs"]) {
+  background: rgba(139, 127, 212, 0.08);
+  color: var(--tifa-primary-dark);
+  border-radius: 3px;
+  padding: 2px 6px;
+}

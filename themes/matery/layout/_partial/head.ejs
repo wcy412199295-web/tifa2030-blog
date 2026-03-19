@@ -77,6 +77,9 @@
     <link rel="icon" type="<%= iconType %>" href="<%- theme.jsDelivr.url %><%- url_for(theme.favicon) %>">
     <%- partial('_partial/main-style') %>
 
+    <!-- Tifa2030 自定义配色方案 -->
+    <link rel="stylesheet" type="text/css" href="<%- url_for('/css/custom.css') %>">
+
     <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.jquery) %>"></script>
 
 </head>
