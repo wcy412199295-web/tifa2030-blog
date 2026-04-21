@@ -1,6 +1,7 @@
 ---
 title: 游戏设计的"炼金术"：视频转文档的自动化流水线实战
-img: /medias/covers/video-to-text-pipeline.webpdate: 2026-04-17 19:30:00
+img: /medias/covers/video-to-text-pipeline.webp
+date: 2026-04-17 19:30:00
 categories:
   - AI本地秘书
 tags:

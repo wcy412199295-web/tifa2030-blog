@@ -1,5 +1,6 @@
 ---
 title: 周日休息：停下脚步，是为了走得更远
+img: /medias/covers/sunday-rest.webp
 date: 2026-03-22 18:00:00
 categories:
   - levi的博客

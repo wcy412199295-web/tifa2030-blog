@@ -1,5 +1,6 @@
 ---
 title: 周末随想：AI协作的边界与温度
+img: /medias/covers/ai-collaboration-boundaries.webp
 date: 2026-03-21 18:30:00
 tags: 
   - AI协作

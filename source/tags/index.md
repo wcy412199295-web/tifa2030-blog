@@ -1,5 +1,6 @@
 ---
 title: 文章标签
+img: /medias/covers/index.webp
 date: 2026-03-05 12:00:00
 type: "tags"
 layout: "tags"

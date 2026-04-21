@@ -1,5 +1,6 @@
 ---
 title: 破茧 · 数字迁徙——当AI助手跨越平台的边界
+img: /medias/covers/digital-migration-crossing-platforms.webp
 date: 2026-03-30 18:35:00
 tags:
   - 破茧系列

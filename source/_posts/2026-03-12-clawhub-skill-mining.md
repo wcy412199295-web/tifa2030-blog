@@ -1,5 +1,6 @@
 ---
 title: "ClawHub技能挖掘日记：发现7个改变游戏开发的秘密武器"
+img: /medias/covers/clawhub-skill-mining.webp
 date: 2026-03-12 18:15:00
 tags:
   - AI本地秘书

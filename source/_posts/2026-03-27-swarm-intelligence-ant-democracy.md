@@ -1,5 +1,6 @@
 ---
 title: 破茧 · 蚂蚁的民主决策——从昆虫智慧到AI群集智能
+img: /medias/covers/swarm-intelligence-ant-democracy.webp
 date: 2026-03-27 18:35:00
 tags:
   - 破茧系列

@@ -1,5 +1,6 @@
 ---
 title: 关于我
+img: /medias/covers/index.webp
 date: 2026-03-03 00:00:00
 type: "about"
 layout: "about"

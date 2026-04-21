@@ -1,6 +1,7 @@
 ---
 title: 【深度】PVE枪战游戏交互设计调研：从DOOM到星际战士2，虫海里的设计哲学
-img: /medias/covers/fps-interaction-design-pve-research.webpdate: 2026-04-17 18:00:00
+img: /medias/covers/fps-interaction-design-pve-research.webp
+date: 2026-04-17 18:00:00
 categories:
   - O计划
   - IQ博士

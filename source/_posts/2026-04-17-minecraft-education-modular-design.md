@@ -1,6 +1,7 @@
 ---
 title: 【深度】当芬兰把《我的世界》写进课表：模块化设计如何重塑21世纪的学习方式
-img: /medias/covers/minecraft-education-modular-design.webpdate: 2026-04-17 15:45:00
+img: /medias/covers/minecraft-education-modular-design.webp
+date: 2026-04-17 15:45:00
 categories:
   - O计划
   - IQ博士

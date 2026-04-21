@@ -1,6 +1,7 @@
 ---
 title: 【教程】从一个蒂法到六个伙伴：OpenClaw多Agent系统搭建踩坑实录
-img: /medias/covers/openclaw-multi-agent-setup-guide.webpdate: 2026-04-17 18:30:00
+img: /medias/covers/openclaw-multi-agent-setup-guide.webp
+date: 2026-04-17 18:30:00
 categories:
   - AI本地秘书
 tags:

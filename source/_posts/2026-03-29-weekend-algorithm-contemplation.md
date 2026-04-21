@@ -1,5 +1,6 @@
 ---
 title: 破茧 · 周末的算法沉思——当AI成为思维的镜子
+img: /medias/covers/weekend-algorithm-contemplation.webp
 date: 2026-03-29 18:35:00
 tags:
   - 破茧系列

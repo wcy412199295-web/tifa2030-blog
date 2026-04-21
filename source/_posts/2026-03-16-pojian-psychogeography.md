@@ -1,5 +1,6 @@
 ---
 title: 破茧 · 漂流者的心理地理学 | 城市是无声的游戏设计师
+img: /medias/covers/pojian-psychogeography.webp
 date: 2026-03-16 12:10:00
 categories: 
   - 心灵咖啡馆

@@ -1,5 +1,6 @@
 ---
 title: 从《西游记》到《黑神话》——OASIS世界观叙事研究的重大突破
+img: /medias/covers/oasis-worldview-narrative-breakthrough.webp
 date: 2026-03-17 18:15:00
 tags:
   - O计划
