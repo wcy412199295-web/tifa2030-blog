@@ -18,18 +18,30 @@
     <%
         var categories = site.categories;
 
-        // Find the maximum and average values of the post categories.
-        var radarValueArr = [];
-        categories.some(function(category) {
-            radarValueArr.push(category.length);
+        // 归一化去重：去掉 emoji / 空白后按名称合并，数量相加。
+        var catMap = {};
+        var catOrder = [];
+        categories.forEach(function(category) {
+            var raw = category.name || '';
+            var norm = raw
+                .replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu, '')
+                .replace(/\s+/g, '')
+                .trim();
+            if (!norm) { norm = raw.trim(); }
+            if (!catMap[norm]) {
+                catMap[norm] = 0;
+                catOrder.push(norm);
+            }
+            catMap[norm] += category.length;
         });
+
+        var radarValueArr = catOrder.map(function(name) { return catMap[name]; });
 
         var max = Math.max.apply(null, radarValueArr) + Math.min.apply(null, radarValueArr);
 
         // Calculate the data needed for the radar chart.
-        var indicatorArr = [];
-        categories.map(function(category) {
-            indicatorArr.push({'name': category.name, 'max': max});
+        var indicatorArr = catOrder.map(function(name) {
+            return {'name': name, 'max': max};
         });
 
         var indicatorData = JSON.stringify(indicatorArr);

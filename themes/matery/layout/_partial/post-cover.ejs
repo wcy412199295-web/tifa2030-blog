@@ -25,6 +25,9 @@ if (page.img) {
 }
 %>
 
+<!-- 文章页专属：用本文封面图铺满整个页面背景（fixed），上面再叠一层半透明白，仅文章页渲染 -->
+<div class="post-page-bg" style="background-image: url('<%- featureimg %>')"></div>
+
 <div class="bg-cover pd-header post-cover" style="background-image: url('<%- featureimg %>')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">

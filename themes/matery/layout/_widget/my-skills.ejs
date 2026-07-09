@@ -4,6 +4,7 @@ var mySkills = theme.mySkills.data;
 var topSkillArr = [];
 %>
 <div class="my-skills">
+    <% if (theme.mySkills && theme.mySkills.showBars) { %>
     <div class="title center-align" data-aos="zoom-in-up">
         <i class="fas fa-wrench"></i>&nbsp;&nbsp;<%- __('mySkills') %>
     </div>
@@ -23,6 +24,7 @@ var topSkillArr = [];
         <% }); %>
         <% } %>
     </div>
+    <% } %>
 
     <%
     /**

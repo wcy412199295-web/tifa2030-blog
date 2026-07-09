@@ -32,6 +32,10 @@ cover:
   intervalTime: 5000
   useConfig: false
 
+# 首页 banner 第二个按钮（GITHUB）——关闭，让"开始阅读"单独居中
+indexbtn:
+  enable: false
+
 # index page dream text
 dream:
   enable: true
@@ -104,14 +108,21 @@ share:
   enable: true
 
 # Whether to display the comment system.
+# 已改用 Twikoo(匿名评论,后端在腾讯云CloudBase)，giscus 关闭避免"giscus is not installed"报错
 comments:
-  enable: true
+  enable: false
   type: giscus
   giscus:
     repo: wcy412199295-web/tifa2030-blog
     repoId: 'R_kgDORdHwIg'
     category: Announcements
     categoryId: 'DIC_kwDORdHwIs4C3tyi'
+
+# Twikoo 匿名评论(高优先级配置文件里再声明一次，确保覆盖生效)
+twikoo:
+  enable: true
+  envId: workbuddy1-d0gt9a6hg692f63a8
+  region: ap-shanghai
 
 # Whether to display the leancloud statistics.
 leancloud:

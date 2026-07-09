@@ -1,11 +1,21 @@
 <%
-// get all cover posts.
+// 取最新 N 篇文章作为首页轮播（用各自封面图作背景）。
+// 若文章手动标记了 cover: true 则优先，其余按日期倒序补足到 maxCovers 篇。
+var maxCovers = 6;
 var coverPosts = [];
-site.posts.forEach(function (post) {
-    if (post.cover) {
+var allPosts = site.posts.sort('date', -1).toArray();
+// 先收录手动标记 cover 的文章
+allPosts.forEach(function (post) {
+    if (post.cover && coverPosts.indexOf(post) === -1) {
         coverPosts.push(post);
     }
 });
+// 再按最新顺序补足
+for (var pi = 0; pi < allPosts.length && coverPosts.length < maxCovers; pi++) {
+    if (coverPosts.indexOf(allPosts[pi]) === -1) {
+        coverPosts.push(allPosts[pi]);
+    }
+}
 var coverPostsCount = coverPosts.length;
 %>
 
@@ -79,7 +89,7 @@ var coverPostsCount = coverPosts.length;
                 }
             %>
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('<%- theme.jsDelivr.url %><%- url_for(coverImg) %>');">
+                 style="background-image: url('<%- theme.jsDelivr.url %><%- url_for(coverImg) %>') !important; background-size: cover !important; background-position: center center !important; background-repeat: no-repeat !important;">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">

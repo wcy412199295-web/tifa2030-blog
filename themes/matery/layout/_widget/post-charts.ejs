@@ -107,10 +107,25 @@
     };
 
     <%
-    /* calculate categoriesOption data. */
-    var categoryArr = [];
-    site.categories.map(function(category) {
-        categoryArr.push({'name': category.name, 'value': category.length})
+    /* calculate categoriesOption data. 归一化去重：去掉 emoji / 空白后按名称合并，数量相加。 */
+    var pieCatMap = {};
+    var pieCatOrder = [];
+    site.categories.forEach(function(category) {
+        var raw = category.name || '';
+        var norm = raw
+            .replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu, '')
+            .replace(/\s+/g, '')
+            .trim();
+        if (!norm) { norm = raw.trim(); }
+        if (!(norm in pieCatMap)) {
+            pieCatMap[norm] = 0;
+            pieCatOrder.push(norm);
+        }
+        pieCatMap[norm] += category.length;
+    });
+
+    var categoryArr = pieCatOrder.map(function(name) {
+        return {'name': name, 'value': pieCatMap[name]};
     });
 
     var categoryArrJson = JSON.stringify(categoryArr);

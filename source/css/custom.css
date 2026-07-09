@@ -866,3 +866,327 @@ nav.transparent {
   border-radius: 3px;
   padding: 2px 6px;
 }
+
+/* ========================================
+   22. 侧边栏响应式修复（宽屏隐藏，只在窄屏滑出）
+   问题：materialize 的 .sidenav 隐藏规则被覆盖，导致宽屏下侧栏常驻，
+   与顶部横向菜单同时出现。这里按断点强制修正。
+   ======================================== */
+
+/* 宽屏（≥993px）：侧栏移出屏幕左侧隐藏，走顶部横向菜单 */
+@media only screen and (min-width: 993px) {
+  #mobile-nav.side-nav,
+  .side-nav.sidenav,
+  .sidenav {
+    -webkit-transform: translateX(-105%) !important;
+    transform: translateX(-105%) !important;
+    visibility: hidden !important;
+  }
+  /* 汉堡按钮在宽屏隐藏 */
+  .sidenav-trigger,
+  .button-collapse {
+    display: none !important;
+  }
+}
+
+/* 窄屏（≤992px）：默认仍隐藏，仅在 materialize 激活(.sidenav.open)时滑出 */
+@media only screen and (max-width: 992px) {
+  #mobile-nav.side-nav:not(.open),
+  .sidenav:not(.open) {
+    -webkit-transform: translateX(-105%) !important;
+    transform: translateX(-105%) !important;
+  }
+  #mobile-nav.side-nav.open,
+  .sidenav.open {
+    -webkit-transform: translateX(0) !important;
+    transform: translateX(0) !important;
+    visibility: visible !important;
+  }
+  /* 窄屏显示汉堡按钮 */
+  .sidenav-trigger,
+  .button-collapse {
+    display: block !important;
+  }
+}
+
+/* ========================================
+   23. 深色模式补全（让亮色定制在 DarkMode 下翻转为深色）
+   问题：本 custom.css 是亮色主题且加载在 dark.css 之后、大量 !important，
+   把 banner/body/卡片/导航"抢"回亮色。这里在 DarkMode 下重定义变量并硬覆盖。
+   ======================================== */
+
+/* 23a. 重定义主题变量：一处改，卡片/文字/背景自动变深 */
+body.DarkMode {
+  --tifa-primary: #8B7FD4;
+  --tifa-primary-light: #A89DE0;
+  --tifa-primary-dark: #6A5FA8;
+  --tifa-secondary: #C77B99;
+  --tifa-secondary-light: #D89BB2;
+
+  --tifa-bg-primary: #1a1a1e;
+  --tifa-bg-secondary: #232329;
+  --tifa-bg-card: #26262d;
+  --tifa-bg-code: #1e1e24;
+
+  --tifa-text-primary: #d6d6e0;
+  --tifa-text-secondary: #a0a0b0;
+  --tifa-text-muted: #77778a;
+}
+
+/* 23b. body 整体背景变深（覆盖亮色渐变 + 主题背景图） */
+body.DarkMode {
+  background: #1a1a1e !important;
+  background-image: none !important;
+  color: var(--tifa-text-primary) !important;
+}
+
+/* 23c. 首页大 banner / 独立页标题 banner 变深 */
+body.DarkMode .bg-cover,
+body.DarkMode .about-cover,
+body.DarkMode .pd-header {
+  background: linear-gradient(135deg, #1f1d2b 0%, #26243a 40%, #2a2740 70%, #322b3e 100%) !important;
+  background-image: linear-gradient(135deg, #1f1d2b 0%, #26243a 40%, #2a2740 70%, #322b3e 100%) !important;
+}
+
+body.DarkMode .bg-cover::before {
+  background: linear-gradient(135deg,
+    rgba(20, 19, 30, 0.55) 0%,
+    rgba(30, 28, 45, 0.55) 100%) !important;
+}
+
+/* 23d. 顶部导航栏（滚动后 & 透明态）变深 */
+body.DarkMode nav,
+body.DarkMode .nav-wrapper {
+  background-color: #1f1d2b !important;
+  background-image: none !important;
+}
+
+body.DarkMode nav.transparent,
+body.DarkMode .nav-transparent .nav-wrapper {
+  background-color: transparent !important;
+}
+
+/* 23e. 卡片、页脚、区块背景跟随深色变量 */
+body.DarkMode .card,
+body.DarkMode .post-card,
+body.DarkMode .toc-widget,
+body.DarkMode .site-stats {
+  background: var(--tifa-bg-card) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+body.DarkMode .footer,
+body.DarkMode footer.page-footer {
+  background: #1f1d2b !important;
+  background-image: none !important;
+}
+
+/* 23f. 侧栏（窄屏滑出时）也用深色 */
+body.DarkMode .side-nav,
+body.DarkMode #mobile-nav.side-nav {
+  background: #1f1d2b !important;
+}
+body.DarkMode .side-nav a,
+body.DarkMode .side-nav .menu-list a {
+  color: var(--tifa-text-primary) !important;
+}
+
+/* 23g. 正文标题/链接色在深色下柔和处理 */
+body.DarkMode .post-content h2 {
+  border-bottom-color: rgba(168, 157, 224, 0.25) !important;
+}
+body.DarkMode .card-title,
+body.DarkMode .post-content h3 {
+  color: var(--tifa-text-primary) !important;
+}
+
+/* ============================================================
+   24. 关于页头像修复：原 translate3d(-65%) 上移过多，
+       圆形头像顶部被 banner 遮挡。改为温和上移，
+       确保整个圆形完整可见，并保持圆形+白边浮起效果。
+   ============================================================ */
+.profile .avatar-img {
+  max-width: 150px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  transform: translate3d(0, -10%, 0) !important;
+  border-radius: 50% !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border: 4px solid #fff !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  background: #fff !important;
+}
+/* 深色模式下头像白边换成深色描边，避免突兀 */
+body.DarkMode .profile .avatar-img {
+  border-color: #26262d !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45) !important;
+  background: #26262d !important;
+}
+
+/* ============================================================
+   25. 页脚文字自适应居中
+   模板本用 center-align，但 .copy-right 占 m8/l8 靠左，
+   这里强制整块居中，适配各屏宽。
+   ============================================================ */
+footer.page-footer .container.row {
+  text-align: center !important;
+}
+footer.page-footer .copy-right,
+footer.page-footer .col.copy-right {
+  width: 100% !important;
+  float: none !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  left: auto !important;
+  right: auto !important;
+}
+footer.page-footer .footer-social,
+footer.page-footer .social-statis {
+  text-align: center !important;
+}
+
+/* ============================================================
+   26. 首页 Banner 铺相册背景图（紫色半透明层在图之上）
+   第一屏 .about-cover.bg-cover 原被锁成纯紫渐变，
+   这里改铺一张星空雪山图；custom.css 的 .bg-cover::before
+   半透明紫罩层会自动叠在图片上方，形成"大气+统一色调"。
+   ============================================================ */
+.index-cover .about-cover.bg-cover,
+.carousel .about-cover.bg-cover {
+  background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+/* 半透明紫罩层降低不透明度，让底图透出来更大气 */
+.index-cover .about-cover.bg-cover::before,
+.carousel .about-cover.bg-cover::before {
+  background: linear-gradient(135deg,
+    rgba(139, 127, 212, 0.62) 0%,
+    rgba(122, 111, 184, 0.66) 50%,
+    rgba(200, 166, 195, 0.60) 100%) !important;
+}
+/* 深色模式下罩层加深，保证文字可读 */
+body.DarkMode .index-cover .about-cover.bg-cover::before,
+body.DarkMode .carousel .about-cover.bg-cover::before {
+  background: linear-gradient(135deg,
+    rgba(20, 19, 30, 0.68) 0%,
+    rgba(30, 28, 45, 0.70) 100%) !important;
+}
+
+/* ============================================================
+   27. 留言板/文章评论区 Twikoo 深色适配 + 加载态优化
+   之前评论区在深色模式下仍是白底黑字（黑白突兀），
+   且冷启动时空白无提示。这里补全深色配色 + 加载占位。
+   ============================================================ */
+/* 评论卡片深色适配 */
+body.DarkMode .twikoo-card,
+body.DarkMode #tcomments,
+body.DarkMode .tk-comments {
+  background: var(--tifa-bg-card, #26262d) !important;
+  color: var(--tifa-text-primary, #d6d6e0) !important;
+}
+body.DarkMode .tk-comments,
+body.DarkMode .tk-comments * {
+  color: var(--tifa-text-primary, #d6d6e0);
+}
+/* 输入框深色 */
+body.DarkMode .tk-input,
+body.DarkMode .tk-input .el-textarea__inner,
+body.DarkMode .tk-input textarea,
+body.DarkMode .tk-input input {
+  background: #1f1d2b !important;
+  color: #d6d6e0 !important;
+  border-color: rgba(168, 157, 224, 0.25) !important;
+}
+/* 元信息/次要文字 */
+body.DarkMode .tk-meta,
+body.DarkMode .tk-nick,
+body.DarkMode .tk-time,
+body.DarkMode .tk-tag,
+body.DarkMode .tk-content {
+  color: #b8b8c8 !important;
+}
+/* 提交按钮沿用主题紫 */
+body.DarkMode .tk-submit .el-button--primary,
+.tk-submit .el-button--primary {
+  background: var(--tifa-primary, #8b7fd4) !important;
+  border-color: var(--tifa-primary, #8b7fd4) !important;
+}
+/* 加载中占位：给评论区一个最小高度+柔和提示，避免"空白一片" */
+#tcomments:empty::before {
+  content: '评论加载中…';
+  display: block;
+  text-align: center;
+  padding: 24px 0;
+  color: #9a92c0;
+  font-size: 0.95rem;
+}
+body.DarkMode #tcomments:empty::before {
+  color: #6f6b8a;
+}
+
+/* ============================================================
+   28. 首页轮播：文章封面页透出封面图 + 单按钮居中
+   ① 文章轮播页(carousel-post)紫罩层从 0.9 降到 ~0.55，
+      让每篇文章各自的封面图透出来（inline important 已设背景图）。
+   ② GITHUB 按钮已在 _config.matery.yml 关闭(indexbtn.enable=false)，
+      让 .cover-btns 里唯一的"开始阅读"按钮水平居中。
+   ============================================================ */
+/* 文章轮播页：降低紫罩层不透明度，让封面图透出来 */
+.carousel .carousel-post.bg-cover::before {
+  background: linear-gradient(135deg,
+    rgba(139, 127, 212, 0.52) 0%,
+    rgba(122, 111, 184, 0.56) 55%,
+    rgba(200, 166, 195, 0.50) 100%) !important;
+}
+body.DarkMode .carousel .carousel-post.bg-cover::before {
+  background: linear-gradient(135deg,
+    rgba(20, 19, 30, 0.62) 0%,
+    rgba(30, 28, 45, 0.64) 100%) !important;
+}
+/* 首页 banner 按钮组居中（去掉 GITHUB 后只剩"开始阅读"，让它居中） */
+.index-cover .cover-btns {
+  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   29. 文章页背景：两侧留白铺本文封面图 + 半透明白遮罩
+   .post-page-bg 只在文章页(post-cover.ejs)渲染，fixed 铺满视口，
+   自身用封面图，::after 叠一层半透明白让文字区柔和不刺眼。
+   z-index 压在正文卡片之下(-2/-1)，不影响交互。
+   ============================================================ */
+.post-page-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  z-index: -2;
+  pointer-events: none;
+}
+/* 半透明白遮罩：让封面朦胧透出，正文区不刺眼 */
+.post-page-bg::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+/* 文章页时 body 原紫渐变收起，露出封面背景层 */
+body:has(.post-page-bg) {
+  background: transparent !important;
+}
+/* 深色模式：改叠深色半透明遮罩 */
+body.DarkMode .post-page-bg::after {
+  background: rgba(20, 19, 30, 0.86);
+}

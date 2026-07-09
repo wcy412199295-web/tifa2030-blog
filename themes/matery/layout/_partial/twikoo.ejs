@@ -256,17 +256,22 @@
 
 <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.twikoo) %>"></script>
 <script>
-    twikoo.init({
+    var _twikooInitOpt = {
         envId: '<%- theme.twikoo.envId %>',
-        el: '#tcomments',
-        region: '<%- theme.twikoo.region %>',
-        path: '<%- theme.twikoo.path %>'
-    }).then(function () {
-        var tkInputs = document.querySelector('#twikoo').getElementsByTagName('input');
+        el: '#tcomments'
+    };
+    <% if (theme.twikoo.region) { %>_twikooInitOpt.region = '<%- theme.twikoo.region %>';<% } %>
+    <% if (theme.twikoo.path) { %>_twikooInitOpt.path = '<%- theme.twikoo.path %>';<% } %>
+    twikoo.init(_twikooInitOpt).then(function () {
+        var tkEl = document.querySelector('#twikoo');
+        if (!tkEl) { return; }
+        var tkInputs = tkEl.getElementsByTagName('input');
         for (var tkInputsIndex = 0; tkInputsIndex < tkInputs.length; tkInputsIndex++) {
             if (tkInputs[tkInputsIndex]) {
                 tkInputs[tkInputsIndex].classList.add('browser-default');
             }
         }
+    }).catch(function (err) {
+        console.warn('Twikoo init failed:', err);
     });
 </script>
