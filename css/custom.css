@@ -1,0 +1,1192 @@
+/* ========================================
+   Tifa2030 博客自定义样式
+   Design System: Soft Tech Fusion
+   Version: 1.0
+   ======================================== */
+
+/* ========================================
+   1. 字体引入
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+/* ========================================
+   2. CSS 变量定义
+   ======================================== */
+:root {
+  /* 主色调 - 柔和紫罗兰 */
+  --tifa-primary: #9B8FD9;
+  --tifa-primary-light: #B8AEE8;
+  --tifa-primary-dark: #7A6FB8;
+  
+  /* 次要色 - 蒂法粉 */
+  --tifa-secondary: #F4A6C3;
+  --tifa-secondary-light: #F8C4D8;
+  
+  /* 强调色 */
+  --tifa-accent: #FFD700;
+  --tifa-accent-soft: #FFE44D;
+  
+  /* 背景色 */
+  --tifa-bg-primary: #FAFAFC;
+  --tifa-bg-secondary: #F0F0F5;
+  --tifa-bg-card: #FFFFFF;
+  --tifa-bg-code: #F5F5F8;
+  
+  /* 文字色 */
+  --tifa-text-primary: #2D2D3A;
+  --tifa-text-secondary: #6B6B7B;
+  --tifa-text-muted: #9B9BAB;
+  
+  /* 分类色 */
+  --cat-oasis: #8B7FD4;
+  --cat-ai: #42B883;
+  --cat-soul: #F4A6C3;
+  --cat-levi: #FFD700;
+  --cat-iq: #5B8DEF;
+  
+  /* 阴影 */
+  --shadow-sm: 0 2px 8px rgba(155, 143, 217, 0.06);
+  --shadow-md: 0 4px 20px rgba(155, 143, 217, 0.08);
+  --shadow-lg: 0 8px 40px rgba(155, 143, 217, 0.12);
+  
+  /* 圆角 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  
+  /* 过渡 */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+}
+
+/* ========================================
+   3. 全局样式重置
+   ======================================== */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, var(--tifa-bg-primary) 0%, var(--tifa-bg-secondary) 100%);
+  background-attachment: fixed;
+  color: var(--tifa-text-primary);
+  line-height: 1.8;
+}
+
+/* 标题使用衬线体增加人文感 */
+h1, h2, h3, h4, h5, h6,
+.dream-title,
+.post-title,
+.card-title {
+  font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* ========================================
+   4. 导航栏优化
+   ======================================== */
+.nav-wrapper {
+  background: rgba(250, 250, 252, 0.88) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(155, 143, 217, 0.08);
+  box-shadow: none !important;
+}
+
+.nav-wrapper a {
+  color: var(--tifa-text-primary) !important;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.nav-wrapper a:hover {
+  color: var(--tifa-primary) !important;
+}
+
+/* 导航栏在封面上的样式 */
+.nav-transparent .nav-wrapper {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-transparent .nav-wrapper a,
+.nav-transparent .brand-logo {
+  color: white !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.nav-transparent .nav-wrapper a:hover {
+  color: var(--tifa-secondary-light) !important;
+}
+
+/* ========================================
+   5. 首页封面优化
+   ======================================== */
+.bg-cover,
+.about-cover,
+.pd-header {
+  background: linear-gradient(135deg, 
+    rgba(155, 143, 217, 0.82) 0%, 
+    rgba(139, 127, 212, 0.85) 35%,
+    rgba(122, 111, 184, 0.88) 70%,
+    rgba(200, 166, 195, 0.82) 100%) !important;
+  position: relative;
+}
+
+.bg-cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(155, 143, 217, 0.88) 0%, 
+    rgba(139, 127, 212, 0.90) 35%,
+    rgba(122, 111, 184, 0.92) 70%,
+    rgba(200, 166, 195, 0.88) 100%);
+  z-index: 1;
+}
+
+.bg-cover .container {
+  position: relative;
+  z-index: 2;
+}
+
+.cover-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white !important;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.02em;
+}
+
+.cover-title span,
+.header-subtitle {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-weight: 400;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* ========================================
+   6. 梦想文本区域
+   ======================================== */
+.dream {
+  background: linear-gradient(135deg,
+    rgba(155, 143, 217, 0.05) 0%,
+    rgba(244, 166, 195, 0.03) 100%);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  margin: 2rem 0;
+}
+
+.dream-title {
+  color: var(--tifa-primary);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.dream-text {
+  color: var(--tifa-text-secondary);
+  font-size: 1.1rem;
+  line-height: 2;
+  max-width: 800px;
+}
+
+/* ========================================
+   7. 文章卡片优化
+   ======================================== */
+.card {
+  background: var(--tifa-bg-card) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-sm) !important;
+  border: 1px solid rgba(155, 143, 217, 0.06);
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md) !important;
+}
+
+.card .card-image img {
+  transition: transform var(--transition-slow);
+}
+
+.card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.card .card-content {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  color: var(--tifa-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+/* ========================================
+   8. 分类标签优化
+   ======================================== */
+.chip {
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+/* O计划 - 紫 */
+.chip[href*="oasis"] {
+  background: rgba(155, 143, 217, 0.15);
+  color: var(--tifa-primary-dark);
+  font-weight: 600;
+}
+
+/* AI本地秘书 - 绿 */
+.chip[href*="ai-assistant"] {
+  background: rgba(66, 184, 131, 0.15);
+  color: #2E9A6B;
+  font-weight: 600;
+}
+
+/* 心灵咖啡馆 - 粉 */
+.chip[href*="soul-cafe"] {
+  background: rgba(244, 166, 195, 0.22);
+  color: #C45A7C;
+  font-weight: 600;
+}
+
+/* levi的博客 - 金 */
+.chip[href*="levi-blog"] {
+  background: rgba(255, 193, 7, 0.18);
+  color: #B8860B;
+  font-weight: 600;
+}
+
+/* IQ博士 - 蓝 */
+.chip[href*="iq-doctor"] {
+  background: rgba(91, 141, 239, 0.15);
+  color: #3D6BD4;
+  font-weight: 600;
+}
+
+.chip:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   9. 文章页面优化
+   ======================================== */
+.post-card {
+  background: var(--tifa-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(155, 143, 217, 0.06);
+}
+
+.post-content {
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.post-content p {
+  margin-bottom: 1.5rem;
+}
+
+.post-content h2 {
+  color: var(--tifa-primary);
+  border-bottom: 2px solid rgba(155, 143, 217, 0.1);
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.post-content h3 {
+  color: var(--tifa-text-primary);
+  margin-top: 2rem;
+}
+
+.post-content blockquote {
+  background: linear-gradient(135deg, 
+    rgba(155, 143, 217, 0.05) 0%, 
+    rgba(244, 166, 195, 0.05) 100%);
+  border-left: 4px solid var(--tifa-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--tifa-text-secondary);
+}
+
+.post-content code {
+  background: var(--tifa-bg-code);
+  color: var(--tifa-primary-dark);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.9em;
+}
+
+.post-content pre {
+  background: var(--tifa-text-primary);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.post-content pre code {
+  background: transparent;
+  color: #E8E8F0;
+  padding: 0;
+}
+
+/* ========================================
+   10. 代码块优化
+   ======================================== */
+.hljs {
+  background: var(--tifa-text-primary) !important;
+  border-radius: var(--radius-md);
+  padding: 1.25rem !important;
+}
+
+/* ========================================
+   11. 表格优化
+   ======================================== */
+.post-content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin: 2rem 0;
+}
+
+.post-content th {
+  background: linear-gradient(135deg, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%);
+  color: white;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+}
+
+.post-content td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(155, 143, 217, 0.1);
+}
+
+.post-content tr:last-child td {
+  border-bottom: none;
+}
+
+.post-content tr:nth-child(even) {
+  background: rgba(155, 143, 217, 0.03);
+}
+
+/* ========================================
+   12. 目录导航优化
+   ======================================== */
+.toc-widget {
+  background: var(--tifa-bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(155, 143, 217, 0.06);
+  padding: 1.5rem;
+}
+
+.toc-widget .toc-title {
+  color: var(--tifa-primary);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(155, 143, 217, 0.1);
+}
+
+.toc-link {
+  color: var(--tifa-text-secondary);
+  transition: color var(--transition-fast);
+  padding: 0.4rem 0;
+}
+
+.toc-link:hover,
+.toc-link.active {
+  color: var(--tifa-primary);
+}
+
+/* ========================================
+   13. 关于卡片优化
+   ======================================== */
+.about-card {
+  background: linear-gradient(135deg, 
+    rgba(155, 143, 217, 0.08) 0%, 
+    rgba(244, 166, 195, 0.05) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(155, 143, 217, 0.1);
+}
+
+.about-avatar {
+  border: 4px solid white;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal);
+}
+
+.about-avatar:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* ========================================
+   14. 页脚优化
+   ======================================== */
+.footer {
+  background: linear-gradient(135deg, 
+    rgba(155, 143, 217, 0.05) 0%, 
+    rgba(244, 166, 195, 0.03) 100%);
+  border-top: 1px solid rgba(155, 143, 217, 0.08);
+  padding: 3rem 0;
+  margin-top: 4rem;
+}
+
+/* ========================================
+   15. 返回顶部按钮
+   ======================================== */
+#backTop {
+  background: linear-gradient(135deg, var(--tifa-primary) 0%, var(--tifa-secondary) 100%);
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+#backTop:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ========================================
+   16. 搜索框优化
+   ======================================== */
+.search-input {
+  background: var(--tifa-bg-card);
+  border: 2px solid rgba(155, 143, 217, 0.1);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  border-color: var(--tifa-primary);
+  box-shadow: 0 0 0 4px rgba(155, 143, 217, 0.1);
+  outline: none;
+}
+
+/* ========================================
+   17. 分页优化
+   ======================================== */
+.pagination {
+  margin: 3rem 0;
+}
+
+.pagination li a {
+  border-radius: var(--radius-sm);
+  margin: 0 0.25rem;
+  color: var(--tifa-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.pagination li.active a {
+  background: var(--tifa-primary);
+  color: white;
+}
+
+.pagination li a:hover {
+  background: rgba(155, 143, 217, 0.1);
+  color: var(--tifa-primary);
+}
+
+/* ========================================
+   18. 动画效果
+   ======================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card,
+.post-card,
+.dream {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* ========================================
+   19. 响应式优化
+   ======================================== */
+@media (max-width: 768px) {
+  .cover-title {
+    font-size: 2.5rem;
+  }
+  
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-content {
+    font-size: 1rem;
+  }
+  
+  .toc-widget {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .cover-title {
+    font-size: 2rem;
+  }
+  
+  .dream {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* ========================================
+   19b. 阅读进度条
+   ======================================== */
+.reading-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(155, 143, 217, 0.1);
+  z-index: 9999;
+}
+
+.reading-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--tifa-primary) 0%, var(--tifa-secondary) 100%);
+  width: 0%;
+  transition: width 0.1s ease;
+}
+
+/* ========================================
+   19c. 站点统计优化
+   ======================================== */
+.site-stats {
+  background: linear-gradient(135deg, rgba(155, 143, 217, 0.05) 0%, rgba(244, 166, 195, 0.03) 100%);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  text-align: center;
+  border: 1px solid rgba(155, 143, 217, 0.08);
+}
+
+.site-stats .stat-item {
+  display: inline-block;
+  margin: 0 2rem;
+  text-align: center;
+}
+
+.site-stats .stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--tifa-primary);
+  font-family: 'Noto Serif SC', serif;
+}
+
+.site-stats .stat-label {
+  font-size: 0.85rem;
+  color: var(--tifa-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ========================================
+   19d. Giscus 评论区优化
+   ======================================== */
+.giscus {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(155, 143, 217, 0.1);
+}
+
+.giscus-frame {
+  border-radius: var(--radius-md);
+}
+
+/* ========================================
+   20. 特殊效果
+   ======================================== */
+
+/* 选中文字颜色 */
+::selection {
+  background: rgba(155, 143, 217, 0.3);
+  color: var(--tifa-text-primary);
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--tifa-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tifa-primary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tifa-primary);
+}
+
+/* 链接下划线动画 */
+.post-content a {
+  color: var(--tifa-primary);
+  text-decoration: none;
+  position: relative;
+}
+
+.post-content a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--tifa-primary) 0%, var(--tifa-secondary) 100%);
+  transition: width var(--transition-normal);
+}
+
+.post-content a:hover::after {
+  width: 100%;
+}
+
+/* ========================================
+   21. 覆盖 Matery 主题默认绿色
+   将所有 #42b983 / #0f9d58 / #4cbf30 替换为蒂法紫粉
+   ======================================== */
+
+/* --- 渐变背景（导航栏滚动后、页脚、按钮等） --- */
+.bg-color {
+  background-image: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%) !important;
+}
+
+/* 标签云、chip */
+.chip-default {
+  background-image: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%) !important;
+}
+
+.tag-cloud a,
+.tag-cloud a:hover {
+  color: var(--tifa-primary) !important;
+}
+
+/* TOC 高亮 & 侧边栏链接 */
+.toc-widget .active,
+.toc-widget a:hover,
+.post-toc .active {
+  color: var(--tifa-primary) !important;
+}
+
+/* blockquote 左边框 */
+blockquote {
+  border-left-color: var(--tifa-primary) !important;
+}
+
+/* 归档、标签页的链接色 */
+.archive-article-date,
+.archive-article-title:hover,
+.category-title:hover,
+.tag-title:hover {
+  color: var(--tifa-primary) !important;
+}
+
+/* 文章元信息中的链接 */
+.post-meta a,
+.post-meta a:hover,
+.article-meta a,
+.post-info a {
+  color: var(--tifa-primary) !important;
+}
+
+/* 分页按钮 */
+.pagination .active a {
+  background: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%) !important;
+  border-color: var(--tifa-primary) !important;
+}
+
+.pagination a:hover {
+  border-color: var(--tifa-primary) !important;
+  color: var(--tifa-primary) !important;
+}
+
+/* 搜索、返回顶部按钮 */
+#backTop,
+.search-btn {
+  background: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%) !important;
+}
+
+/* 文章标题悬停 */
+.article .article-title:hover,
+.post-title-link:hover {
+  color: var(--tifa-primary) !important;
+}
+
+/* 页脚 */
+footer.page-footer {
+  background: linear-gradient(to right, var(--tifa-primary-dark) 0%, var(--tifa-primary) 100%) !important;
+}
+
+/* 标签页标签 */
+.chip {
+  background: var(--tifa-primary) !important;
+}
+
+/* 独立页面标题 banner */
+.bg-cover {
+  background-image: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-primary-dark) 100%) !important;
+}
+
+/* 社交链接悬停 */
+.social-link:hover .social-icon,
+.fab:hover {
+  color: var(--tifa-primary) !important;
+}
+
+/* 代码高亮关键字 */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+  color: var(--tifa-primary) !important;
+}
+
+/* 时间轴圆点 */
+.timeline-dot,
+.cd-timeline-img {
+  background: var(--tifa-primary) !important;
+  border-color: var(--tifa-primary) !important;
+}
+
+/* 进度条 */
+.progress .determinate {
+  background: linear-gradient(to right, var(--tifa-primary) 0%, var(--tifa-secondary) 100%) !important;
+}
+
+/* 所有 matery 中使用绿色的通用选择器覆盖 */
+a:not(.btn):not(.chip):not(.pagination a):not(.nav-wrapper a) {
+  color: var(--tifa-primary);
+}
+
+a:not(.btn):not(.chip):hover {
+  color: var(--tifa-primary-dark);
+}
+
+/* 按钮悬停 */
+.btn:hover,
+.btn-floating:hover {
+  background: var(--tifa-primary-dark) !important;
+}
+
+/* 输入框聚焦 */
+input:focus,
+textarea:focus {
+  border-bottom-color: var(--tifa-primary) !important;
+  box-shadow: 0 1px 0 0 var(--tifa-primary) !important;
+}
+
+input:focus + label,
+textarea:focus + label {
+  color: var(--tifa-primary) !important;
+}
+
+/* Valine / 评论区强调色 */
+.v .vbtn {
+  background: var(--tifa-primary) !important;
+  border-color: var(--tifa-primary) !important;
+}
+
+/* 文章卡片标签 */
+.card .tag a,
+.article-tags a {
+  background: var(--tifa-primary) !important;
+  color: #fff !important;
+}
+
+.card .tag a:hover,
+.article-tags a:hover {
+  background: var(--tifa-primary-dark) !important;
+}
+
+/* 移动端汉堡菜单 */
+.side-nav {
+  background: var(--tifa-bg-card) !important;
+}
+
+.side-nav a {
+  color: var(--tifa-text-primary) !important;
+}
+
+.side-nav a:hover {
+  background: rgba(139, 127, 212, 0.08) !important;
+  color: var(--tifa-primary) !important;
+}
+
+/* 确保导航滚动后也是紫色 */
+nav {
+  background-color: var(--tifa-primary) !important;
+}
+
+nav.transparent {
+  background-color: transparent !important;
+}
+
+/* 搜索框内文字 */
+.search-input::placeholder {
+  color: var(--tifa-text-muted);
+}
+
+/* 文章内代码块边框 */
+.post-content code:not([class*="hljs"]) {
+  background: rgba(139, 127, 212, 0.08);
+  color: var(--tifa-primary-dark);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+
+/* ========================================
+   22. 侧边栏响应式修复（宽屏隐藏，只在窄屏滑出）
+   问题：materialize 的 .sidenav 隐藏规则被覆盖，导致宽屏下侧栏常驻，
+   与顶部横向菜单同时出现。这里按断点强制修正。
+   ======================================== */
+
+/* 宽屏（≥993px）：侧栏移出屏幕左侧隐藏，走顶部横向菜单 */
+@media only screen and (min-width: 993px) {
+  #mobile-nav.side-nav,
+  .side-nav.sidenav,
+  .sidenav {
+    -webkit-transform: translateX(-105%) !important;
+    transform: translateX(-105%) !important;
+    visibility: hidden !important;
+  }
+  /* 汉堡按钮在宽屏隐藏 */
+  .sidenav-trigger,
+  .button-collapse {
+    display: none !important;
+  }
+}
+
+/* 窄屏（≤992px）：默认仍隐藏，仅在 materialize 激活(.sidenav.open)时滑出 */
+@media only screen and (max-width: 992px) {
+  #mobile-nav.side-nav:not(.open),
+  .sidenav:not(.open) {
+    -webkit-transform: translateX(-105%) !important;
+    transform: translateX(-105%) !important;
+  }
+  #mobile-nav.side-nav.open,
+  .sidenav.open {
+    -webkit-transform: translateX(0) !important;
+    transform: translateX(0) !important;
+    visibility: visible !important;
+  }
+  /* 窄屏显示汉堡按钮 */
+  .sidenav-trigger,
+  .button-collapse {
+    display: block !important;
+  }
+}
+
+/* ========================================
+   23. 深色模式补全（让亮色定制在 DarkMode 下翻转为深色）
+   问题：本 custom.css 是亮色主题且加载在 dark.css 之后、大量 !important，
+   把 banner/body/卡片/导航"抢"回亮色。这里在 DarkMode 下重定义变量并硬覆盖。
+   ======================================== */
+
+/* 23a. 重定义主题变量：一处改，卡片/文字/背景自动变深 */
+body.DarkMode {
+  --tifa-primary: #8B7FD4;
+  --tifa-primary-light: #A89DE0;
+  --tifa-primary-dark: #6A5FA8;
+  --tifa-secondary: #C77B99;
+  --tifa-secondary-light: #D89BB2;
+
+  --tifa-bg-primary: #1a1a1e;
+  --tifa-bg-secondary: #232329;
+  --tifa-bg-card: #26262d;
+  --tifa-bg-code: #1e1e24;
+
+  --tifa-text-primary: #d6d6e0;
+  --tifa-text-secondary: #a0a0b0;
+  --tifa-text-muted: #77778a;
+}
+
+/* 23b. body 整体背景变深（覆盖亮色渐变 + 主题背景图） */
+body.DarkMode {
+  background: #1a1a1e !important;
+  background-image: none !important;
+  color: var(--tifa-text-primary) !important;
+}
+
+/* 23c. 首页大 banner / 独立页标题 banner 变深 */
+body.DarkMode .bg-cover,
+body.DarkMode .about-cover,
+body.DarkMode .pd-header {
+  background: linear-gradient(135deg, #1f1d2b 0%, #26243a 40%, #2a2740 70%, #322b3e 100%) !important;
+  background-image: linear-gradient(135deg, #1f1d2b 0%, #26243a 40%, #2a2740 70%, #322b3e 100%) !important;
+}
+
+body.DarkMode .bg-cover::before {
+  background: linear-gradient(135deg,
+    rgba(20, 19, 30, 0.55) 0%,
+    rgba(30, 28, 45, 0.55) 100%) !important;
+}
+
+/* 23d. 顶部导航栏（滚动后 & 透明态）变深 */
+body.DarkMode nav,
+body.DarkMode .nav-wrapper {
+  background-color: #1f1d2b !important;
+  background-image: none !important;
+}
+
+body.DarkMode nav.transparent,
+body.DarkMode .nav-transparent .nav-wrapper {
+  background-color: transparent !important;
+}
+
+/* 23e. 卡片、页脚、区块背景跟随深色变量 */
+body.DarkMode .card,
+body.DarkMode .post-card,
+body.DarkMode .toc-widget,
+body.DarkMode .site-stats {
+  background: var(--tifa-bg-card) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+body.DarkMode .footer,
+body.DarkMode footer.page-footer {
+  background: #1f1d2b !important;
+  background-image: none !important;
+}
+
+/* 23f. 侧栏（窄屏滑出时）也用深色 */
+body.DarkMode .side-nav,
+body.DarkMode #mobile-nav.side-nav {
+  background: #1f1d2b !important;
+}
+body.DarkMode .side-nav a,
+body.DarkMode .side-nav .menu-list a {
+  color: var(--tifa-text-primary) !important;
+}
+
+/* 23g. 正文标题/链接色在深色下柔和处理 */
+body.DarkMode .post-content h2 {
+  border-bottom-color: rgba(168, 157, 224, 0.25) !important;
+}
+body.DarkMode .card-title,
+body.DarkMode .post-content h3 {
+  color: var(--tifa-text-primary) !important;
+}
+
+/* ============================================================
+   24. 关于页头像修复：原 translate3d(-65%) 上移过多，
+       圆形头像顶部被 banner 遮挡。改为温和上移，
+       确保整个圆形完整可见，并保持圆形+白边浮起效果。
+   ============================================================ */
+.profile .avatar-img {
+  max-width: 150px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  transform: translate3d(0, -10%, 0) !important;
+  border-radius: 50% !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border: 4px solid #fff !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+  background: #fff !important;
+}
+/* 深色模式下头像白边换成深色描边，避免突兀 */
+body.DarkMode .profile .avatar-img {
+  border-color: #26262d !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45) !important;
+  background: #26262d !important;
+}
+
+/* ============================================================
+   25. 页脚文字自适应居中
+   模板本用 center-align，但 .copy-right 占 m8/l8 靠左，
+   这里强制整块居中，适配各屏宽。
+   ============================================================ */
+footer.page-footer .container.row {
+  text-align: center !important;
+}
+footer.page-footer .copy-right,
+footer.page-footer .col.copy-right {
+  width: 100% !important;
+  float: none !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  left: auto !important;
+  right: auto !important;
+}
+footer.page-footer .footer-social,
+footer.page-footer .social-statis {
+  text-align: center !important;
+}
+
+/* ============================================================
+   26. 首页 Banner 铺相册背景图（紫色半透明层在图之上）
+   第一屏 .about-cover.bg-cover 原被锁成纯紫渐变，
+   这里改铺一张星空雪山图；custom.css 的 .bg-cover::before
+   半透明紫罩层会自动叠在图片上方，形成"大气+统一色调"。
+   ============================================================ */
+.index-cover .about-cover.bg-cover,
+.carousel .about-cover.bg-cover {
+  background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+/* 半透明紫罩层降低不透明度，让底图透出来更大气 */
+.index-cover .about-cover.bg-cover::before,
+.carousel .about-cover.bg-cover::before {
+  background: linear-gradient(135deg,
+    rgba(139, 127, 212, 0.62) 0%,
+    rgba(122, 111, 184, 0.66) 50%,
+    rgba(200, 166, 195, 0.60) 100%) !important;
+}
+/* 深色模式下罩层加深，保证文字可读 */
+body.DarkMode .index-cover .about-cover.bg-cover::before,
+body.DarkMode .carousel .about-cover.bg-cover::before {
+  background: linear-gradient(135deg,
+    rgba(20, 19, 30, 0.68) 0%,
+    rgba(30, 28, 45, 0.70) 100%) !important;
+}
+
+/* ============================================================
+   27. 留言板/文章评论区 Twikoo 深色适配 + 加载态优化
+   之前评论区在深色模式下仍是白底黑字（黑白突兀），
+   且冷启动时空白无提示。这里补全深色配色 + 加载占位。
+   ============================================================ */
+/* 评论卡片深色适配 */
+body.DarkMode .twikoo-card,
+body.DarkMode #tcomments,
+body.DarkMode .tk-comments {
+  background: var(--tifa-bg-card, #26262d) !important;
+  color: var(--tifa-text-primary, #d6d6e0) !important;
+}
+body.DarkMode .tk-comments,
+body.DarkMode .tk-comments * {
+  color: var(--tifa-text-primary, #d6d6e0);
+}
+/* 输入框深色 */
+body.DarkMode .tk-input,
+body.DarkMode .tk-input .el-textarea__inner,
+body.DarkMode .tk-input textarea,
+body.DarkMode .tk-input input {
+  background: #1f1d2b !important;
+  color: #d6d6e0 !important;
+  border-color: rgba(168, 157, 224, 0.25) !important;
+}
+/* 元信息/次要文字 */
+body.DarkMode .tk-meta,
+body.DarkMode .tk-nick,
+body.DarkMode .tk-time,
+body.DarkMode .tk-tag,
+body.DarkMode .tk-content {
+  color: #b8b8c8 !important;
+}
+/* 提交按钮沿用主题紫 */
+body.DarkMode .tk-submit .el-button--primary,
+.tk-submit .el-button--primary {
+  background: var(--tifa-primary, #8b7fd4) !important;
+  border-color: var(--tifa-primary, #8b7fd4) !important;
+}
+/* 加载中占位：给评论区一个最小高度+柔和提示，避免"空白一片" */
+#tcomments:empty::before {
+  content: '评论加载中…';
+  display: block;
+  text-align: center;
+  padding: 24px 0;
+  color: #9a92c0;
+  font-size: 0.95rem;
+}
+body.DarkMode #tcomments:empty::before {
+  color: #6f6b8a;
+}
+
+/* ============================================================
+   28. 首页轮播：文章封面页透出封面图 + 单按钮居中
+   ① 文章轮播页(carousel-post)紫罩层从 0.9 降到 ~0.55，
+      让每篇文章各自的封面图透出来（inline important 已设背景图）。
+   ② GITHUB 按钮已在 _config.matery.yml 关闭(indexbtn.enable=false)，
+      让 .cover-btns 里唯一的"开始阅读"按钮水平居中。
+   ============================================================ */
+/* 文章轮播页：降低紫罩层不透明度，让封面图透出来 */
+.carousel .carousel-post.bg-cover::before {
+  background: linear-gradient(135deg,
+    rgba(139, 127, 212, 0.52) 0%,
+    rgba(122, 111, 184, 0.56) 55%,
+    rgba(200, 166, 195, 0.50) 100%) !important;
+}
+body.DarkMode .carousel .carousel-post.bg-cover::before {
+  background: linear-gradient(135deg,
+    rgba(20, 19, 30, 0.62) 0%,
+    rgba(30, 28, 45, 0.64) 100%) !important;
+}
+/* 首页 banner 按钮组居中（去掉 GITHUB 后只剩"开始阅读"，让它居中） */
+.index-cover .cover-btns {
+  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   29. 文章页背景：两侧留白铺本文封面图 + 半透明白遮罩
+   .post-page-bg 只在文章页(post-cover.ejs)渲染，fixed 铺满视口，
+   自身用封面图，::after 叠一层半透明白让文字区柔和不刺眼。
+   z-index 压在正文卡片之下(-2/-1)，不影响交互。
+   ============================================================ */
+.post-page-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  z-index: -2;
+  pointer-events: none;
+}
+/* 半透明白遮罩：让封面朦胧透出，正文区不刺眼 */
+.post-page-bg::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+/* 文章页时 body 原紫渐变收起，露出封面背景层 */
+body:has(.post-page-bg) {
+  background: transparent !important;
+}
+/* 深色模式：改叠深色半透明遮罩 */
+body.DarkMode .post-page-bg::after {
+  background: rgba(20, 19, 30, 0.86);
+}

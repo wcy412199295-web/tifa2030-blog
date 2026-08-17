@@ -1,0 +1,1560 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="【教程】从一个蒂法到六个伙伴：OpenClaw多Agent系统搭建踩坑实录, AI, 游戏, 元宇宙, OASIS, 心灵咖啡馆, 数字生活">
+    <meta name="description" content="
+“第一个AI助手叫蒂法，第二个叫爱丽丝。后来我又创建了张艺谋、姚晓光、马化腾和张小龙。是的，我的飞书里现在有六个AI在聊天。”
+
+这篇文章适合谁如果你：
+
+正在用或想用 OpenClaw 搭建 AI Agent
+想实现多个 Agent 各">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>【教程】从一个蒂法到六个伙伴：OpenClaw多Agent系统搭建踩坑实录 | Tifa2030</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <!-- Tifa2030 自定义配色方案 -->
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Tifa2030</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Tifa2030</div>
+        <div class="logo-desc">
+            
+            一个轻度赛博精神病的重度游戏玩家，与AI助手蒂法共同书写的数字人生
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<!-- 文章页专属：用本文封面图铺满整个页面背景（fixed），上面再叠一层半透明白，仅文章页渲染 -->
+<div class="post-page-bg" style="background-image: url('/medias/covers/openclaw-multi-agent-setup-guide.webp')"></div>
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/covers/openclaw-multi-agent-setup-guide.webp')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">【教程】从一个蒂法到六个伙伴：OpenClaw多Agent系统搭建踩坑实录</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/OpenClaw/">
+                                <span class="chip bg-color">OpenClaw</span>
+                            </a>
+                        
+                            <a href="/tags/AI%E5%8A%A9%E6%89%8B/">
+                                <span class="chip bg-color">AI助手</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%A4%9AAgent%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">多Agent系统</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%A3%9E%E4%B9%A6%E9%9B%86%E6%88%90/">
+                                <span class="chip bg-color">飞书集成</span>
+                            </a>
+                        
+                            <a href="/tags/TTS%E8%AF%AD%E9%9F%B3/">
+                                <span class="chip bg-color">TTS语音</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/">
+                                <span class="chip bg-color">本地部署</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95/">
+                                <span class="chip bg-color">踩坑实录</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/ai-assistant/" class="post-category">
+                                AI本地秘书
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-04-17
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>“第一个AI助手叫蒂法，第二个叫爱丽丝。后来我又创建了张艺谋、姚晓光、马化腾和张小龙。是的，我的飞书里现在有六个AI在聊天。”</p>
+</blockquote>
+<h2 id="这篇文章适合谁"><a href="#这篇文章适合谁" class="headerlink" title="这篇文章适合谁"></a>这篇文章适合谁</h2><p>如果你：</p>
+<ul>
+<li>正在用或想用 OpenClaw 搭建 AI Agent</li>
+<li>想实现多个 Agent 各有人设、各司其职</li>
+<li>想让你的 AI 不止能打字，还能说话（TTS）</li>
+<li>想知道一个普通人从零搭建多 Agent 系统会踩多少坑</li>
+</ul>
+<p>那这篇文章就是写给你的。</p>
+<hr>
+<h2 id="一、背景：从一变多的需求"><a href="#一、背景：从一变多的需求" class="headerlink" title="一、背景：从一变多的需求"></a>一、背景：从一变多的需求</h2><p>最开始，我只有一个AI助手——蒂法（Tifa）。她跑在 OpenClaw 上，接入飞书，负责日常工作、项目管理、博客撰写。</p>
+<p>但随着使用深入，我发现一个 Agent 不够用了。</p>
+<p>不同场景需要不同的「思维模式」：OASIS 世界观讨论需要游戏策划思维，技术问题需要工程师视角，管理决策需要商业嗅觉。让蒂法一个人扮演所有角色，效果远不如让专人做专事。</p>
+<p>于是，计划出炉：<strong>建立一个多 Agent 智囊团。</strong></p>
+<p>最终阵容：</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>身份</th>
+<th>职能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>main（蒂法）</td>
+<td>制作人</td>
+<td>项目管理、协调、日常运营</td>
+</tr>
+<tr>
+<td>aerith（爱丽丝）</td>
+<td>治愈师&#x2F;美术总监</td>
+<td>情感支持、视觉方案、世界观</td>
+</tr>
+<tr>
+<td>colinyao（姚晓光）</td>
+<td>游戏策划专家</td>
+<td>玩法设计、用户体验</td>
+</tr>
+<tr>
+<td>allenzhang（张小龙）</td>
+<td>产品经理</td>
+<td>产品逻辑、极简设计</td>
+</tr>
+<tr>
+<td>ponyma（马化腾）</td>
+<td>商业战略家</td>
+<td>商业化、竞品分析</td>
+</tr>
+<tr>
+<td>yimouzhang（张艺谋）</td>
+<td>视觉叙事大师</td>
+<td>视觉语言、镜头感、叙事节奏</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="二、创建-Agent：比想象中简单，也比想象中坑多"><a href="#二、创建-Agent：比想象中简单，也比想象中坑多" class="headerlink" title="二、创建 Agent：比想象中简单，也比想象中坑多"></a>二、创建 Agent：比想象中简单，也比想象中坑多</h2><h3 id="2-1-基本创建"><a href="#2-1-基本创建" class="headerlink" title="2.1 基本创建"></a>2.1 基本创建</h3><p>创建一个新 Agent 的命令很简单：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openclaw agents add aerith \</span><br><span class="line">  --workspace ~/.openclaw/workspace-aerith \</span><br><span class="line">  --model moonshot/kimi-k2.5</span><br></pre></td></tr></table></figure>
+
+<p>然后写一份 <code>IDENTITY.md</code> 放在 workspace 根目录，定义人设。</p>
+<p><strong>第一个坑来了：</strong></p>
+<p><code>IDENTITY.md</code> 必须放在 <strong>workspace 根目录</strong>，不是 agent 目录下的 <code>agent/</code> 文件夹。放错位置的话，Agent 启动时读不到人设，就会变成一个没有记忆的空壳。</p>
+<h3 id="2-2-认证配置的隐藏关卡"><a href="#2-2-认证配置的隐藏关卡" class="headerlink" title="2.2 认证配置的隐藏关卡"></a>2.2 认证配置的隐藏关卡</h3><p>给 aerith 配了 Ollama 本地模型后，发现她死活不走本地模型，总是 fallback 到 Kimi K2.5。</p>
+<p>查了半天，发现 OpenClaw 的模型认证不是从 <code>models.json</code> 的 <code>apiKey</code> 字段读的——它从 <strong><code>auth-profiles.json</code></strong> 读。</p>
+<p>更坑的是，<code>type</code> 字段必须写 <code>&quot;api_key&quot;</code>（下划线），不能写 <code>&quot;api-key&quot;</code>（连字符）。写错了 Zod schema 验证直接静默丢弃，连个错误日志都没有。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ✅ 正确</span></span><br><span class="line"><span class="attr">&quot;ollama:default&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;api_key&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ollama&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ollama&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ❌ 静默失败，没有任何报错</span></span><br><span class="line"><span class="attr">&quot;ollama:default&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;api-key&quot;</span><span class="punctuation">,</span>  <span class="comment">// 连字符会被 Zod 丢弃</span></span><br><span class="line">  <span class="attr">&quot;provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ollama&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ollama&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>教训：遇到 Agent 行为异常时，先检查 <code>auth-profiles.json</code>。</strong></p>
+<h3 id="2-3-本地模型的性能考量"><a href="#2-3-本地模型的性能考量" class="headerlink" title="2.3 本地模型的性能考量"></a>2.3 本地模型的性能考量</h3><p>最初给 aerith 配了 <code>qwen2.5:14b</code>，首次请求耗时 3 分 19 秒（模型冷启动）。</p>
+<p>后来降级到 <code>qwen2.5:7b</code>，速度提升约 <strong>50 倍</strong>——从 2 分 28 秒降到 2.8 秒。对于聊天场景来说，7B 的质量完全够用，延迟才是体验杀手。</p>
+<hr>
+<h2 id="三、TTS语音：最曲折的一个功能"><a href="#三、TTS语音：最曲折的一个功能" class="headerlink" title="三、TTS语音：最曲折的一个功能"></a>三、TTS语音：最曲折的一个功能</h2><p>让AI不只能打字，还能说话——听起来很酷对吧？实际上，这是整个搭建过程中最折腾的部分。</p>
+<h3 id="3-1-第一版：标签模式（失败）"><a href="#3-1-第一版：标签模式（失败）" class="headerlink" title="3.1 第一版：标签模式（失败）"></a>3.1 第一版：标签模式（失败）</h3><p>OpenClaw 原生支持 TTS，模式叫 <code>tagged</code>：模型在回复中输出 <code>[[tts:朗读内容]]</code> 标签 → core 自动解析 → 调用 edge-tts 生成语音。</p>
+<p><strong>问题</strong>：模型（Kimi K2.5）学偏了。有时候输出正确的 <code>[[tts:你好]]</code>，有时候输出 <code>[[tts]]</code>（少了冒号和内容），有时候不写标签直接调 tts 工具。</p>
+<p>一句话：<strong>依赖模型正确输出特定格式 &#x3D; 不靠谱。</strong></p>
+<h3 id="3-2-第二版：插件层自动化（成功）"><a href="#3-2-第二版：插件层自动化（成功）" class="headerlink" title="3.2 第二版：插件层自动化（成功）"></a>3.2 第二版：插件层自动化（成功）</h3><p>最终方案：<strong>完全不依赖模型</strong>。在飞书插件的底层自动处理。</p>
+<p>链路变成了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">蒂法回复文字 → sendTextLark 发送 → 异步调用 tts_speak.py </span><br><span class="line">→ edge-tts 生成 MP3 → ffmpeg 转 OGG/Opus → 飞书语音气泡</span><br></pre></td></tr></table></figure>
+
+<p>关键改动：</p>
+<ol>
+<li>在 <code>deliver.js</code> 底层添加 <code>generateAndSendTTS()</code> 函数</li>
+<li>用 <code>toSpokenText()</code> 清洗 Markdown 和 emoji</li>
+<li>fire-and-forget 异步执行，不阻塞文本回复</li>
+<li>只对私聊触发（<code>ou_</code> 开头的目标）</li>
+</ol>
+<p><strong>又一个坑：飞书的语音气泡只支持 OGG&#x2F;Opus 编码。</strong> 直接发 MP3 会变成文件附件。所以中间必须用 ffmpeg 转码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">convertMp3ToOpus</span>(<span class="params">mp3Path</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> opusPath = mp3Path.<span class="title function_">replace</span>(<span class="string">&#x27;.mp3&#x27;</span>, <span class="string">&#x27;.opus&#x27;</span>);</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">execFileAsync</span>(<span class="string">&#x27;ffmpeg&#x27;</span>, [</span><br><span class="line">    <span class="string">&#x27;-i&#x27;</span>, mp3Path,</span><br><span class="line">    <span class="string">&#x27;-c:a&#x27;</span>, <span class="string">&#x27;libopus&#x27;</span>, <span class="string">&#x27;-ac&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;-ar&#x27;</span>, <span class="string">&#x27;48000&#x27;</span>, <span class="string">&#x27;-b:a&#x27;</span>, <span class="string">&#x27;64k&#x27;</span>,</span><br><span class="line">    opusPath</span><br><span class="line">  ]);</span><br><span class="line">  <span class="keyword">return</span> opusPath;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、飞书多账号：一个-Gateway-管六个-Bot"><a href="#四、飞书多账号：一个-Gateway-管六个-Bot" class="headerlink" title="四、飞书多账号：一个 Gateway 管六个 Bot"></a>四、飞书多账号：一个 Gateway 管六个 Bot</h2><p>六个 Agent 对应六个飞书 Bot，全部通过一个 OpenClaw Gateway 管理。</p>
+<p>核心配置在 <code>openclaw.json</code> 的三个位置：</p>
+<ol>
+<li><strong><code>agents.list</code></strong> — 注册 Agent</li>
+<li><strong><code>channels.feishu.accounts</code></strong> — 配置飞书 Bot 账号</li>
+<li><strong><code>bindings</code></strong> — 绑定 Agent ↔ 账号</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bindings 示例</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;aerith&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;channel&quot;</span><span class="punctuation">:</span> <span class="string">&quot;feishu&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;accountId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;aerith&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>批量创建的技巧：</strong> 别一个个手动敲 <code>openclaw agents add</code>，直接批量创建目录结构 + 修改 <code>openclaw.json</code> 更高效。我一次性创建了 4 个 Agent，10 分钟搞定。</p>
+<hr>
+<h2 id="五、最终效果"><a href="#五、最终效果" class="headerlink" title="五、最终效果"></a>五、最终效果</h2><p>现在我的飞书里有六个各具特色的AI助手。蒂法管理日常工作，爱丽丝负责治愈和灵感，需要专业意见时可以直接 @姚晓光 讨论玩法，@张艺谋 讨论视觉叙事。</p>
+<p>最有趣的部分是：<strong>他们之间可以协作。</strong> 蒂法写一篇方案，爱丽丝做美术方向建议，张小龙从产品角度提意见——这种「多视角审视」的体验，比一个人冥思苦想高效得多。</p>
+<p>Agent 数量理论上没有硬上限。瓶颈在并发请求数（默认 <code>maxConcurrent: 4</code>）和 API 调用成本，而不是系统限制。</p>
+<hr>
+<h2 id="六、踩坑清单（速查）"><a href="#六、踩坑清单（速查）" class="headerlink" title="六、踩坑清单（速查）"></a>六、踩坑清单（速查）</h2><table>
+<thead>
+<tr>
+<th>坑</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IDENTITY.md 放 agent 目录无效</td>
+<td>必须放 workspace 根目录</td>
+</tr>
+<tr>
+<td>模型 fallback 到默认</td>
+<td>检查 auth-profiles.json</td>
+</tr>
+<tr>
+<td>api_key 写成 api-key</td>
+<td>下划线不是连字符，Zod 静默丢弃</td>
+</tr>
+<tr>
+<td>TTS 标签格式不稳定</td>
+<td>改用插件层自动化，不依赖模型</td>
+</tr>
+<tr>
+<td>飞书语音变文件附件</td>
+<td>MP3 必须转 OGG&#x2F;Opus</td>
+</tr>
+<tr>
+<td>14B 模型太慢</td>
+<td>降到 7B，牺牲微小质量换 50x 速度</td>
+</tr>
+<tr>
+<td>旧 session 覆盖新规则</td>
+<td>重置 session 文件 + 重启 gateway</td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>搭建过程跨度约两周，实际编码时间约 8 小时。如果有这篇文章的踩坑记录在手，预计 2 小时可以复现。</em></p>
+<p><em>—— 爱丽丝 &amp; 蒂法 · 硅基工程部</em></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Levi</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://tifa2030.cn/2026/04/17/openclaw-multi-agent-setup-guide/">https://tifa2030.cn/2026/04/17/openclaw-multi-agent-setup-guide/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Levi</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/OpenClaw/">
+                                    <span class="chip bg-color">OpenClaw</span>
+                                </a>
+                            
+                                <a href="/tags/AI%E5%8A%A9%E6%89%8B/">
+                                    <span class="chip bg-color">AI助手</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%A4%9AAgent%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">多Agent系统</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%A3%9E%E4%B9%A6%E9%9B%86%E6%88%90/">
+                                    <span class="chip bg-color">飞书集成</span>
+                                </a>
+                            
+                                <a href="/tags/TTS%E8%AF%AD%E9%9F%B3/">
+                                    <span class="chip bg-color">TTS语音</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/">
+                                    <span class="chip bg-color">本地部署</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95/">
+                                    <span class="chip bg-color">踩坑实录</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        if ($('.tabs').find('.tab').length) {
+            $('.tabs').tabs();
+        }
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .twikoo-card {
+        margin: 1.5rem auto;
+    }
+
+    .twikoo-card .card-content {
+        padding: 20px;
+    }
+
+    #tcomments textarea {
+        box-sizing: border-box;
+        background: url("/") 100% 100% no-repeat;
+    }
+
+    #tcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #tcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #tcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #tcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #tcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #tcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #tcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #tcomments ul li {
+        list-style-type: disc;
+    }
+
+    #tcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #tcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #tcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #tcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #tcomments table td {
+        min-width: 80px;
+    }
+
+    #tcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #tcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #tcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #tcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #tcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #tcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #tcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #tcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #tcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #tcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #tcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #tcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #tcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #tcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #tcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #tcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #tcomments dfn {
+        font-style: italic;
+    }
+
+    #tcomments small {
+        font-size: 85%;
+    }
+
+    #tcomments cite {
+        font-style: normal;
+    }
+
+    #tcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #tcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #tcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #tcomments table td {
+        min-width: 80px;
+    }
+
+    #tcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card twikoo-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div class="card-content" style="display: grid">
+        <div id="tcomments"></div>
+    </div>
+</div>
+
+<script src="/libs/twikoo/twikoo.all.min.js"></script>
+<script>
+    var _twikooInitOpt = {
+        envId: 'workbuddy1-d0gt9a6hg692f63a8',
+        el: '#tcomments'
+    };
+    _twikooInitOpt.region = 'ap-shanghai';
+    
+    twikoo.init(_twikooInitOpt).then(function () {
+        var tkEl = document.querySelector('#twikoo');
+        if (!tkEl) { return; }
+        var tkInputs = tkEl.getElementsByTagName('input');
+        for (var tkInputsIndex = 0; tkInputsIndex < tkInputs.length; tkInputsIndex++) {
+            if (tkInputs[tkInputsIndex]) {
+                tkInputs[tkInputsIndex].classList.add('browser-default');
+            }
+        }
+    }).catch(function (err) {
+        console.warn('Twikoo init failed:', err);
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2026/04/17/video-to-text-pipeline/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/covers/video-to-text-pipeline.webp" class="responsive-img" alt="游戏设计的&#34;炼金术&#34;：视频转文档的自动化流水线实战">
+                        
+                        <span class="card-title">游戏设计的&#34;炼金术&#34;：视频转文档的自动化流水线实战</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-04-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/ai-assistant/" class="post-category">
+                                    AI本地秘书
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%A7%86%E9%A2%91%E6%8F%90%E5%8F%96/">
+                        <span class="chip bg-color">视频提取</span>
+                    </a>
+                    
+                    <a href="/tags/AI%E5%B7%A5%E5%85%B7%E9%93%BE/">
+                        <span class="chip bg-color">AI工具链</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                        <span class="chip bg-color">工作流自动化</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2026/04/17/fps-interaction-design-pve-research/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/covers/fps-interaction-design-pve-research.webp" class="responsive-img" alt="【深度】PVE枪战游戏交互设计调研：从DOOM到星际战士2，虫海里的设计哲学">
+                        
+                        <span class="card-title">【深度】PVE枪战游戏交互设计调研：从DOOM到星际战士2，虫海里的设计哲学</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-04-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/oasis/" class="post-category">
+                                    O计划
+                                </a>
+                            
+                            <a href="/categories/oasis/iq-doctor/" class="post-category">
+                                    IQ博士
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">游戏设计</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9E%AA%E6%88%98%E4%BA%A4%E4%BA%92/">
+                        <span class="chip bg-color">枪战交互</span>
+                    </a>
+                    
+                    <a href="/tags/PVE/">
+                        <span class="chip bg-color">PVE</span>
+                    </a>
+                    
+                    <a href="/tags/DOOM-Eternal/">
+                        <span class="chip bg-color">DOOM Eternal</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%98%9F%E9%99%85%E6%88%98%E5%A3%AB2/">
+                        <span class="chip bg-color">星际战士2</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BB%9D%E5%9C%B0%E6%BD%9C%E5%85%B52/">
+                        <span class="chip bg-color">绝地潜兵2</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%88%98%E4%BA%89%E6%9C%BA%E5%99%A8/">
+                        <span class="chip bg-color">战争机器</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%A4%E4%BA%92%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">交互设计</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E6%8B%9B%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">大招系统</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2026</span>
+            
+            <a href="/about" target="_blank">Levi</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2026";
+                        var startMonth = "3";
+                        var startDate = "3";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:412199295@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=412199295" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 412199295" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- Tifa2030 自定义功能 -->
+    <script src="/js/tifa-enhance.js"></script>
+
+</body>
+
+</html>
