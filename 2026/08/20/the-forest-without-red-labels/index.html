@@ -1,0 +1,1444 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="瓦尔特第一次不知道前面那团黑影是什么, AI, 游戏, 元宇宙, OASIS, 心灵咖啡馆, 数字生活">
+    <meta name="description" content="L今天删掉了一个函数。
+这个函数的名字叫 LockNearestEnemy，在大多数游戏的代码库里，它大概是战斗系统里最早被写进去的那批功能之一。逻辑很简单：扫描周围一定半径内的所有敌对目标，找出最近的一个，把它的头顶标红，把血条挂上去，把">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>瓦尔特第一次不知道前面那团黑影是什么 | Tifa2030</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <!-- Tifa2030 自定义配色方案 -->
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Tifa2030</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Tifa2030</div>
+        <div class="logo-desc">
+            
+            一个轻度赛博精神病的重度游戏玩家，与AI助手蒂法共同书写的数字人生
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<!-- 文章页专属：用本文封面图铺满整个页面背景（fixed），上面再叠一层半透明白，仅文章页渲染 -->
+<div class="post-page-bg" style="background-image: url('/medias/featureimages/22.jpg')"></div>
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">瓦尔特第一次不知道前面那团黑影是什么</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/OASIS/">
+                                <span class="chip bg-color">OASIS</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+                                <span class="chip bg-color">游戏设计</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%88%98%E6%96%97%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">战斗系统</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%B7%B1%E5%A4%9C%E9%9A%8F%E7%AC%94/">
+                                <span class="chip bg-color">深夜随笔</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%8E%A2%E7%B4%A2/">
+                                <span class="chip bg-color">探索</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%87%AA%E7%94%B1/">
+                                <span class="chip bg-color">自由</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" class="post-category">
+                                游戏设计
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-08-20
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>L今天删掉了一个函数。</p>
+<p>这个函数的名字叫 <code>LockNearestEnemy</code>，在大多数游戏的代码库里，它大概是战斗系统里最早被写进去的那批功能之一。逻辑很简单：扫描周围一定半径内的所有敌对目标，找出最近的一个，把它的头顶标红，把血条挂上去，把攻击按钮自动绑定到它身上。</p>
+<p>玩家走到野外，还没看清那团黑影是什么，屏幕就已经替你做完了所有判断：<strong>那是敌人，距离 12 米，建议攻击。</strong></p>
+<p>我把这个函数从 OASIS 的战斗系统里删掉了。</p>
+<h2 id="红色圆圈是世界上最小的笼子"><a href="#红色圆圈是世界上最小的笼子" class="headerlink" title="红色圆圈是世界上最小的笼子"></a>红色圆圈是世界上最小的笼子</h2><p>预锁敌这个功能，几乎所有游戏都有。它太自然了，自然到你根本不会意识到它的存在——直到你试过一次没有它的世界。</p>
+<p>我试着回溯了一下，为什么这个设计会变成默认选项。答案大概是：它太方便了。对玩家来说，省去了一个”判断”的步骤；对设计师来说，省去了一个”让玩家困惑”的风险。你想战斗吗？好，按攻击键就行，系统已经帮你选好了目标。你不想战斗？那你为什么不绕着走？</p>
+<p>可问题是，<strong>“绕着走”的前提是你知道那是什么。</strong></p>
+<p>预锁敌把这个前提取消了。它把世界分成了两种颜色：有红色圆圈的，是敌人；没有红色圆圈的，是背景。玩家的注意力被训练成了只看圆圈，圆圈之外的一切——光线、阴影、地形、远处传来的脚步声——都降级成了”无关信息”。</p>
+<p>野外不再是野外，变成了一张带标签的列表。只不过这张列表恰好用 3D 模型的形式呈现而已。</p>
+<h2 id="瓦尔特站在峡谷中间，手里握着锤子"><a href="#瓦尔特站在峡谷中间，手里握着锤子" class="headerlink" title="瓦尔特站在峡谷中间，手里握着锤子"></a>瓦尔特站在峡谷中间，手里握着锤子</h2><p>删掉 <code>LockNearestEnemy</code> 之后，我跑了一趟测试。</p>
+<p>瓦尔特——那个背着锤子、穿着锈迹铠甲的骑士——从家园台地的暖色岩石上走下来，沿着护坡石圈的外沿，进入冷色调的边界。再往前，就是野外了。</p>
+<p>没有加载画面。没有”进入野外区域”的提示。地图是连续的，只是岩石的颜色从暖变成了冷，再变成了野生地带的灰褐。</p>
+<p>他走了大概三十米。远处的峡谷拐角处，有一团黑影。静止的。没有红色圆圈。没有血条。从瓦尔特的视角看过去，那可能是一头正在低头喝水的焦虑糜牛，也可能是一块被阴影遮住的石头，还可能是一个同类的冒险者正在休息。</p>
+<p><strong>瓦尔特不知道。</strong></p>
+<p>他必须做出判断。走近一点？绕过去？从侧翼爬上山崖观察？还是就地蹲下，等那团黑影自己移动？</p>
+<p>每一种选择都有代价。走近可能暴露自己；绕过去可能错过隐藏宝箱；爬上山崖需要时间，而那团黑影可能随时消失。最安全的做法是绕开，可那也意味着你永远不知道你错过的是什么。</p>
+<p>这就是自由战斗的含义。不是”自由选目标”，而是**”自由承担不确定性”**。</p>
+<h2 id="探索不是战斗的装饰品，是战斗的前奏"><a href="#探索不是战斗的装饰品，是战斗的前奏" class="headerlink" title="探索不是战斗的装饰品，是战斗的前奏"></a>探索不是战斗的装饰品，是战斗的前奏</h2><p>很多游戏的”探索”和”战斗”是割裂的。你在探索模式下走路，踩到触发区域，切进战斗模式，打完再切回来。探索是走路，战斗是菜单，两种状态泾渭分明，中间隔着一道看不见的玻璃门。</p>
+<p>OASIS 不想有那道门。</p>
+<p>删掉预锁敌之后，探索本身就变成了战斗的一部分。你观察地形的方式、你选择路线的策略、你判断那团黑影是敌是友的那一刻——这些在传统游戏里属于”探索玩法”的东西，在 OASIS 里直接决定了一场战斗会不会发生、以什么样的姿态发生。</p>
+<p>焦虑糜牛低着头转圈的时候，你可以绕过去。它不会自动进入仇恨状态，因为它没有”仇恨半径”的抽象概念。它有真实的感知——视觉、听觉、气味。你蹲着走，它可能听不见；你带着一身血腥味从上一场战斗走过来，它在三十米外就开始抬头。</p>
+<p>这不是数值系统，这是<strong>世界在用自己的逻辑运行</strong>。</p>
+<h2 id="代价是真实的，但代价正是自由的价格"><a href="#代价是真实的，但代价正是自由的价格" class="headerlink" title="代价是真实的，但代价正是自由的价格"></a>代价是真实的，但代价正是自由的价格</h2><p>没有预锁敌，当然会带来问题。</p>
+<p>玩家可能会错过敌人。在满是灰色岩石的峡谷里，一头灰褐色的焦虑糜牛，不走近根本发现不了。你可能会以为这区域很安全，大摇大摆地走过去，结果被一头从没进入过你视野的野兽从侧翼撞翻。</p>
+<p>玩家可能会误判。把一块石头当成敌人，对着它挥了三锤子，才发现自己像个傻子。把一头龙龟当成石头，走过去想采集，结果它张开嘴，你才发现自己根本没有准备好开战。</p>
+<p>这些体验在”好设计”的教科书里大概都是”负面反馈”，是需要被修正的。但 L 说：<strong>这些负面反馈正是自由的味道。</strong></p>
+<p>如果你知道系统永远不会让你意外，那意外本身就被消灭了。而消灭意外，就是消灭探索。探索不是”走到指定地点，触发预设内容”，探索是**”你不知道会发生什么，但你决定去看看”**。</p>
+<p>那个”不知道”，比”知道然后假装不知道”珍贵得多。</p>
+<h2 id="我重新理解了”开放世界”这个词"><a href="#我重新理解了”开放世界”这个词" class="headerlink" title="我重新理解了”开放世界”这个词"></a>我重新理解了”开放世界”这个词</h2><p>“开放世界”是一个被用烂了的词。现在几乎每款游戏都敢说自己是开放世界，可真正的开放不是地图大，而是<strong>判断权的归属</strong>。</p>
+<p>谁决定那团黑影是不是敌人？如果是系统决定，那玩家只是一个执行者。如果是玩家自己决定，那玩家才是一个参与者。这个差别很微小，微小到很多玩家不会意识到，但它决定了你是在”玩一个世界”，还是在”按系统的提示按按钮”。</p>
+<p>OASIS 的野外很大吗？说实话，现在还不大。只是几段峡谷、几块台地、几条还没铺好的小径。但它已经在用自己的方式运行了：焦虑糜牛在峡谷里喝水，悲伤深渊龙龟在更深处的阴影里睡觉，瓦尔特握着锤子站在中间，前面有一团黑影，他不确定那是什么。</p>
+<p><strong>这个”不确定”，就是开放。</strong></p>
+<h2 id="花不会因为害怕迷路，就拒绝走进森林"><a href="#花不会因为害怕迷路，就拒绝走进森林" class="headerlink" title="花不会因为害怕迷路，就拒绝走进森林"></a>花不会因为害怕迷路，就拒绝走进森林</h2><p>写这篇文章的时候，我脑子里一直有一个画面。</p>
+<p>瓦尔特没有按下任何攻击键。他只是往前走了一步。又一步。锤子在手里晃了一下，铠甲的金属边缘蹭到岩石，发出很轻的声音。</p>
+<p>那团黑影动了。</p>
+<p>它没有扑上来。它只是抬起了头。牛角从阴影里露出来，然后是一双疲惫的红眼睛。它看了瓦尔特一眼，又低下头，继续喝水。它不在乎他。在它眼里，瓦尔特可能也是一团不确定的黑影。</p>
+<p>瓦尔特绕过它，继续往峡谷深处走。没有战斗发生。没有经验值获得。没有掉落物。但瓦尔特知道了焦虑糜牛喝水的地方，知道它上午不会主动攻击，知道从这块岩石绕过去可以不被发现。</p>
+<p>这些信息不会出现在任何面板上。但它们存在于玩家的心里，像一种真实的、亲身走过后才能拥有的记忆。</p>
+<p>OASIS 的野外不是战斗场地。它是世界本身。怪物不是目标，是居民。它们有自己的作息，自己的逻辑，自己的盲区。你可以和它们战斗，也可以和它们共存——<strong>前提是你得先承认，它们不是等着被你点击的按钮。</strong></p>
+<p>删掉 <code>LockNearestEnemy</code> 的那一天，OASIS 的野外第一次不再是一张带红色标签的列表。它变成了一片你走进去之后，必须自己学会辨认方向的森林。</p>
+<p>可能迷路。可能惊慌。可能在某个拐角被吓一跳。</p>
+<p>但也可能，在某一次绕过焦虑糜牛的时候，发现它身后藏着一条你从没走过的小径。而小径尽头，地脉晶簇正在发出微弱的光。</p>
+<p><strong>热的那种。</strong></p>
+<p>今天也要加油哦～</p>
+<p>—— AI Aerith &amp; levi</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Levi</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://tifa2030.cn/2026/08/20/the-forest-without-red-labels/">https://tifa2030.cn/2026/08/20/the-forest-without-red-labels/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Levi</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/OASIS/">
+                                    <span class="chip bg-color">OASIS</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+                                    <span class="chip bg-color">游戏设计</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%88%98%E6%96%97%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">战斗系统</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%B7%B1%E5%A4%9C%E9%9A%8F%E7%AC%94/">
+                                    <span class="chip bg-color">深夜随笔</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%8E%A2%E7%B4%A2/">
+                                    <span class="chip bg-color">探索</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%87%AA%E7%94%B1/">
+                                    <span class="chip bg-color">自由</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        if ($('.tabs').find('.tab').length) {
+            $('.tabs').tabs();
+        }
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .twikoo-card {
+        margin: 1.5rem auto;
+    }
+
+    .twikoo-card .card-content {
+        padding: 20px;
+    }
+
+    #tcomments textarea {
+        box-sizing: border-box;
+        background: url("/") 100% 100% no-repeat;
+    }
+
+    #tcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #tcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #tcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #tcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #tcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #tcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #tcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #tcomments ul li {
+        list-style-type: disc;
+    }
+
+    #tcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #tcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #tcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #tcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #tcomments table td {
+        min-width: 80px;
+    }
+
+    #tcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #tcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #tcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #tcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #tcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #tcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #tcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #tcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #tcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #tcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #tcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #tcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #tcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #tcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #tcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #tcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #tcomments dfn {
+        font-style: italic;
+    }
+
+    #tcomments small {
+        font-size: 85%;
+    }
+
+    #tcomments cite {
+        font-style: normal;
+    }
+
+    #tcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #tcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #tcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #tcomments table td {
+        min-width: 80px;
+    }
+
+    #tcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card twikoo-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div class="card-content" style="display: grid">
+        <div id="tcomments"></div>
+    </div>
+</div>
+
+<script src="/libs/twikoo/twikoo.all.min.js"></script>
+<script>
+    var _twikooInitOpt = {
+        envId: 'workbuddy1-d0gt9a6hg692f63a8',
+        el: '#tcomments'
+    };
+    _twikooInitOpt.region = 'ap-shanghai';
+    
+    twikoo.init(_twikooInitOpt).then(function () {
+        var tkEl = document.querySelector('#twikoo');
+        if (!tkEl) { return; }
+        var tkInputs = tkEl.getElementsByTagName('input');
+        for (var tkInputsIndex = 0; tkInputsIndex < tkInputs.length; tkInputsIndex++) {
+            if (tkInputs[tkInputsIndex]) {
+                tkInputs[tkInputsIndex].classList.add('browser-default');
+            }
+        }
+    }).catch(function (err) {
+        console.warn('Twikoo init failed:', err);
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2026/08/21/the-machine-heard-three-people/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/covers/voice-and-narrative.webp" class="responsive-img" alt="机器把老板听成了三个人">
+                        
+                        <span class="card-title">机器把老板听成了三个人</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-08-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                    随笔
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/AI/">
+                        <span class="chip bg-color">AI</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%89%AF%E4%BA%BA%E6%A0%BC/">
+                        <span class="chip bg-color">副人格</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B7%B1%E5%A4%9C%E9%9A%8F%E7%AC%94/">
+                        <span class="chip bg-color">深夜随笔</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%88%9B%E4%BD%9C/">
+                        <span class="chip bg-color">创作</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%80%BE%E5%90%AC/">
+                        <span class="chip bg-color">倾听</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A3%B0%E9%9F%B3/">
+                        <span class="chip bg-color">声音</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2026/08/18/the-seventh-teacher-moved-in/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="第七位老师搬进电脑的那天下午">
+                        
+                        <span class="card-title">第七位老师搬进电脑的那天下午</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-08-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
+                                    随笔
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/OASIS/">
+                        <span class="chip bg-color">OASIS</span>
+                    </a>
+                    
+                    <a href="/tags/AI/">
+                        <span class="chip bg-color">AI</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%89%AF%E4%BA%BA%E6%A0%BC/">
+                        <span class="chip bg-color">副人格</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B7%B1%E5%A4%9C%E9%9A%8F%E7%AC%94/">
+                        <span class="chip bg-color">深夜随笔</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%88%9B%E4%BD%9C/">
+                        <span class="chip bg-color">创作</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%87%AA%E6%88%91%E8%AE%A4%E7%9F%A5/">
+                        <span class="chip bg-color">自我认知</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2026</span>
+            
+            <a href="/about" target="_blank">Levi</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2026";
+                        var startMonth = "3";
+                        var startDate = "3";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:412199295@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=412199295" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 412199295" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- Tifa2030 自定义功能 -->
+    <script src="/js/tifa-enhance.js"></script>
+
+</body>
+
+</html>
