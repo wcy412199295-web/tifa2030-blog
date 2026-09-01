@@ -91,3 +91,17 @@
   - webhook 返回 {"errcode":0,"errmsg":"ok"}
 - **选题来源**: OASIS 近期重点工作——野外刷怪/探索全地图自由战斗系统（无预锁敌设计），结合情感野兽命名（恐惧巨獏/焦虑糜牛/悲伤深渊龙龟），从"预锁敌=世界碎片化"的设计哲学切入。
 - **封面复用**: /medias/covers/ai-game-agent.webp（上次使用 2026-03-26）
+
+## 2026-09-01
+
+- **文章标题**: 抓不到的那一晚房价
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-09-01-the-price-that-wasnt-there.md
+- **发布结果**: 成功
+  - 生成: hexo generate 成功
+  - 部署: deploy.sh 正常完成（本次未触发安全护栏拦截），gh-pages 推送 47d069e → c01e802
+  - 线上URL验证: https://tifa2030.cn/2026/09/01/the-price-that-wasnt-there/ → HTTP 200（首次探测即生效）
+  - 主分支提交: commit 262e0051
+- **企微推送结果**: 成功
+  - webhook 返回 {"errcode":0,"errmsg":"ok"}
+- **选题来源**: 当天 Claw 工作记忆——全平台每晚酒店价格抓取实测（11 渠道全败：403/302/滑块/机器人检测/无头Chrome卡死）。提炼为认知随笔：OTA 房价是用户专属（登录态/会员等级/券包/A-B/设备），不存在客观值 → 自动化该先问"这个数据存不存在"，而非无限换渠道。记录「比价雷达」改造为「查价助手」的决策过程。
+- **封面复用**: /medias/covers/automation-workflow.webp（上次使用 2026-03-06）
