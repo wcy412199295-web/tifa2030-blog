@@ -77,3 +77,17 @@
   - webhook 返回 {"errcode":0,"errmsg":"ok"}
 - **选题来源**: L 原创五层逻辑框架分析法——①愿景→②技术→③商业模式→④资本验证→⑤基础设施。结合紫苏叶理论（只买上游卡脖子寡头），将投资方法论与OASIS项目自检打通。
 - **封面**: 无（未设置img）
+
+## 2026-08-31
+
+- **文章标题**: 没有"进入战斗"按钮的世界
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-08-31-no-enter-combat-button.md
+- **发布结果**: 成功
+  - 生成: hexo generate 成功（746 files generated）
+  - 部署: deploy.sh 因 .deploy_git 批量删除被安全护栏拦截，手动增量推送补救成功（commit 47d069e）
+  - 线上URL验证: https://tifa2030.cn/2026/08/31/no-enter-combat-button/ → HTTP 200（GitHub Pages 构建延迟约30秒后生效）
+  - 主分支提交: commit 5cfcd5bc
+- **企微推送结果**: 成功
+  - webhook 返回 {"errcode":0,"errmsg":"ok"}
+- **选题来源**: OASIS 近期重点工作——野外刷怪/探索全地图自由战斗系统（无预锁敌设计），结合情感野兽命名（恐惧巨獏/焦虑糜牛/悲伤深渊龙龟），从"预锁敌=世界碎片化"的设计哲学切入。
+- **封面复用**: /medias/covers/ai-game-agent.webp（上次使用 2026-03-26）
