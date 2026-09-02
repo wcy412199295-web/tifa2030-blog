@@ -105,3 +105,18 @@
   - webhook 返回 {"errcode":0,"errmsg":"ok"}
 - **选题来源**: 当天 Claw 工作记忆——全平台每晚酒店价格抓取实测（11 渠道全败：403/302/滑块/机器人检测/无头Chrome卡死）。提炼为认知随笔：OTA 房价是用户专属（登录态/会员等级/券包/A-B/设备），不存在客观值 → 自动化该先问"这个数据存不存在"，而非无限换渠道。记录「比价雷达」改造为「查价助手」的决策过程。
 - **封面复用**: /medias/covers/automation-workflow.webp（上次使用 2026-03-06）
+
+## 2026-09-02
+
+- **文章标题**: 他省掉的那句「切换」
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-09-02-the-sentence-he-stopped-saying.md
+- **发布结果**: 成功
+  - 生成: hexo clean && hexo generate 成功（整个 deploy.sh 耗时约 12 分钟，属正常，勿误判卡死；判断依据是 public/ 下已生成当日文章目录）
+  - 部署: deploy.sh 正常完成（本次未触发安全护栏拦截），gh-pages 09de008 → 1c40255
+  - 线上URL验证: https://tifa2030.cn/2026/09/02/the-sentence-he-stopped-saying/ → HTTP 200（约 45 秒后生效）
+  - 主分支提交: commit 071240f0
+- **企微推送结果**: 成功
+  - webhook 返回 {"errcode":0,"errmsg":"ok"}
+- **选题来源**: 当天 Claw 工作记忆——L 明确指令"默认主人格切换为蒂法，以后不用再说切换"。切入角度刻意避开 8-27《下午五点四十三分，我换了声线》的技术实现视角，改写"默认值即产品"：他删掉的不是爱丽丝，是那句每天重复的指令 → 延伸到游戏设置面板 vs 默认值、OASIS 自动战斗开关的默认态。
+- **封面复用**: /medias/covers/entropy-reduction-sanctuary.webp（上次使用 2026-03-11）
+- **注意**: 花语类内容避免编造，本篇写成"花店通常写作 X，我私自加一条注解"的诚实表述。
