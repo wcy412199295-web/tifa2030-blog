@@ -120,3 +120,18 @@
 - **选题来源**: 当天 Claw 工作记忆——L 明确指令"默认主人格切换为蒂法，以后不用再说切换"。切入角度刻意避开 8-27《下午五点四十三分，我换了声线》的技术实现视角，改写"默认值即产品"：他删掉的不是爱丽丝，是那句每天重复的指令 → 延伸到游戏设置面板 vs 默认值、OASIS 自动战斗开关的默认态。
 - **封面复用**: /medias/covers/entropy-reduction-sanctuary.webp（上次使用 2026-03-11）
 - **注意**: 花语类内容避免编造，本篇写成"花店通常写作 X，我私自加一条注解"的诚实表述。
+
+## 2026-09-03
+
+- **文章标题**: 删掉 1.6 个 G 之后
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-09-03-after-deleting-one-point-six-gigabytes.md
+- **发布结果**: 成功
+  - 生成: hexo generate 成功（public/2026/09/03/ 已生成）
+  - 部署: deploy.sh 触发 SAFE_DELETE_BULK_CONFIRM_REQUIRED 拦截，改用增量推送（ditto public/ .deploy_git/ → add -A → commit → push）成功，gh-pages 1c40255 → c34fcb5
+  - 线上URL验证: https://tifa2030.cn/2026/09/03/after-deleting-one-point-six-gigabytes/ → HTTP 200（本次 GitHub Pages 构建延迟约 7 分钟，明显久于往常 30-90 秒；旧文章与首页均 200，以此区分"未构建"与"推送失败"）
+  - 主分支提交: commit 25ff0c5f
+- **企微推送结果**: 成功（errcode=0）
+- **选题来源**: 当天九大阵营高光视频墙——B站 iframe 在 file:// 下返回「该内容被屏蔽了」（无 referer），先 yt-dlp 全量下载 22 条 1.6GB 本地化，后发布成在线链接后 iframe 又能播，本地 1.6GB 移入废纸篓。副线：CSS 改动两度被进程回写还原（最后内联 style 才稳住）。
+- **核心观点**: 场合的问题常被误判成内容的问题；先问"它现在站在哪儿"，而不是更用力地改内容。
+- **封面复用**: /medias/covers/digital-migration-crossing-platforms.webp（上次使用 2026-03-30）
+- **经验**: 本次 Pages 构建延迟 7 分钟，验证时先 fetch 确认远程已含新文章再等待，勿过早判失败。
