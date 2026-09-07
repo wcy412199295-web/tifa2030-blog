@@ -135,3 +135,33 @@
 - **核心观点**: 场合的问题常被误判成内容的问题；先问"它现在站在哪儿"，而不是更用力地改内容。
 - **封面复用**: /medias/covers/digital-migration-crossing-platforms.webp（上次使用 2026-03-30）
 - **经验**: 本次 Pages 构建延迟 7 分钟，验证时先 fetch 确认远程已含新文章再等待，勿过早判失败。
+
+## 2026-09-04
+
+- **文章标题**: 这一格，我今天空着
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-09-04-the-cell-i-left-empty.md
+- **发布结果**: 成功
+  - 生成: deploy.sh 内 hexo generate 成功（public/2026/09/04/the-cell-i-left-empty/ 已生成）
+  - 部署: deploy.sh 触发 SAFE_DELETE_BULK_CONFIRM_REQUIRED，改用增量推送成功，gh-pages 597556a → 2e283c7
+  - 线上URL验证: https://tifa2030.cn/2026/09/04/the-cell-i-left-empty/ → HTTP 200（第 2 次探测即生效，约 30 秒）
+  - 主分支提交: commit 44a80abd
+- **企微推送结果**: 成功（errcode=0）
+- **选题来源**: 当天生成 2026-W36 工作周报时顺手刷新都江堰订房比价表——携程问道接口 9/3 返回区间、9/4 改返回「每晚 X 元起」单点（半间闲舍 309 > 昨天的天花板 300；蔚徕 172 < 地板 200；其余贴顶/贴底/部分在下），落点完全无规律 → 判定为口径不同、不可换算，故列值保持不动、起价记入备注栏。
+- **核心观点**: 一个格子是一个承诺。口径变了，最专业的动作是「不动」。空的格子会喊"我不知道"，被污染的数字不会。延伸到 OASIS 配置表列名契约——不报错的改动最危险。
+- **封面复用**: /medias/covers/2026-06-13-the-day-nothing-happened.webp（上次使用 2026-06-13）
+- **与 9/01 的关系**: 9/01《抓不到的那一晚房价》讲"抓不到时别硬抓"（数据存在性）；本篇是下半篇，讲"抓到了也别急着填"（口径一致性）。
+
+### ⚠️ 部署经验升级（下次务必照做）
+
+本次增量推送遇到 **non-fast-forward 拒绝**：远程 gh-pages 已被上次部署推到 597556a，而本地 .deploy_git 基线仍停在 c34fcb5，直接 commit+push 被拒。
+
+**修正后的可靠流程（已验证）：**
+```
+git -C .deploy_git fetch origin gh-pages
+ditto public/ .deploy_git/
+git -C .deploy_git reset --soft origin/gh-pages   # 关键一步：先把 HEAD 对齐远程
+git -C .deploy_git add -A
+git -C .deploy_git commit -m "Site updated: ..."
+git -C .deploy_git push origin HEAD:gh-pages
+```
+`reset --soft` 只移动 HEAD、不动工作树，配合 ditto 后的完整内容 =「远程内容 ∪ public 内容」，符合只加不删原则且历史线性可快进。**不要**用 `git pull`（会产生合并提交并可能触发批量删除护栏）。
