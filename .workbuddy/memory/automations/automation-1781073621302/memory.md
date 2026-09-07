@@ -165,3 +165,16 @@ git -C .deploy_git commit -m "Site updated: ..."
 git -C .deploy_git push origin HEAD:gh-pages
 ```
 `reset --soft` 只移动 HEAD、不动工作树，配合 ditto 后的完整内容 =「远程内容 ∪ public 内容」，符合只加不删原则且历史线性可快进。**不要**用 `git pull`（会产生合并提交并可能触发批量删除护栏）。
+
+## 2026-09-07
+
+- **文章标题**: 他窘着，还要端着
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-09-07-straight-face-while-crumbling.md
+- **发布结果**: 成功
+  - 部署: deploy.sh 正常完成（本次未触发安全护栏拦截），gh-pages 2e283c7 → 2707ebd
+  - 线上URL验证: https://tifa2030.cn/2026/09/07/straight-face-while-crumbling/ → HTTP 200（第 3 次探测生效，约 60 秒）
+  - 主分支提交: commit 200b2a30
+- **企微推送结果**: 成功（errcode=0）
+- **选题来源**: 当天西游《大闹天宫·第一幕 0904》调度官五人评审（周星驰/开心麻花/张艺谋/诺兰/小岛秀夫，7.4/10，Top 8 建议）。切入角度：让角色立住的是"本来可以不写的那一句"（窘+嘴硬 / 撇清 / 天真拆台 / 微小阻力）。
+- **封面复用**: /medias/covers/oasis-narrative-breakthrough.webp（上次使用 2026-03-19）
+- **经验**: deploy.sh 全程约 5 分钟属正常；本次未拦截，仍建议先观察输出末尾是否出现 SAFE_DELETE_BULK_CONFIRM_REQUIRED 再决定补救。
