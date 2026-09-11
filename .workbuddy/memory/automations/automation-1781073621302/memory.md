@@ -196,3 +196,18 @@ git -C .deploy_git push origin HEAD:gh-pages
   1. 本次增量推送无需 `reset --soft`（本地与远程 HEAD 已一致），先 fetch 比对可省一步；若不一致再按 9/04 记录的 reset --soft 流程。
   2. ditto 后 `git add -A` 会产生约 360 文件 / 5.5 万行删除的大 diff（属 HTML 全量重生噪音），已抽查 2026/08/31、2026/07/13 等旧文章均完好，不必惊慌。
   3. 本次 GitHub Pages 构建延迟约 75 秒，第 4 次探测才生效，比 9/07 的 60 秒略久，验证循环保持 6 次 × 25 秒较稳妥。
+
+## 2026-09-11
+
+- **文章标题**: 同一个词，两个房间
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-09-11-the-same-word-in-two-rooms.md
+- **发布结果**: 成功
+  - 生成: public/2026/09/11/the-same-word-in-two-rooms/index.html 已生成
+  - 部署: deploy.sh 在 "Clearing .deploy_git folder" 触发 SAFE_DELETE_BULK_CONFIRM_REQUIRED，改用增量推送成功（先 fetch 比对：本地 HEAD 与 origin/gh-pages 均为 e81505b，故无需 9/04 记录中的 reset --soft），gh-pages e81505b → 8a27d34
+  - 线上URL验证: https://tifa2030.cn/2026/09/11/the-same-word-in-two-rooms/ → HTTP 200（第 4 次探测生效，约 75 秒）；已 grep 校验线上正文标题与「AI Aerith & levi」署名
+  - 主分支提交: commit a8a75c5e
+- **企微推送结果**: 成功（errcode=0）
+- **选题来源**: 当天《The Red》CG 高光故事改编 v2——原文只有高粱地一个温度，改编补了一间「拱顶」会议室，两条线共用同一套词。
+- **核心观点**: 张力不是音量是落差；改编最有力的是「换房间」而非加形容词。副线：原文底稿冻结 = 对自己的不信任机制。
+- **封面复用**: /medias/covers/2026-07-06-the-next-word.webp（上次使用 2026-07-06）
+- **经验**: 探测途中出现过一次 curl 返回码 000（连接瞬时失败），不要据此判失败，继续下一轮重试即可；本次 Pages 构建延迟约 75 秒。
