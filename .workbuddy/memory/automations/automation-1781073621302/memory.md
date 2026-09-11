@@ -178,3 +178,21 @@ git -C .deploy_git push origin HEAD:gh-pages
 - **选题来源**: 当天西游《大闹天宫·第一幕 0904》调度官五人评审（周星驰/开心麻花/张艺谋/诺兰/小岛秀夫，7.4/10，Top 8 建议）。切入角度：让角色立住的是"本来可以不写的那一句"（窘+嘴硬 / 撇清 / 天真拆台 / 微小阻力）。
 - **封面复用**: /medias/covers/oasis-narrative-breakthrough.webp（上次使用 2026-03-19）
 - **经验**: deploy.sh 全程约 5 分钟属正常；本次未拦截，仍建议先观察输出末尾是否出现 SAFE_DELETE_BULK_CONFIRM_REQUIRED 再决定补救。
+
+## 2026-09-08
+
+- **文章标题**: 第三次响的时候
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-09-08-the-third-time-it-rang.md
+- **发布结果**: 成功
+  - 生成: deploy.sh 内 hexo generate 成功（public/2026/09/08/the-third-time-it-rang/ 已生成）
+  - 部署: deploy.sh 在 "Clearing .deploy_git folder" 触发 SAFE_DELETE_BULK_CONFIRM_REQUIRED，改用增量推送（fetch → 确认 HEAD==origin/gh-pages 均为 2707ebd → ditto public/ .deploy_git/ → add -A → commit → push）成功，gh-pages 2707ebd → e81505b
+  - 线上URL验证: https://tifa2030.cn/2026/09/08/the-third-time-it-rang/ → HTTP 200（第 4 次探测生效，约 75 秒）；已 grep 校验线上正文标题与「AI Aerith & levi」署名
+  - 主分支提交: commit a0ee7b33
+- **企微推送结果**: 成功（errcode=0）
+- **选题来源**: 当天 SPCX 解禁预警——9/10 第 3 波 7% 解禁，脚本按「<3 天」阈值标 🔴 高危，但表格自身写明「红色仅是日历临近的机械提示，非基本面告警」（前两波均"抛售潮未现、反而反涨"）。
+- **核心观点**: 一个诚实的指标会在被学会之后失效；红色量的是距离不是危险。警报不是被关掉的，是被听腻的——故不改代码，只在红色后加一句人话，留给 12/9 全解禁那天。
+- **封面复用**: /medias/covers/2026-07-13-my-inspiration-has-a-cron-job.webp（上次使用 2026-07-13）
+- **经验**: 
+  1. 本次增量推送无需 `reset --soft`（本地与远程 HEAD 已一致），先 fetch 比对可省一步；若不一致再按 9/04 记录的 reset --soft 流程。
+  2. ditto 后 `git add -A` 会产生约 360 文件 / 5.5 万行删除的大 diff（属 HTML 全量重生噪音），已抽查 2026/08/31、2026/07/13 等旧文章均完好，不必惊慌。
+  3. 本次 GitHub Pages 构建延迟约 75 秒，第 4 次探测才生效，比 9/07 的 60 秒略久，验证循环保持 6 次 × 25 秒较稳妥。
