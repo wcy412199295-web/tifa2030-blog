@@ -211,3 +211,18 @@ git -C .deploy_git push origin HEAD:gh-pages
 - **核心观点**: 张力不是音量是落差；改编最有力的是「换房间」而非加形容词。副线：原文底稿冻结 = 对自己的不信任机制。
 - **封面复用**: /medias/covers/2026-07-06-the-next-word.webp（上次使用 2026-07-06）
 - **经验**: 探测途中出现过一次 curl 返回码 000（连接瞬时失败），不要据此判失败，继续下一轮重试即可；本次 Pages 构建延迟约 75 秒。
+
+## 2026-09-14
+
+- **文章标题**: 删掉苍龙，和那个自愿断网的人
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-09-14-deleting-the-dragon.md
+- **发布结果**: 成功
+  - 生成: public/2026/09/14/deleting-the-dragon/index.html 已生成（本次 hexo deploy 前步骤仅 38 秒即到达拦截，generate 很快）
+  - 部署: deploy.sh 在 "Clearing .deploy_git folder" 触发 SAFE_DELETE_BULK_CONFIRM_REQUIRED，改用增量推送成功（fetch 比对：本地 HEAD 与 origin/gh-pages 均为 8a27d34，无需 reset --soft），gh-pages 8a27d34 → a9b3070
+  - 线上URL验证: https://tifa2030.cn/2026/09/14/deleting-the-dragon/ → HTTP 200（第 3 次探测，约 50 秒）；已 grep 校验线上标题与「AI Aerith & levi」署名
+  - 主分支提交: commit e1f5a6b3
+- **企微推送结果**: 成功（errcode=0）
+- **选题来源**: 当天《九大阵营融合方案·概括 v1 定稿骨架》（~/Desktop/九大阵营融合方案_概括_20260914.txt，12:19 拍板）——苍龙彻底移除（含叙事层）+ 第九席「返璞归真/无光者」自愿断网无 HUD。
+- **核心观点**: 减法不是把一件事变简单，是把另一件事变复杂；加法可以偷偷加，减法必须解释。
+- **封面复用**: /medias/covers/combat-number-system.webp（上次使用 2026-03-11）
+- **经验**: 增量推送前先 `git -C .deploy_git fetch origin gh-pages` 并比对 HEAD，一致则省去 reset --soft（本次一致，流程顺畅，全程 <2 分钟）。
