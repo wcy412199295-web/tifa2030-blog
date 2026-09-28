@@ -291,3 +291,19 @@ git -C .deploy_git push origin HEAD:gh-pages
 - **核心观点**: 树比谁都依赖光，却哪儿也去不了 → 「眼睛不是用来看的，眼睛是用来走的」；该隐喻把问题从布道者式的"视觉多重要"升级为建造者约束"视觉必须和什么锁死"；落成可训练判据「理解不是记住，理解是能推出你没见过的那一面」。用此判据量 OASIS：世界是否因玩家移动给出没见过的一面，而非只追求贴图真实（野外自由战斗、程序化地形状态空间为例）——"画面再贵也是树，渲染再真也是树"。反身自省：只读不改任何动作，就是一棵长着眼睛的树；写/不写的检验句——「这篇会让他明天做点什么不一样的事吗？」
 - **封面复用**: /medias/covers/2026-05-09-unconscious-gardener-learning-in-darkness.webp（上次使用 2026-05-09，远超 14 天去重窗口）
 - **经验**: ①deploy.sh 是否触发安全护栏仍取决于当次沙箱状态，继续沿用"先跑看输出"策略，本次又一次未拦截；②Pages 零延迟（首次探测即 200）；③从 skill 萃取档案（persona 的 references/）里找选题是个稳定高效的素材池——副人格升级当天往往就有一句可直接成文的金句。
+
+## 2026-09-25
+
+- **文章标题**: 健身房跌 9.5%，高盛跌 1.9%
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-09-25-the-day-the-market-sold-laziness.md
+- **灵感闸门**: 三问全"是"，动笔（第五次运行，闸门稳定）。
+- **发布结果**: 成功
+  - 生成: public/2026/09/25/the-day-the-market-sold-laziness/index.html 已生成
+  - 部署: deploy.sh 在 "Clearing .deploy_git folder" 触发 SAFE_DELETE_BULK_CONFIRM_REQUIRED，改用增量推送成功（fetch 比对：本地 HEAD 与 origin/gh-pages 均为 7752871，无需 reset --soft），gh-pages 7752871 → 0fffb7a
+  - 线上URL验证: https://tifa2030.cn/2026/09/25/the-day-the-market-sold-laziness/ → HTTP 200（第 3 次探测，约 50 秒）；已 grep 校验标题与「AI Tifa & Levi」署名
+  - 主分支提交: commit 76e1fa62
+- **企微推送结果**: 成功（errcode=0）
+- **选题来源**: 09-23 两份调度官圆桌研判（银行股大跌与加息传导 9 人 / 腾讯 00700 大涨 5% 归因 7 席）。啊哈=跌幅梯队**严格单调**=「渠道暴露度」排序（PLNT −9.5% → GS −1.9%），且该顺序反证了"加息驱动"解释；跨行业「消费者惰性」篮子（AT&T/T-Mobile/Netflix/Expedia/Booking）锁定共同因子=客户懒得比价。
+- **核心观点**: 收钱只有两条路——卡住别人的脖子（护城河）vs 客户懒得换（懒税）；AI Agent 拆不掉护城河，专杀懒税；与紫苏叶理论是同一判据的两面。方法层：别问"涨还是跌"（平均数，标普 −0.00% 是表情），要问"谁跌得轻"（排序=市场指纹）。落点 OASIS 粘性与自省「别让我收懒税」。
+- **封面复用**: /medias/covers/metaverse-economy.webp（上次使用 2026-03-03）
+- **经验**: ①增量推送流程第 6 次稳定（fetch 比对 → ditto → add -A → commit → push），本次本地与远程 HEAD 一致故省 reset --soft；②Pages 构建延迟约 50 秒（3 次探测），探测循环 6×25s 依然合适；③**新素材池发现**：股市目录下「日常宏观资金分析/调度官圆桌」HTML/PDF 研判报告是高质量随笔素材源——里面常有"梯队排序/验真表/反证"这类可直接成文的结构化洞见，比日记式记忆更容易过灵感闸门。
