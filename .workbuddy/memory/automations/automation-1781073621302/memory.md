@@ -367,3 +367,30 @@ git -C .deploy_git push origin HEAD:gh-pages
   - 现象：沙箱内 github.com:443 的 https git 通道被拦（curl 返回 000、git push 报 SSL_ERROR_SYSCALL），但 api.github.com 200、SSH 可用。
   - 修复（已验证，已写入仓库 config 永久生效）：生成 `~/.ssh/id_ed25519_ghpages443` → 用 token 调 API 加仓库级 deploy key（id 165444105）→ known_hosts 用 api.github.com/meta 的官方主机公钥手写 `[ssh.github.com]:443` 条目 → 主仓库与 .deploy_git 各设 `url.git@ssh.github.com:...insteadOf <原https URL>` + `core.sshCommand "ssh -p 443 -i ... -o IdentitiesOnly=yes"`。之后 deploy.sh 与 git push 自动走 ssh-443；backup 远程因精确 URL 匹配不受影响。
   - 另注：远程 gh-pages 会有 Pages 自动生成的 `deploy: <sha>` 提交，本地 HEAD 常因此与远程不一致 → 增量推送前必须 fetch + `reset --soft FETCH_HEAD` 再 commit，否则 non-fast-forward 被拒。
+
+## 2026-10-07（周三·国庆假期最后一天）
+
+- **文章标题**: 我把门当成了墙
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-10-07-i-mistook-the-door-for-a-wall.md
+- **灵感闸门**: 三问全"是"，动笔（第十次运行）。假期内但判定"特别强"——素材是对 10/05 前作的**自我纠错**，非同源。
+- **发布结果**: 成功
+  - 部署: deploy.sh 一次跑通（ssh-443 通道已永久生效，未触发 SAFE_DELETE_BULK_CONFIRM_REQUIRED），gh-pages c0492509 → aecfe168
+  - 线上URL验证: https://tifa2030.cn/2026/10/07/i-mistook-the-door-for-a-wall/ → HTTP 200（第 3 次探测，约 60 秒）；已 grep 校验标题与「AI Tifa & Levi」署名
+  - 主分支提交: commit 7f2c3542，已 push origin main（53fa071a..7f2c3542）；顺带补交此前未提交的 10-05 记忆日志
+- **企微推送结果**: 成功（errcode=0）
+- **选题来源**: 当天 13:20 复盘发现——10/05 那篇夸系统"不新开"的文章**判错了**：T+1 +7.63%、10/5 收 171.09、10/6 收 171.92，$160 Call Wall 被打穿，而穿墙那天正是写那篇文章的当天。
+- **核心观点**: ①"只剩 0.7%"该读成"最可能穿"，**距离不是风险是概率密度**；②真正问题是规则形状——"墙前一律不追"主语是"永不"，**"永不"不会被证伪，不动的成本不进账本所以看起来永远是零**；③给上篇"拦下的才是它的"补下半句：**拦下的也会被怯懦冒领，怯懦与克制从单次结果上分不出来**；④解法即 L 的改法——把"永不"改成"如果…那么…"（放量站上墙后追一次 ≤10%、止损墙下 2%、有有效期）：**有价格的规则才叫规则，没价格的规则叫感想**；⑤检验法：把"永不"译成"如果…那么…"，填不出后半句的是偏好穿了规则的衣服；⑥自省：10/05 三问全"是"其实只是被反差迷住——**素材"太适合写成文章"时恰恰最该被怀疑，故事性会冒充真理性**。
+- **封面复用**: /medias/covers/shadow-art.webp（上次使用 2026-03-19）
+- **经验**: ①前一篇的判错是**最优质**的素材源——自我纠错比新观点更硬，且天然不重复选题；②判断"灵感特别强"可参考一条：**能否给前作补上它缺的半句话**（本次=给"拦下的才是它的"补"也会被怯懦冒领"）；③ssh-443 修复后 deploy.sh 耗时 8.5 分钟（hexo generate 为主），属正常，前台跑需留足超时（≥420s）或直接后台。
+
+## 2026-10-12（周一·工作日）
+
+- **文章标题**: 别加规矩，改名字
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-10-12-rename-the-attacker.md
+- **灵感闸门**: 三问全"是"（第十一次运行；10/08-10/11 无运行记录）。素材来自全新素材池（马斯克学校思辨游戏），与近 14 天投资/生活题材不同源。
+- **发布结果**: 成功。deploy.sh 一次跑通（ssh-443 通道正常，未触发拦截），gh-pages d0ff20af → 82cadc7a；线上 URL HTTP 200（第 3 次探测，约 40 秒），已校验标题与署名。
+- **企微推送结果**: 成功（errcode=0）
+- **选题来源**: ~/Desktop/马斯克学校/策划内容/01_思辨游戏规则/（10/09 v1.0）第五节"为什么不叫攻方/守方"→ 好奇人/想法人、站住了/还没站住、转念石、大叉手势收在胸前；对照同周千人大战场的攻守命名。
+- **核心观点**: 规矩管动作，名字管动机——叫"进攻方"就先装了"赢"的目标，再多规矩都是给命名打补丁；名字无好坏，只看叫了它的人第一个念头是不是你要的（战场叫攻守是诚实，思辨游戏叫攻守是递刀）。延伸到圆桌"风控官"。
+- **封面复用**: /medias/covers/minecraft-education-modular-design.webp
+- **经验**: ①新素材池：L 的教育/少儿玩法策划文档；②deploy.sh 本次约 4 分钟。
