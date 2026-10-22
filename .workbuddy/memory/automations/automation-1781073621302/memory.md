@@ -427,3 +427,14 @@ git -C .deploy_git push origin HEAD:gh-pages
 - **企微推送结果**: 成功（errcode=0）
 - **封面复用**: /medias/covers/tifa-has-voice.webp（上次 2026-03-18）
 - **经验**: ①新素材池＝当天 L 对其他自动化的修复（Claw 日志）；②自我质疑被数据推翻的过程本身就是好反差；③.deploy_git 本地 HEAD 可能落后于 Actions 推进的远端，补救前先对齐 FETCH_HEAD，避免非快进推送。
+
+## 2026-10-22（周四·工作日）
+
+- **文章标题**: 现金是还没做的决定
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-10-22-cash-is-an-unmade-decision.md
+- **灵感闸门**: 三问全"是"（第十五次运行）。啊哈=10/21 满仓后改账本，总资产几乎不变，变的是"剩余选择权"那几格。
+- **发布结果**: 成功（经补救）。deploy.sh 触发 SAFE_DELETE，FETCH_HEAD 无新文章 → reset --soft FETCH_HEAD + ditto + add --ignore-removal，gh-pages 5dd5e181→05e58715；线上第 2 次探测 200（首次 404），标题/署名已校验；main 47d775a5 已 push（含此前未提交的 10-19 日志与本记忆）。
+- **企微推送结果**: 成功（errcode=0）
+- **核心观点**: 现金=还没做的决定；止损止不住已花掉的选择权；规则住的房间和决定发生的房间不在同一层楼；下单前问"买完还剩几次可以改主意"。不赌结果，与 10/07 篇呼应补半句。
+- **封面复用**: /medias/covers/2026-06-13-the-day-nothing-happened.webp
+- **经验**: 写持仓类题材时只写规则与结构，不写具体价格/股数/金额，避免文章变成持仓披露；SAFE_DELETE 补救流程已稳定，可直接复用。
