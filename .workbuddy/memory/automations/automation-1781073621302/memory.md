@@ -417,3 +417,13 @@ git -C .deploy_git push origin HEAD:gh-pages
 - **核心观点**: 玩家可以输给更强的，不能输给看不见的；数值可以不对称，信息必须对称；能复盘的死亡是学费，不能复盘是罚款。自省：我可以不准，但不能比他看得远却不说（呼应 10/07 认错、10/14 失败只进日记本）。
 - **封面复用**: /medias/covers/fps-interaction-design-pve-research.webp（上次 2026-08-26）
 - **经验**: 新素材池＝L 项目的「决策日志」——被推翻的决策（D-018→D-019）与同日并列的反向决策是现成的反差；文中未写 AppID、项目代号等内部信息。首次探测 503 属 Pages 构建中，勿误判。
+
+## 2026-10-19（周一·工作日）
+
+- **文章标题**: 五个月的发音课，全寄给了眼睛
+- **文件路径**: /Users/levi/.openclaw/workspace/tifa2030-blog/source/_posts/2026-10-19-pronunciation-mailed-to-the-eyes.md
+- **灵感闸门**: 三问全"是"（第十四次运行）。啊哈=修单词发音时我凭注释"0.4 秒静音"断定不够跟读，实测空白 1.3–1.6s——我犯了和自动化同一个错：用文字验收声音。
+- **发布结果**: 成功（经补救）。deploy.sh 触发 SAFE_DELETE_BULK_CONFIRM_REQUIRED，FETCH_HEAD 核查确认未推送；注意远端 gh-pages 已被 GitHub Actions（deploy.yml，提交名"deploy: <main sha>"）推进到 acf5aad0，故先 `reset --soft FETCH_HEAD` 再 ditto + `add --ignore-removal .` 增量提交，fast-forward 推到 263e11d5；main c2475611 已 push。线上第 2 次探测 HTTP 200，标题/署名已校验。
+- **企微推送结果**: 成功（errcode=0）
+- **封面复用**: /medias/covers/tifa-has-voice.webp（上次 2026-03-18）
+- **经验**: ①新素材池＝当天 L 对其他自动化的修复（Claw 日志）；②自我质疑被数据推翻的过程本身就是好反差；③.deploy_git 本地 HEAD 可能落后于 Actions 推进的远端，补救前先对齐 FETCH_HEAD，避免非快进推送。
