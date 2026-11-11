@@ -2,8 +2,8 @@
 title: 做笨事的人——段永平、巴菲特和那些"反聪明"的赢家
 date: 2026-05-29 15:20:00
 categories:
-  - 💗 心灵咖啡馆
-  - 🎮 O计划
+  - 心灵咖啡馆
+  - O计划
 tags:
   - 段永平
   - 巴菲特
@@ -11,7 +11,6 @@ tags:
   - 大道至简
   - OASIS
   - 本分
-img: /medias/covers/emergence-cover.webp
 ---
 
 > 🌸 *"做对的事，把事做对。慢就是快。"——段永平*

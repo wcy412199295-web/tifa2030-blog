@@ -1,0 +1,19 @@
+<% var cats = site.categories.toArray().filter(function (c) { return c.length > 0; }).sort(function (a, b) { return b.length - a.length; }); %>
+<section class="page-head">
+  <div class="wrap">
+    <span class="kicker">分类</span>
+    <h1>几条不同的小路</h1>
+    <p><%= cats.length %> 个分类 · <%= site.posts.length %> 篇文章</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap cat-grid">
+    <% cats.forEach(function (c) { var ps = c.posts.sort('-date').limit(4).toArray(); %>
+    <div class="cat-card reveal">
+      <h2><a href="<%- url_for(c.path) %>"><%= c.name %></a><small><%= c.length %> 篇</small></h2>
+      <ul><% ps.forEach(function (p) { %><li><a href="<%- url_for(p.path) %>"><%= p.title %></a></li><% }) %></ul>
+      <a class="go" href="<%- url_for(c.path) %>">查看全部 →</a>
+    </div>
+    <% }) %>
+  </div>
+</section>

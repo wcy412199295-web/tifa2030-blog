@@ -1,0 +1,89 @@
+<%
+  var posts = page.posts.toArray();
+  var isFirst = page.current === 1;
+  var first = posts[0];
+  var rest = posts.slice(1);
+  var cats = site.categories.toArray().filter(function (c) { return c.length > 0; }).sort(function (a, b) { return b.length - a.length; });
+  var words = tifa_site_words();
+  var days = Math.max(1, Math.floor((Date.now() - new Date(theme.since).getTime()) / 864e5));
+%>
+<% if (isFirst) { %>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="kicker"><%= theme.hero.kicker %></span>
+      <h1><%- theme.hero.title %></h1>
+      <p class="lede"><%= theme.hero.text %></p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="<%- url_for(first.path) %>">读最新一篇
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <button class="btn btn-ghost" id="randomPost">随手翻一篇
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg></button>
+      </div>
+      <div class="hero-stats">
+        <div><b data-count="<%= site.posts.length %>"><%= site.posts.length %></b><span>篇文章</span></div>
+        <div><b data-count="<%= Math.round(words / 1000) / 10 %>" data-dec="1"><%= (words / 10000).toFixed(1) %></b><span>万字</span></div>
+        <div><b class="js-days"><%= days %></b><span>天，从未停笔</span></div>
+      </div>
+    </div>
+    <div class="orbit" aria-hidden="true">
+      <svg viewBox="0 0 420 420">
+        <circle class="ring-dash" cx="210" cy="210" r="200"/>
+        <circle class="ring" cx="210" cy="210" r="140"/>
+        <circle class="ring" cx="210" cy="210" r="80"/>
+        <g class="spin-r"><circle class="star" cx="210" cy="10" r="7"/><circle class="star" cx="38" cy="310" r="3" opacity=".6"/></g>
+        <g class="spin"><circle class="moon" cx="350" cy="210" r="9"/><circle class="moon" cx="96" cy="128" r="4" opacity=".7"/></g>
+        <g class="spin-r"><circle class="core" cx="290" cy="210" r="4" opacity=".7"/></g>
+        <circle class="core" cx="210" cy="210" r="38"/>
+        <text x="210" y="215" text-anchor="middle" class="core-label">L × AI</text>
+        <text x="210" y="300" text-anchor="middle">GAMES · DREAMS · SOUL</text>
+        <text x="300" y="60" class="label-gold">OASIS 2030</text>
+      </svg>
+    </div>
+  </div>
+</section>
+<% } else { %>
+<section class="page-head">
+  <div class="wrap">
+    <span class="kicker">全部文章</span>
+    <h1>第 <%= page.current %> 页</h1>
+    <p>共 <%= site.posts.length %> 篇，按时间倒序</p>
+  </div>
+</section>
+<% } %>
+
+<section class="section">
+  <div class="wrap">
+    <% if (first) { var fc = tifa_first_cat(first); %>
+    <a class="feature reveal" href="<%- url_for(first.path) %>">
+      <div class="feature-body">
+        <div class="meta">
+          <% if (fc) { %><span class="cat"><%= fc.name %></span><i class="sep"></i><% } %>
+          <time datetime="<%= date_xml(first.date) %>"><%= date(first.date, 'M月D日') %></time><i class="sep"></i>
+          <span><%= tifa_read_min(first) %> 分钟读完</span>
+        </div>
+        <h3><%= first.title %></h3>
+        <p><%= tifa_excerpt(first, 160) %></p>
+        <span class="btn btn-ghost" style="align-self:flex-start">继续阅读</span>
+      </div>
+      <div class="feature-media">
+        <% if (isFirst) { %><span class="badge-new">最新</span><% } %>
+        <% if (first.img) { %><img src="<%- url_for(first.img) %>" alt="" decoding="async" fetchpriority="high" onerror="this.remove()"><% } else { %>
+        <blockquote class="feature-quote"><%= tifa_first_line(first) %></blockquote><% } %>
+      </div>
+    </a>
+    <% } %>
+
+    <div class="section-head"><h2><%= isFirst ? '更早的文字' : '本页文章' %></h2><a class="more" href="<%- url_for('/archives/') %>">全部归档 →</a></div>
+    <nav class="chips" aria-label="按分类浏览">
+      <a class="chip is-active" href="<%- url_for('/') %>">全部 <small><%= site.posts.length %></small></a>
+      <% cats.forEach(function (c) { %>
+      <a class="chip" href="<%- url_for(c.path) %>"><%= c.name %> <small><%= c.length %></small></a>
+      <% }) %>
+    </nav>
+    <div class="grid">
+      <% rest.forEach(function (post) { %><%- partial('_partial/card', { post: post }) %><% }) %>
+    </div>
+    <%- partial('_partial/pager') %>
+  </div>
+</section>

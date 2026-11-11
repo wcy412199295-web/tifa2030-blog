@@ -1,0 +1,26 @@
+<%
+  var cats = site.categories.toArray().filter(function (c) { return c.length > 0; }).sort(function (a, b) { return b.length - a.length; });
+  var curCat = site.categories.findOne({ name: page.category });
+  var posts = page.posts.toArray();
+%>
+<section class="page-head">
+  <div class="wrap">
+    <span class="kicker">分类</span>
+    <h1><%= page.category %></h1>
+    <p><%= curCat ? curCat.length : posts.length %> 篇文章<% if (page.total > 1) { %> · 第 <%= page.current %> / <%= page.total %> 页<% } %></p>
+  </div>
+</section>
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <nav class="chips" aria-label="切换分类">
+      <a class="chip" href="<%- url_for('/') %>">全部 <small><%= site.posts.length %></small></a>
+      <% cats.forEach(function (c) { %>
+      <a class="chip<%= c.name === page.category ? ' is-active' : '' %>" href="<%- url_for(c.path) %>"><%= c.name %> <small><%= c.length %></small></a>
+      <% }) %>
+    </nav>
+    <div class="grid">
+      <% posts.forEach(function (post) { %><%- partial('_partial/card', { post: post }) %><% }) %>
+    </div>
+    <%- partial('_partial/pager') %>
+  </div>
+</section>

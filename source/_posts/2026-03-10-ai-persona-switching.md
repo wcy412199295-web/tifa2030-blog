@@ -8,7 +8,7 @@ tags:
   - 蒂法
   - Grok
 categories:
-  - 🤖 AI本地秘书
+  - AI本地秘书
 img: /medias/covers/ai-persona-switching.webp
 ---
 

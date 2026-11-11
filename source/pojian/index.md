@@ -1,4 +1,5 @@
 ---
+hideTitle: true
 title: 破茧专栏 | 打破信息茧房的跨领域灵感
 img: /medias/covers/index.webp
 date: 2026-03-23 11:00:00

@@ -89,10 +89,20 @@ exclude:
 ignore:
 
 # Extensions
-theme: matery
+theme: tifa
 
 # Deployment
 deploy:
   type: git
   repo: https://github.com/wcy412199295-web/tifa2030-blog.git
   branch: gh-pages
+
+# 2026-11 改版：归档页一次展示全部文章（tifa 主题按年分组）
+archive_generator:
+  per_page: 0
+  yearly: true
+  monthly: false
+category_generator:
+  per_page: 12
+tag_generator:
+  per_page: 12

@@ -1,0 +1,12 @@
+<div class="search" id="search" role="dialog" aria-modal="true" aria-label="全站搜索" data-index="<%- url_for('/search.json') %>">
+  <div class="search-mask" data-search-close></div>
+  <div class="search-box">
+    <label class="search-input">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="searchInput" type="search" placeholder="搜标题、正文、标签……" autocomplete="off" spellcheck="false">
+      <kbd>Esc</kbd>
+    </label>
+    <div class="search-results" id="searchResults"><div class="search-empty">输入关键词，在全部文章里找找看</div></div>
+    <div class="search-foot"><span>↑ ↓ 选择</span><span>Enter 打开</span><span>⌘K / Ctrl K 随时唤起</span></div>
+  </div>
+</div>

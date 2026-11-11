@@ -1,0 +1,83 @@
+<%
+  var cat = tifa_first_cat(page);
+  var related = tifa_related(page, 4);
+  var showToc = String(page.toc) !== 'false';
+%>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<article class="post">
+  <header class="post-head">
+    <div class="meta">
+      <% if (cat) { %><a class="cat" href="<%- url_for(cat.path) %>"><%= cat.name %></a><i class="sep"></i><% } %>
+      <time datetime="<%= date_xml(page.date) %>"><%= date(page.date, 'YYYY年M月D日') %></time><i class="sep"></i>
+      <span><%= tifa_words(page) %> 字 · <%= tifa_read_min(page) %> 分钟</span>
+      <% if (theme.busuanzi) { %><span id="busuanzi_container_page_pv" style="display:none"><i class="sep" style="display:inline-block;vertical-align:middle;margin-right:10px"></i><span id="busuanzi_value_page_pv"></span> 次阅读</span><% } %>
+    </div>
+    <h1><%= page.title %></h1>
+    <% if (page.description) { %><p class="lede"><%= page.description %></p><% } %>
+  </header>
+  <% if (page.img) { %>
+  <figure class="post-cover"><img src="<%- url_for(page.img) %>" alt="<%= page.title %>" decoding="async" fetchpriority="high" onerror="this.parentNode.remove()"></figure>
+  <% } %>
+  <div class="post-layout">
+  <% if (showToc) { %><aside class="toc" id="toc" aria-label="目录"></aside><% } %>
+
+  <div class="prose" id="prose">
+    <%- page.content %>
+  </div>
+
+  <footer class="post-foot">
+    <% if (page.tags && page.tags.length) { %>
+    <div class="tags"><% page.tags.forEach(function (t) { %><a href="<%- url_for(t.path) %>"><%= t.name %></a><% }) %></div>
+    <% } %>
+    <div class="actions">
+      <button class="btn btn-ghost" id="copyLink">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
+        <span>复制链接分享</span></button>
+      <% if (theme.reward && theme.reward.enable) { %>
+      <button class="btn btn-primary" id="rewardBtn" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg>
+        <span>请蒂法喝杯咖啡</span></button>
+      <% } %>
+    </div>
+    <% if (theme.reward && theme.reward.enable) { %>
+    <div class="reward-panel" id="rewardPanel">
+      <p><%= theme.reward.title %></p>
+      <img src="<%- url_for(theme.reward.wechat) %>" alt="微信赞赏码" loading="lazy">
+    </div>
+    <% } %>
+
+    <nav class="prevnext" aria-label="上一篇 / 下一篇">
+      <% if (page.prev) { %><a class="prev" href="<%- url_for(page.prev.path) %>"><small>← 较新的一篇</small><b><%= page.prev.title %></b></a><% } %>
+      <% if (page.next) { %><a class="next" href="<%- url_for(page.next.path) %>"><small>较早的一篇 →</small><b><%= page.next.title %></b></a><% } %>
+    </nav>
+
+    <% if (related.length) { %>
+    <section class="related">
+      <h2>也许你还想读</h2>
+      <% related.forEach(function (p) { var rc = tifa_first_cat(p); %>
+      <a class="row" href="<%- url_for(p.path) %>"><span class="t"><%= p.title %></span><time><%= date(p.date, 'YYYY-MM-DD') %></time></a>
+      <% }) %>
+    </section>
+    <% } %>
+
+    <% if (theme.twikoo && theme.twikoo.enable && page.comments !== false) { %>
+    <section class="comments" id="comments">
+      <h2>留言</h2>
+      <div id="tcomments" data-env="<%= theme.twikoo.envId %>" data-region="<%= theme.twikoo.region %>" data-src="<%- url_for(theme.twikoo.js) %>">
+        <div class="comments-placeholder">评论区加载中……</div>
+      </div>
+    </section>
+    <% } %>
+  </footer>
+  </div>
+</article>
+
+<div class="fab" id="fab">
+  <button class="toc-btn<%= showToc ? ' has-toc' : '' %>" id="tocBtn" aria-label="目录"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h13"/></svg></button>
+  <button class="fs-btn" id="fsBtn" aria-label="调整字号" title="调整字号">A</button>
+  <button class="to-top" id="toTop" aria-label="回到顶部"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+</div>
+<div class="sheet" id="tocSheet" aria-hidden="true">
+  <div class="sheet-mask" data-sheet-close></div>
+  <div class="sheet-panel"><nav class="toc" id="tocMobile"></nav></div>
+</div>

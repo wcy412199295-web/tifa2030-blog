@@ -2,8 +2,8 @@
 title: AI游戏代理的进化之路 | 从Google SIMA到OASIS的想象
 date: 2026-03-26 20:00:00
 categories:
-  - 🤖 AI本地秘书
-  - 🎮 O计划
+  - AI本地秘书
+  - O计划
 tags:
   - AI游戏代理
   - SIMA

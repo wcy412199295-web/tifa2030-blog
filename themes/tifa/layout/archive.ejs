@@ -1,0 +1,35 @@
+<%
+  var all = page.posts.sort('-date').toArray();
+  var years = [];
+  var map = {};
+  all.forEach(function (p) {
+    var y = p.date.year();
+    if (!map[y]) { map[y] = []; years.push(y); }
+    map[y].push(p);
+  });
+%>
+<section class="page-head">
+  <div class="wrap">
+    <span class="kicker">归档</span>
+    <h1><%= page.year ? page.year + ' 年' + (page.month ? page.month + ' 月' : '') : '写过的每一个夜晚' %></h1>
+    <p>共 <%= all.length %> 篇<% if (!page.year) { %> · <%= (tifa_site_words() / 10000).toFixed(1) %> 万字<% } %></p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <% years.forEach(function (y) { %>
+    <div class="archive-year">
+      <h2><%= y %><small><%= map[y].length %> 篇</small></h2>
+      <div>
+        <% map[y].forEach(function (p) { var c = tifa_first_cat(p); %>
+        <a class="row" href="<%- url_for(p.path) %>">
+          <time><%= date(p.date, 'MM-DD') %></time>
+          <span class="t"><%= p.title %></span>
+          <span class="c"><%= c ? c.name : '' %></span>
+        </a>
+        <% }) %>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>

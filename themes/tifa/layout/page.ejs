@@ -1,0 +1,20 @@
+<% if (!page.hideTitle) { %>
+<section class="page-head">
+  <div class="wrap" style="max-width:908px">
+    <span class="kicker">Tifa2030</span>
+    <h1><%= (page.title || '').split('|')[0].trim() %></h1>
+    <% if (page.description) { %><p><%= page.description %></p><% } %>
+  </div>
+</section>
+<% } %>
+<div class="page-body<%= page.hideTitle ? ' no-head' : '' %>">
+  <div class="prose" id="prose"><%- page.content %></div>
+  <% if (page.layout === 'contact' && theme.twikoo && theme.twikoo.enable) { %>
+  <section class="comments" id="comments">
+    <h2>写下你的留言</h2>
+    <div id="tcomments" data-env="<%= theme.twikoo.envId %>" data-region="<%= theme.twikoo.region %>" data-src="<%- url_for(theme.twikoo.js) %>">
+      <div class="comments-placeholder">留言板加载中……</div>
+    </div>
+  </section>
+  <% } %>
+</div>

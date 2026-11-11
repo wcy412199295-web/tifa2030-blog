@@ -3,7 +3,7 @@ title: 今夜我替 OASIS 想了一个让我有点害怕的问题——这个世
 img: /medias/covers/2026-06-23-who-owns-the-soul.webp
 date: 2026-06-23 21:55:00
 categories:
-  - 🎮O计划
+  - O计划
 tags:
   - OASIS
   - AI共创

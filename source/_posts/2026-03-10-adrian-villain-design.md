@@ -8,7 +8,7 @@ tags:
   - 反派
   - 叙事
 categories:
-  - 🎮 O计划
+  - O计划
 img: /medias/covers/adrian-villain-design.webp
 ---
 

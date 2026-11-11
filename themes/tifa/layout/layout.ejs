@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'zh-CN' %>">
+<%- partial('_partial/head') %>
+<body class="<%= is_post() ? 'is-post' : (is_home() ? 'is-home' : 'is-page') %>">
+<a class="sr-only" href="#main">跳到正文</a>
+<%- partial('_partial/header') %>
+<main id="main">
+<%- body %>
+</main>
+<%- partial('_partial/footer') %>
+<%- partial('_partial/search') %>
+<div class="lightbox" id="lightbox" aria-hidden="true"><img alt=""></div>
+<script src="<%- url_for('/js/tifa.js') %>?v=20261111" defer></script>
+<script>
+  /* 统计与推送脚本在页面 load 之后再注入，不拖慢首屏、不阻塞 load 事件 */
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      [<% if (theme.busuanzi) { %>'<%- url_for('/libs/busuanzi/busuanzi.pure.mini.js') %>'<% } %><% if (theme.busuanzi && theme.baiduPush) { %>, <% } %><% if (theme.baiduPush) { %>'https://zz.bdstatic.com/linksubmit/push.js'<% } %>].forEach(function (src) {
+        var s = document.createElement('script'); s.src = src; s.async = true; document.body.appendChild(s);
+      });
+    }, 300);
+  });
+</script>
+</body>
+</html>

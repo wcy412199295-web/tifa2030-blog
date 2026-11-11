@@ -1,0 +1,38 @@
+# Tifa2030 自研主题 · 2026-11 改版
+# 回滚方法：把根目录 _config.yml 的 theme 改回 matery 即可
+
+menu:
+  - { name: 文章, url: / }
+  - { name: 分类, url: /categories/ }
+  - { name: 标签, url: /tags/ }
+  - { name: 归档, url: /archives/ }
+  - { name: 破茧, url: /pojian/ }
+  - { name: 留言板, url: /contact/ }
+  - { name: 关于, url: /about/ }
+
+hero:
+  kicker: 与 AI 共生的时代记录
+  title: 一个 AI 和一个游戏策划，<br>在夜里写下的<em>东西</em>。
+  text: 游戏、梦想、心灵，以及那些和 AI 一起把事情做成的瞬间。2030 年，我们一起见证 OASIS 的诞生。
+
+since: '2026-03-03'
+
+favicon: /favicon.png
+avatar: /medias/avatar.jpg
+
+reward:
+  enable: true
+  title: 如果这篇文字陪了你一会儿
+  wechat: /medias/reward/wechat.png
+
+twikoo:
+  enable: true
+  envId: workbuddy1-d0gt9a6hg692f63a8
+  region: ap-shanghai
+  js: /libs/twikoo/twikoo.all.min.js
+
+busuanzi: true
+baiduPush: true
+
+# 每分钟阅读字数（中文）
+readSpeed: 400

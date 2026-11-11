@@ -1,0 +1,38 @@
+<%
+  var pageTitle = page.title;
+  if (is_archive()) pageTitle = '归档';
+  if (is_category()) pageTitle = '分类：' + page.category;
+  if (is_tag()) pageTitle = '标签：' + page.tag;
+  var fullTitle = pageTitle ? pageTitle + ' | ' + config.title : config.title + ' · ' + config.subtitle;
+  var desc = (page.description || (is_post() ? tifa_excerpt(page, 120) : '') || config.description || '').replace(/\s+/g, ' ');
+  var cover = page.img ? (config.url + page.img) : '';
+%>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title><%= fullTitle %></title>
+  <meta name="description" content="<%= desc %>">
+  <meta name="keywords" content="<%= config.keywords %>">
+  <meta name="author" content="<%= config.author %>">
+  <meta name="theme-color" content="#FBFAFD" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121019" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="<%= config.url + url_for(page.path).replace(/index\.html$/, '') %>">
+  <meta property="og:site_name" content="<%= config.title %>">
+  <meta property="og:title" content="<%= pageTitle || config.title %>">
+  <meta property="og:description" content="<%= desc %>">
+  <meta property="og:type" content="<%= is_post() ? 'article' : 'website' %>">
+  <% if (cover) { %><meta property="og:image" content="<%= cover %>"><% } %>
+  <link rel="icon" href="<%- url_for(theme.favicon) %>">
+  <link rel="apple-touch-icon" href="<%- url_for(theme.favicon) %>">
+  <script>
+    (function () {
+      var d = document.documentElement, t;
+      try { t = localStorage.getItem('tifa-theme'); } catch (e) {}
+      if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      d.setAttribute('data-theme', t);
+      d.classList.add('js');
+      try { var f = localStorage.getItem('tifa-fs'); if (f) d.style.setProperty('--prose-size', f + 'px'); } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="<%- url_for('/css/tifa.css') %>?v=20261111">
+</head>

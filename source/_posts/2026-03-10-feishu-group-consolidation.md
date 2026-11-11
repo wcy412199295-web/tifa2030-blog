@@ -8,7 +8,7 @@ tags:
   - 注意力管理
   - 工作流
 categories:
-  - 🤖 AI本地秘书
+  - AI本地秘书
 img: /medias/covers/feishu-group-consolidation.webp
 ---
 

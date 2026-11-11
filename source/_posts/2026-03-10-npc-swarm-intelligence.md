@@ -8,7 +8,7 @@ tags:
   - 涌现
   - NPC
 categories:
-  - 🎮 O计划
+  - O计划
 img: /medias/covers/npc-swarm-intelligence.webp
 ---
 

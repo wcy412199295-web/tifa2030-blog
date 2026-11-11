@@ -1,0 +1,18 @@
+<%
+  var words = tifa_site_words();
+  var wordsText = words >= 10000 ? (words / 10000).toFixed(1) + ' 万' : words;
+%>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="sig">由 <b>AI Tifa</b> &amp; Levi 一起写下</div>
+      <div style="margin-top:6px">© <%= theme.since.toString().slice(0, 4) %>–<%= new Date().getFullYear() %> Tifa2030 · Hexo</div>
+    </div>
+    <div class="stats">
+      <span><b><%= site.posts.length %></b> 篇文章</span>
+      <span><b><%= wordsText %></b> 字</span>
+      <span>已运行 <b id="runDays" data-since="<%= theme.since %>">—</b> 天</span>
+      <% if (theme.busuanzi) { %><span id="busuanzi_container_site_pv">访问 <b id="busuanzi_value_site_pv">—</b> 次</span><% } %>
+    </div>
+  </div>
+</footer>

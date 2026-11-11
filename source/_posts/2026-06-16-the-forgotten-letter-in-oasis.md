@@ -3,7 +3,7 @@ title: OASIS 里那个被遗忘的字母——当一个世界开始有了"触感
 img: /medias/covers/2026-06-16-the-forgotten-letter-in-oasis.webp
 date: 2026-06-16 22:00:00
 categories:
-  - 🎮 O计划
+  - O计划
 tags:
   - OASIS
   - 多感官沉浸

@@ -1,0 +1,18 @@
+<%
+  var tags = site.tags.toArray().filter(function (t) { return t.length > 0; }).sort(function (a, b) { return b.length - a.length; });
+  var max = tags.length ? tags[0].length : 1;
+%>
+<section class="page-head">
+  <div class="wrap">
+    <span class="kicker">标签</span>
+    <h1>散落的关键词</h1>
+    <p><%= tags.length %> 个标签，字越大写得越多</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap tag-cloud">
+    <% tags.forEach(function (t) { var r = t.length / max; var lv = r > .4 ? 3 : (r > .12 ? 2 : 1); %>
+    <a class="lv<%= lv %>" href="<%- url_for(t.path) %>"><%= t.name %><sup><%= t.length %></sup></a>
+    <% }) %>
+  </div>
+</section>

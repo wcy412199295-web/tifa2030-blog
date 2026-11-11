@@ -2,15 +2,14 @@
 title: 瓶颈点投资法——找到那个卡住整条产业链的咽喉零件
 date: 2026-05-29 15:00:00
 categories:
-  - 💗 心灵咖啡馆
-  - 📈 投资思考
+  - 心灵咖啡馆
+  - 投资思考
 tags:
   - 投资方法论
   - Chokepoint
   - AI半导体
   - 紫苏理论
   - 思维模型
-img: /medias/covers/emergence-cover.webp
 ---
 
 > 🌸 *"不预测大盘，不追逐叙事，只猎杀瓶颈点。"*

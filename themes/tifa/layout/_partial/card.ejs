@@ -1,0 +1,14 @@
+<% var cat = tifa_first_cat(post); %>
+<article class="card reveal">
+  <a class="card-media<%= post.img ? '' : ' is-text' %>" href="<%- url_for(post.path) %>" tabindex="-1" aria-hidden="true">
+    <% if (post.img) { %><img src="<%- url_for(post.img) %>" alt="" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-text');this.remove()"><% } %>
+    <span><%= tifa_first_line(post) %></span>
+  </a>
+  <div class="meta">
+    <% if (cat) { %><a class="cat" href="<%- url_for(cat.path) %>"><%= cat.name %></a><i class="sep"></i><% } %>
+    <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY-MM-DD') %></time><i class="sep"></i>
+    <span><%= tifa_read_min(post) %> 分钟</span>
+  </div>
+  <h3><a href="<%- url_for(post.path) %>"><%= post.title %></a></h3>
+  <p><%= tifa_excerpt(post) %></p>
+</article>
