@@ -118,13 +118,16 @@ html[data-theme="dark"] ::selection { background: rgba(169, 156, 242, .35); colo
 .site-header.is-scrolled { border-bottom-color: var(--line); }
 .site-header .wrap { height: 100%; display: flex; align-items: center; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 18px; letter-spacing: .01em; flex-shrink: 0; }
-.brand svg { width: 30px; height: 28px; flex-shrink: 0; }
-.logo-shield { fill: var(--primary); transition: transform .3s cubic-bezier(.2, .8, .2, 1); transform-origin: 14px 19px; }
-.logo-t { fill: var(--paper); }
-.logo-star { fill: var(--accent); transform-origin: 30px 6px; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+.brand svg { width: 30px; height: 30px; flex-shrink: 0; overflow: visible; }
+.logo-head { fill: var(--primary); stroke: var(--primary); stroke-width: 1.6; stroke-linejoin: round; transition: transform .3s cubic-bezier(.2, .8, .2, 1); transform-origin: 16px 28px; }
+.logo-eye, .logo-star { fill: var(--accent); }
+.logo-nose { fill: var(--paper); stroke: var(--paper); stroke-width: .8; stroke-linejoin: round; }
+.logo-eye { transform-origin: 11.2px 17.6px; transition: transform .25s ease; }
+.logo-star { transform-origin: 20.8px 17.4px; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+.brand:hover .logo-head { transform: rotate(-4deg); }
 .brand:hover .logo-star { transform: rotate(90deg) scale(1.15); }
-.brand:hover .logo-shield { transform: translateY(-1px); }
-@media (prefers-reduced-motion: reduce) { .brand:hover .logo-star, .brand:hover .logo-shield { transform: none; } }
+.brand:hover .logo-eye { transform: scaleY(.35); }
+@media (prefers-reduced-motion: reduce) { .brand:hover .logo-head, .brand:hover .logo-star, .brand:hover .logo-eye { transform: none; } }
 .brand .dot { color: var(--accent); }
 .nav { display: flex; gap: 4px; margin-left: auto; }
 .nav a {
@@ -615,6 +618,6 @@ html[data-theme="dark"] .prose [style*="background: linear-gradient(135deg, rgba
   .post-head h1 { font-size: 28px; }
 }
 
-.orbit .core-label { fill: #fff; font-size: 14px; }
+.orbit .core-label { fill: #fff; font-size: 15px; letter-spacing: .04em; }
 html[data-theme="dark"] .orbit .core-label { fill: #15121F; }
 .search-input input::-webkit-search-cancel-button { -webkit-appearance: none; }
