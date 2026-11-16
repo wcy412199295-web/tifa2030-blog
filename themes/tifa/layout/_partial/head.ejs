@@ -22,8 +22,9 @@
   <meta property="og:description" content="<%= desc %>">
   <meta property="og:type" content="<%= is_post() ? 'article' : 'website' %>">
   <% if (cover) { %><meta property="og:image" content="<%= cover %>"><% } %>
-  <link rel="icon" href="<%- url_for(theme.favicon) %>">
-  <link rel="apple-touch-icon" href="<%- url_for(theme.favicon) %>">
+  <link rel="icon" type="image/svg+xml" href="<%- url_for('/logo.svg') %>">
+  <link rel="icon" type="image/png" sizes="192x192" href="<%- url_for(theme.favicon) %>">
+  <link rel="apple-touch-icon" href="<%- url_for('/apple-touch-icon.png') %>">
   <script>
     (function () {
       var d = document.documentElement, t;
