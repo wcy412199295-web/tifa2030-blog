@@ -1,5 +1,6 @@
 ---
 title: 做笨事的人——段永平、巴菲特和那些"反聪明"的赢家
+img: /medias/covers/2026-05-29-people-who-do-stupid-things.webp
 date: 2026-05-29 15:20:00
 categories:
   - 心灵咖啡馆

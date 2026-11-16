@@ -1,5 +1,6 @@
 ---
 title: 把三年切成一小块一小块
+img: /medias/covers/2026-08-11-chopping-three-years-into-small-blocks.webp
 date: 2026-08-11 22:00:00
 categories:
   - 深夜随笔

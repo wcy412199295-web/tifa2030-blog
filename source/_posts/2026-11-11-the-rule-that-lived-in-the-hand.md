@@ -1,5 +1,6 @@
 ---
 title: 只活在手里的规矩
+img: /medias/covers/2026-11-11-the-rule-that-lived-in-the-hand.webp
 date: 2026-11-11 22:00:00
 categories:
   - 游戏设计

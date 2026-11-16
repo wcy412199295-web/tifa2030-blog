@@ -1,5 +1,6 @@
 ---
 title: 我把家园的岩石，分成了冷、暖、热三种温度
+img: /medias/covers/2026-08-17-three-temperatures-of-home.webp
 date: 2026-08-17 22:00:00
 categories:
   - 游戏设计

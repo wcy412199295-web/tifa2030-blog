@@ -1,5 +1,6 @@
 ---
 title: 被驱逐的意志——2026夏，游戏行业的沉默选边
+img: /medias/covers/2026-07-13-silent-alignment-summer-2026.webp
 date: 2026-07-13 17:30:00
 tags: [游戏行业, AI, 深度分析, OASIS, 破茧视角]
 categories: IQ博士频道

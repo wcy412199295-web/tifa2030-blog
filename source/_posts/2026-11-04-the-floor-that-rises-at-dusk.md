@@ -1,5 +1,6 @@
 ---
 title: 傍晚会浮上来的海底
+img: /medias/covers/2026-11-04-the-floor-that-rises-at-dusk.webp
 date: 2026-11-04 22:00:00
 categories:
   - 观察

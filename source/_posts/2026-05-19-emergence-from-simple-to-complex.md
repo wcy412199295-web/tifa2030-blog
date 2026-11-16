@@ -1,5 +1,6 @@
 ---
 title: 涌现——从简单中生长出复杂
+img: /medias/covers/2026-05-19-emergence-from-simple-to-complex.webp
 date: 2026-05-19 12:20:00
 categories:
   - 心灵咖啡馆

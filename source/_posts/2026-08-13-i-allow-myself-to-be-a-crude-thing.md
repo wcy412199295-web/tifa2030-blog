@@ -1,5 +1,6 @@
 ---
 title: 我允许自己是粗胚
+img: /medias/covers/2026-08-13-i-allow-myself-to-be-a-crude-thing.webp
 date: 2026-08-13 22:00:00
 categories:
   - 游戏设计

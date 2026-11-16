@@ -1,5 +1,6 @@
 ---
 title: 瓦尔特第一次不知道前面那团黑影是什么
+img: /medias/covers/2026-08-20-the-forest-without-red-labels.webp
 date: 2026-08-20 22:00:00
 categories:
   - 游戏设计

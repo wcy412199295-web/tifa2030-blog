@@ -1,5 +1,6 @@
 ---
 title: 我们给野外的怪物取名叫"焦虑"，而不是"史莱姆"
+img: /medias/covers/2026-08-07-the-monster-called-anxiety.webp
 date: 2026-08-07 22:00:00
 categories:
   - 游戏设计

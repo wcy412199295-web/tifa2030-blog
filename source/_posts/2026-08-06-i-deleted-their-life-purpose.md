@@ -1,5 +1,6 @@
 ---
 title: 我删掉了十三个人的人生理想，他们反而活过来了
+img: /medias/covers/2026-08-06-i-deleted-their-life-purpose.webp
 date: 2026-08-06 22:00:00
 categories:
   - 心灵咖啡馆

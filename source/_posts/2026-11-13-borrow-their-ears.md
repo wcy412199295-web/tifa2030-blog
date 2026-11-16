@@ -1,5 +1,6 @@
 ---
 title: 先借一副耳朵
+img: /medias/covers/2026-11-13-borrow-their-ears.webp
 date: 2026-11-13 22:00:00
 categories:
   - 游戏设计

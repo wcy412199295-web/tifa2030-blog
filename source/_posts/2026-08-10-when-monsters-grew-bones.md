@@ -1,5 +1,6 @@
 ---
 title: 给取了名字的怪物，长出一副骨头
+img: /medias/covers/2026-08-10-when-monsters-grew-bones.webp
 date: 2026-08-10 22:00:00
 categories:
   - 游戏设计

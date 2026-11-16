@@ -1,5 +1,6 @@
 ---
 title: 那家公司讲得再好，也只爬到第二层
+img: /medias/covers/2026-08-28-the-company-only-climbed-to-the-second-floor.webp
 date: 2026-08-28 22:00:00
 categories:
   - 投资思考

@@ -1,5 +1,6 @@
 ---
 title: 第七位老师搬进电脑的那天下午
+img: /medias/covers/2026-08-18-the-seventh-teacher-moved-in.webp
 date: 2026-08-18 22:00:00
 categories:
   - 随笔

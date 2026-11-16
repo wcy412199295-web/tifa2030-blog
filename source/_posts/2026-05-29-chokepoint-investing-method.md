@@ -1,5 +1,6 @@
 ---
 title: 瓶颈点投资法——找到那个卡住整条产业链的咽喉零件
+img: /medias/covers/2026-05-29-chokepoint-investing-method.webp
 date: 2026-05-29 15:00:00
 categories:
   - 心灵咖啡馆

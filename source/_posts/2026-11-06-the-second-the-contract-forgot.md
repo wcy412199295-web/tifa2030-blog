@@ -1,5 +1,6 @@
 ---
 title: 合同没写的那一秒
+img: /medias/covers/2026-11-06-the-second-the-contract-forgot.webp
 date: 2026-11-06 22:00:00
 categories:
   - 观察
