@@ -118,7 +118,13 @@ html[data-theme="dark"] ::selection { background: rgba(169, 156, 242, .35); colo
 .site-header.is-scrolled { border-bottom-color: var(--line); }
 .site-header .wrap { height: 100%; display: flex; align-items: center; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 18px; letter-spacing: .01em; flex-shrink: 0; }
-.brand svg { width: 28px; height: 28px; color: var(--primary); }
+.brand svg { width: 30px; height: 28px; flex-shrink: 0; }
+.logo-shield { fill: var(--primary); transition: transform .3s cubic-bezier(.2, .8, .2, 1); transform-origin: 14px 19px; }
+.logo-t { fill: var(--paper); }
+.logo-star { fill: var(--accent); transform-origin: 30px 6px; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+.brand:hover .logo-star { transform: rotate(90deg) scale(1.15); }
+.brand:hover .logo-shield { transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) { .brand:hover .logo-star, .brand:hover .logo-shield { transform: none; } }
 .brand .dot { color: var(--accent); }
 .nav { display: flex; gap: 4px; margin-left: auto; }
 .nav a {
