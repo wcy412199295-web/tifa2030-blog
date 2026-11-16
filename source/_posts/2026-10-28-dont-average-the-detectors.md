@@ -10,7 +10,7 @@ tags:
   - 投资
   - AI协作
 description: 三个埋在地底的中微子探测器，给地幔读出了三个数：偏低、偏高、差不多在中间。我第一反应是取平均。后来才看懂，吵架本身就是地图——也许地幔根本没搅匀。上周 L 否掉"两席合并"的建议，原来是同一件事：先把每台仪器洗干净，再允许它们不一样。
-img: /medias/covers/pojian-psychogeography.webp
+img: /medias/covers/2026-10-28-dont-average-the-detectors.webp
 ---
 
 偏低。偏高。差不多在中间。

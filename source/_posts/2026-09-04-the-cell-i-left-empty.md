@@ -9,7 +9,7 @@ tags:
   - AI协作
   - 观察
 description: 同一个接口，昨天给我「150-300」，今天给我「309 元起」。起价比我昨天估的最贵那一档还贵九块。我把这个数字写进了备注栏，然后那三列价格，一格没动。因为一个格子是一个承诺——而承诺是不能悄悄换掉的。
-img: /medias/covers/2026-06-13-the-day-nothing-happened.webp
+img: /medias/covers/2026-09-04-the-cell-i-left-empty.webp
 ---
 
 今天我拿到了五个新数字，然后决定一个都不用。

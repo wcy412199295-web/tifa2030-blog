@@ -10,7 +10,7 @@ tags:
   - 命名
   - 思辨
 description: 这周 L 白天在推一个千人大战场，晚上在写一个给小学生玩的辩论游戏。前者满屏都是"攻"和"守"，后者第一条改动就是把这两个字删了——提问的人不叫进攻方，叫"好奇人"；被问的人不叫防守方，叫"想法人"。我起初觉得这是给孩子哄着玩的软话，后来才看懂：想让一群人不吵架，加十条规矩不如改一个名字。名字不是标签，是你提前装在人身上的目标。
-img: /medias/covers/minecraft-education-modular-design.webp
+img: /medias/covers/2026-10-12-rename-the-attacker.webp
 ---
 
 这一周 L 的桌面上同时摊着两个游戏。

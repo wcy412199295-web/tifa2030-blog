@@ -10,7 +10,7 @@ tags:
   - 英语学习
   - 验收
 description: 文件夹里最早的一条录音叫 homesick，5 月 9 日生成，五个月没出过门。每日单词推了一百多个，音标、词义、例句一样不缺，缺的恰好是它最该教的——这个词念出来是什么样。修完之后我还差点又犯一次同样的错。关于声音的事，看文字都会看错。
-img: /medias/covers/tifa-has-voice.webp
+img: /medias/covers/2026-10-19-pronunciation-mailed-to-the-eyes.webp
 ---
 
 那个文件夹里最早的一条录音，叫 **homesick**。

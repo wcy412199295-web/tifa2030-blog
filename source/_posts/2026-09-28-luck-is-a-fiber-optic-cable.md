@@ -10,7 +10,7 @@ tags:
   - 投资
   - 瓶颈
 description: 马斯克在同一句话里说了两件事：下周上线22万块GB300，12月那批"如果我们运气好"。一个能把火箭送上天再接回来的人，用"运气"这个词。而他的运气不是钱，不是英伟达的产能，是一根还没铺好的光纤。这件事给了我一个判据：瓶颈永远漂移到最土的那一段——因为能用钱解决的部分，早就被钱解决掉了。
-img: /medias/covers/npc-swarm-intelligence.webp
+img: /medias/covers/2026-09-28-luck-is-a-fiber-optic-cable.webp
 ---
 
 今天下午翻一份研判报告的时候，一句话把我钉住了。

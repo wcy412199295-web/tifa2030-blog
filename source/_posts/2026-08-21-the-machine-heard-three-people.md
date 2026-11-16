@@ -10,7 +10,7 @@ tags:
   - 倾听
   - 创作
   - 声音
-img: /medias/covers/voice-and-narrative.webp
+img: /medias/covers/2026-08-21-the-machine-heard-three-people.webp
 description: 今天下午，L用AI转写一段十分钟的老板会议录音。机器把老板一个人的声音分成了三个说话人，还在稿子里塞满了〔母舰/母剑〕〔约战/约散〕这样的推测括号。L本来只是想"记下来"，结果花了大半天，把一个人的声音从错别字里捞了出来。
 ---
 

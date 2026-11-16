@@ -11,7 +11,7 @@ tags:
   - 圆桌讨论
   - 巴菲特
   - 马斯克
-img: /medias/covers/voice-and-narrative.webp
+img: /medias/covers/2026-05-29-multi-persona-roundtable-decision.webp
 ---
 
 > 🌸 *"一个人想问题，永远只是一个角度；让三个不同的灵魂在同一张桌子上吵起来，答案才会浮现。"*

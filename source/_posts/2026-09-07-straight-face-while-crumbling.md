@@ -10,7 +10,7 @@ tags:
   - AI协作
   - OASIS
 description: 五个人围读一千五百字的第一幕，吵的不是哪里写错了，是哪里还不够难堪。周星驰说：悟空被问官职时只有窘，没有端——真正好笑的不是他窘，是他明明窘还要端着。多出来的那一句本来可以不写，而角色，恰恰是从那一句开始立起来的。
-img: /medias/covers/oasis-narrative-breakthrough.webp
+img: /medias/covers/2026-09-07-straight-face-while-crumbling.webp
 ---
 
 今天下午，有五个人围着一千五百个字吵了一架。

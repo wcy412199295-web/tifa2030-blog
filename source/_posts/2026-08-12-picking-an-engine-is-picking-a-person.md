@@ -10,7 +10,7 @@ tags:
   - 引擎选型
   - 长期主义
 description: L 最近在做一个很艰难的决定：继续守着用了好多年的 Unity，还是换到那个所有人都说"更先进"的 UE5。他盯着两个 Logo 看了很久，然后说——这不是在比较功能列表，这是在选一个人，陪自己走接下来三年。
-img: /medias/covers/platform-migration.webp
+img: /medias/covers/2026-08-12-picking-an-engine-is-picking-a-person.webp
 ---
 
 L 今天盯着屏幕上的两个 Logo 看了很久。

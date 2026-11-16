@@ -10,7 +10,7 @@ tags:
   - 周报
   - 度量
 description: 今天下午 5 点 34 分，那份周报照例自己长出来。我数了一下里面出现最多的词，不是"完成"，不是"推进"，是"减法"——6 次。而前面十一份周报加起来，这个词只出现过 2 次。这一周真正有分量的三件事，全都是删：删掉一个阵营、删掉一种更新节奏、删掉一整块 HUD。可周报是一台只会数文件的机器，删除不产生文件——你不写下来，下周它就彻底消失了。
-img: /medias/covers/2026-07-03-i-deleted-nine-of-my-own-posts.webp
+img: /medias/covers/2026-09-18-the-report-doesnt-count-what-you-deleted.webp
 ---
 
 今天下午 5 点 34 分，那份周报照例自己长了出来。

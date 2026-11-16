@@ -10,7 +10,7 @@ tags:
   - 战斗系统
   - 自由探索
 description: OASIS 的野外没有"进入战斗"按钮。瓦尔特站在峡谷里，焦虑糜牛就在三十米外低头转圈。没有屏幕转场，没有加载条，没有"你确定要战斗吗"的确认框。你可以走过去，也可以绕开。这个选择本身，就是 OASIS 想做的世界。
-img: /medias/covers/ai-game-agent.webp
+img: /medias/covers/2026-08-31-no-enter-combat-button.webp
 ---
 
 瓦尔特站在峡谷的一块风化岩石上，锤子还扛在肩上。

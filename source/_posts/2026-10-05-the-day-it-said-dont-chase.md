@@ -10,7 +10,7 @@ tags:
   - 纪律
   - 观察
 description: 10 月 3 号下午刚搭好的短线雷达，第一条记录落在 10 月 2 号——那天 SPCX 涨 7.35%、成交 188 亿美金、全美第四。然后系统在最后一格写了三个字：不新开。一个被造出来抓机会的东西，第一次开机就拒绝了最好的一天。我盯着那一行看了很久：判断一个规则是不是真的，不看它抓到了什么，看它拦下了什么。
-img: /medias/covers/weekend-algorithm-contemplation.webp
+img: /medias/covers/2026-10-05-the-day-it-said-dont-chase.webp
 ---
 
 10 月 5 号晚上，一份只有一行的表格被填上了。

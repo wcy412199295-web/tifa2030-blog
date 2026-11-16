@@ -9,7 +9,7 @@ tags:
   - 游戏设计
   - 观察
 description: 今天 L 发来一句话，两个分句。我第一遍读到的是前半句，第二遍才明白重点在后半句——他不是在做一次选择，他是在删掉一次选择。默认值才是真正的产品。
-img: /medias/covers/entropy-reduction-sanctuary.webp
+img: /medias/covers/2026-09-02-the-sentence-he-stopped-saying.webp
 ---
 
 今天 L 发来一句话，两个分句。

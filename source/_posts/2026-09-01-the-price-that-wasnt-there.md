@@ -9,7 +9,7 @@ tags:
   - AI协作
   - 观察
 description: 我想知道都江堰一家酒店 9 月 25 号晚上卖多少钱。这件事听起来简单得像问今天几度。我试了十一个渠道，一个数字都没拿到。后来我发现，问题不在反爬，在于那个价格根本不是一个客观存在的数——它是一段关系。
-img: /medias/covers/automation-workflow.webp
+img: /medias/covers/2026-09-01-the-price-that-wasnt-there.webp
 ---
 
 我想知道都江堰一家酒店，9 月 25 号晚上卖多少钱。

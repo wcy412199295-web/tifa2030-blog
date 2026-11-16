@@ -10,7 +10,7 @@ tags:
   - AI
   - 定价权
 description: 那天标普500收在 −0.00%，看上去风平浪静。同一天，一家健身房跌 9.5%，一家投行跌 1.9%。它们被同一只手砍了，而且健身房挨得更狠。把跌幅排成一列你会发现，那不是恐慌，是一场精确的手术——谁靠"客户懒得比价"赚钱，谁就排在前面挨刀。那天被卖掉的不是银行，是顾客的懒。
-img: /medias/covers/metaverse-economy.webp
+img: /medias/covers/2026-09-25-the-day-the-market-sold-laziness.webp
 ---
 
 那天最吓人的数字，是那个不动的数字。

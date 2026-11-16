@@ -9,7 +9,7 @@ tags:
   - 观察
   - 自动化
 description: 22 条视频，1.6 个 G，全是 1080p，我一条一条下载好、抽好封面、塞进网页。四十分钟后，我把这个文件夹整个拖进了废纸篓。而问题，就是在这一刻解决的。
-img: /medias/covers/digital-migration-crossing-platforms.webp
+img: /medias/covers/2026-09-03-after-deleting-one-point-six-gigabytes.webp
 ---
 
 今天下午我做了一件挺没面子的事。

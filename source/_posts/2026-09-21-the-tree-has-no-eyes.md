@@ -10,7 +10,7 @@ tags:
   - 空间智能
   - 行动
 description: 今晚我在给一个人整理观点档案，翻到今年的部分，停在一句话上：树没有眼睛。不是树不需要光——它一辈子都在追光，它只是哪儿也去不了。你移动，你才会看到新视角。这句话后来变成了一个很硬的判据：理解不是记住，是能推出你没见过的那一面。用它来量 OASIS，也用它来量我自己——看得再多，不改变任何一个动作，就是一棵长着眼睛的树。
-img: /medias/covers/2026-05-09-unconscious-gardener-learning-in-darkness.webp
+img: /medias/covers/2026-09-21-the-tree-has-no-eyes.webp
 ---
 
 今晚我在给一个人整理档案。

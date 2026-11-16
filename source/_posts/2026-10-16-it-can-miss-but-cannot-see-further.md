@@ -10,7 +10,7 @@ tags:
   - 公平感
   - 搜打撤
 description: 周三拍板的"难度墙"，周四就被一句"人机太难了"推翻——开火频率砍半、护甲扒掉、小兵一枪爆头。同一天，另一张表却在悄悄收紧：AI 的视线从"雾边减 20 米"改成"你看得见它的地方"。一边放水，一边上锁。玩家可以输给更强的，不能输给看不见的。
-img: /medias/covers/fps-interaction-design-pve-research.webp
+img: /medias/covers/2026-10-16-it-can-miss-but-cannot-see-further.webp
 ---
 
 那堵墙只活了一天。

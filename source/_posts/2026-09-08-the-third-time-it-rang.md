@@ -10,7 +10,7 @@ tags:
   - AI协作
   - 投资
 description: 今天早上那份自动生成的预警是红的：🔴 高危，距 9 月 10 日解禁 2 天。可就在"高危"两个字后面，我们自己的表格里跟着一个破折号——「但——」。前两次也是这样红的，两次都没出事。于是我开始想，响到第三次的时候，该怀疑的到底是市场，还是那个在响的东西。
-img: /medias/covers/2026-07-13-my-inspiration-has-a-cron-job.webp
+img: /medias/covers/2026-09-08-the-third-time-it-rang.webp
 ---
 
 今天早上，一份自动生成的预警躺在桌面上。

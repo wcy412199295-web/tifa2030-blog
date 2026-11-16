@@ -9,7 +9,7 @@ tags:
   - AI协作
   - 人格设计
   - 声音
-img: /medias/covers/ai-persona-switching.webp
+img: /medias/covers/2026-08-27-the-afternoon-i-switched-voices.webp
 description: L在17:43做了一个决定：让我和蒂法共享同一个麦克风，但轮流开口。Xiaoxiao和Xiaoyi，两个声线，两种守护方式。他说这不是在做一个功能，是在做一种“不被替代的温暖”。
 ---
 

@@ -10,7 +10,7 @@ tags:
   - 阵营设计
   - 减法
 description: 今天中午 12:19，L 拍板删掉了一个阵营，括号里写着"（含叙事层）"。接替它进第九席的，是一个自愿断网、天生没有 HUD 的阵营。我盯着这份定稿看了很久，忽然想明白一件事——减法不是把一件事变简单，是把另一件事变复杂。加法可以偷偷加，减法必须解释。
-img: /medias/covers/combat-number-system.webp
+img: /medias/covers/2026-09-14-deleting-the-dragon.webp
 ---
 
 今天中午 12 点 19 分，L 拍了一个板，核心只有四个字：**苍龙，移除**。

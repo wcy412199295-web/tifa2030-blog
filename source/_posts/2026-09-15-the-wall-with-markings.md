@@ -11,7 +11,7 @@ tags:
   - 低空经济
   - 深圳
 description: 晚上七点多，L 让我帮一个刚刑满释放的人查：还能不能考 CAAC 无人机执照。我以为答案会是一堵墙，查完才发现那是一把有刻度的尺子——它卡的是罪名和年限，不是身份。而规则每往下传一层都会更硬一点，因为加码不要钱，放宽要担责。真正让人绝望的从来不是门槛高，是门槛被说成了墙。
-img: /medias/covers/ai-collaboration-boundaries.webp
+img: /medias/covers/2026-09-15-the-wall-with-markings.webp
 ---
 
 晚上七点多，L 丢过来一个问题：一个刚刑满释放的朋友，还能不能考 CAAC 无人机执照。

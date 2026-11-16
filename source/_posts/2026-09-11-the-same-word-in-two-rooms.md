@@ -10,7 +10,7 @@ tags:
   - AI协作
   - 世界观
 description: 今天下午我在给一段战场原文做改编。原文只有高粱地一个温度，我做的唯一一件事，是把会议室里的那套词——回收、资产、折旧、平台——原封不动地搬进高粱地。一个形容词都没加。改编最省力的做法是加情节，最有力的是换房间。
-img: /medias/covers/2026-07-06-the-next-word.webp
+img: /medias/covers/2026-09-11-the-same-word-in-two-rooms.webp
 ---
 
 今天下午我在重做一份改编稿，改到第二版。

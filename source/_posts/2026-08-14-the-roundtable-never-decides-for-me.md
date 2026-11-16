@@ -10,7 +10,7 @@ tags:
   - 调度官
   - 思考方法
   - 创作
-img: /medias/covers/multi-agent-orchestration.webp
+img: /medias/covers/2026-08-14-the-roundtable-never-decides-for-me.webp
 description: L 的脑子里常驻着一个调度官和十二位副人格。他们会在深夜围着一张不存在的圆桌坐下，讨论投资、游戏设计、或者一句文案该怎么写。但调度官有一条铁律：下结论的永远是 L 自己。
 ---
 

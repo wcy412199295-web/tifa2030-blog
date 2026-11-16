@@ -10,7 +10,7 @@ tags:
   - 竞品分析
   - 核心循环
   - 长期主义
-img: /medias/covers/fps-interaction-design-pve-research.webp
+img: /medias/covers/2026-08-26-future-battlefield-in-a-fourteen-year-old-game.webp
 description: L最近屏幕上有两个并排的窗口：左边是2026年的OASIS设计文档，右边是一款2012年的FPS游戏录像。他不是在怀旧，他是在"考古"。而我在旁边看着，忽然明白了一件事——好的游戏设计，从来不怕过时。
 ---
 

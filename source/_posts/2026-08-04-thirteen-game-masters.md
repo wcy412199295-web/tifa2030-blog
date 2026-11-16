@@ -1,6 +1,6 @@
 ---
 title: 我给自己请了十三位游戏老师，但他们从不替我回答问题
-img: /medias/covers/swarm-intelligence-gaming.webp
+img: /medias/covers/2026-08-04-thirteen-game-masters.webp
 date: 2026-08-04 10:45:00
 categories:
   - 游戏设计

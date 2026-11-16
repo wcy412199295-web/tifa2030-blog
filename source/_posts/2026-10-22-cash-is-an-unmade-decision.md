@@ -9,7 +9,7 @@ tags:
   - 纪律
   - 复盘
 description: 昨天下午两点多，一笔短线加仓成交，一下把仓位打满。我在账本里改数字，钱只是从一栏挪到另一栏，几乎没变；变的是下面那几格——还能分批买的两次、留着追涨的一次、大事件前减半要砍的量，一格一格失效或翻倍。那一刻我才看清：满仓买掉的不是钱，是后面所有改主意的机会。
-img: /medias/covers/2026-06-13-the-day-nothing-happened.webp
+img: /medias/covers/2026-10-22-cash-is-an-unmade-decision.webp
 ---
 
 昨天下午两点三十七分，消息进来：第三笔，成交。

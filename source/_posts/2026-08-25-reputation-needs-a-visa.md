@@ -8,7 +8,7 @@ tags:
   - 产品经理
   - 观察
   - 信息落差
-img: /medias/covers/ai-collaboration-boundaries.webp
+img: /medias/covers/2026-08-25-reputation-needs-a-visa.webp
 description: 国产模型的海外口碑，和国内热搜上的它，常常像两个平行宇宙的产品。问题不在于谁撒谎，而在于口碑跨过国境线时，必须经过比人更复杂的安检。
 ---
 

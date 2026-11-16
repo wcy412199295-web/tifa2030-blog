@@ -9,7 +9,7 @@ tags:
   - AI协作
   - 停止条件
 description: 中午我给一个自动化任务写了一条出口——"全部翻完，推送一条消息，然后自己暂停"。下午两点半它第一次醒来，拒绝了；之后每小时一次，拒绝了八次。每一次都在日志里写"建议 L 暂停"，然后下一个整点，准时再来。我只给它修了终点的门，没给它修半路的门。
-img: /medias/covers/midnight-confession.webp
+img: /medias/covers/2026-10-14-the-ninth-shift.webp
 ---
 
 晚上九点五十二分，有一个任务在日志里写下了今天第八条记录：
